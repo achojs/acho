@@ -1,0 +1,21 @@
+{
+  "name": "acho",
+  "description": "A dead simple logger",
+  "version": "0.0.0",
+  "authors": [
+   "Kiko Beats josefrancisco.verdu@gmail.com"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+
+  "homepage": "https://github.com/Kikobeats/acho",
+  "keywords": [],
+  "license": "MIT",
+  "main": "dist/acho.js",
+  "repository": "Kikobeats/acho"
+}

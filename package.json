@@ -1,0 +1,39 @@
+{
+  "name": "acho",
+  "description": "A dead simple logger",
+  "version": "0.1.0",
+  "author": {
+    "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
+    "url": "https://github.com/Kikobeats"
+  },
+  "bugs": {
+    "url": "Kikobeats/acho/issues"
+  },
+  "dependencies": {
+    "chalk": "*"
+  },
+  "devDependencies": {
+    "browserify": "*",
+    "coffee-script": "*",
+    "coffeeify": "^",
+    "gulp": "*",
+    "gulp-header": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "mocha": "*",
+    "should": "*",
+    "vinyl-source-stream": "*"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "Kikobeats/acho",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./index.js",
+  "repository": "Kikobeats/acho",
+  "scripts": {
+    "test": "sh test/test.sh"
+  }
+}
