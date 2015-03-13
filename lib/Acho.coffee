@@ -2,32 +2,49 @@
 
 chalk = require 'chalk'
 
-# 'error'  : Display calls to `.error()`
-# 'warn'   : Display calls from `.error()` to `.warn()`
-# 'debug'  : Display calls from `.error()`, `.warn()` to `.debug()`
-# 'info'   : Display calls from `.error()`, `.warn()`, `.debug()` to `.info()`
-# 'verbose': Display calls from `.error()`, `.warn()`, `.debug()`, `.info()` to `.verbose()`
+DEFAULT =
+  OUTPUT_TYPE: (type) -> "#{type}\t: "
+  OUTPUT_MESSAGE: (message) -> message
+  TYPES:
+    error:
+      level : 0
+      color : 'red'
+    warning:
+      level : 1
+      color : 'yellow'
+    success:
+      level : 2
+      color : 'green'
+    info:
+      level : 3
+      color : 'white'
+    verbose:
+      level : 4
+      color : 'cyan'
+    debug:
+      level : 5
+      color : 'blue'
+    silly:
+      level : 6
+      color : 'rainbow'
 
 module.exports = class Acho
 
   constructor: (options) ->
     @color = if options.color? then options.color else false
     @level = if options.level? then options.level else 'info'
+    @types = if options.types? then options.types else DEFAULT.TYPES
     @messages = {}
-    @messages[type] = [] for type of Acho.types
-    @outputType = options.outputType if options.outputType?
-    @outputMessage = options.outputMessage if options.outputMessage?
+    @messages[type] = [] for type of @types
+    @outputType = if options.outputType? then options.outputType else DEFAULT.OUTPUT_TYPE
+    @outputMessage = if options.outputMessage? then options.outputMessage else DEFAULT.OUTPUT_MESSAGE
     this
-
-  outputType: (type) -> "#{type}: "
-
-  outputMessage: (message) -> message
 
   push: (type, message) ->
     @messages[type].push message
     this
 
-  track: (type, message) ->
+  add: (type, message) ->
     @[type] message
     @push type, message
     this
@@ -60,36 +77,13 @@ module.exports = class Acho
     @_messageBuilder 'silly', message
     this
 
-  @types:
-    error:
-      level : 0
-      color : 'red'
-    warning:
-      level : 1
-      color : 'yellow'
-    success:
-      level : 2
-      color : 'green'
-    info:
-      level : 3
-      color : 'white'
-    verbose:
-      level : 4
-      color : 'cyan'
-    debug:
-      level : 5
-      color : 'blue'
-    silly:
-      level : 6
-      color : 'rainbow'
-
   print: ->
-    for type of Acho.types
+    for type of @types
       @_messageBuilder(type, message) for message in @messages[type]
 
   _isInLevel: (type) ->
     return false if @level is 'silent'
-    Acho.types[type].level <= Acho.types[@level].level
+    @types[type].level <= @types[@level].level
 
   _colorizeMessage: (color, message) ->
     return message unless @color
@@ -104,7 +98,7 @@ module.exports = class Acho
 
   _messageBuilder: (type, message) ->
     return unless @_isInLevel type
-    colorType = Acho.types[type].color
+    colorType = @types[type].color
     messageType = @outputType(type)
     messageType = @_colorizeMessage(colorType, messageType)
     message = @outputMessage(message)

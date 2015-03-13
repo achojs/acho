@@ -1,6 +1,6 @@
 {
   "name": "acho",
-  "description": "A dead simple logger",
+  "description": "A extremely (but powerful) logging system for NodeJS and browser.",
   "version": "0.1.0",
   "author": {
     "name": "Kiko Beats",
@@ -29,7 +29,7 @@
     "node": "*"
   },
   "homepage": "Kikobeats/acho",
-  "keywords": [],
+  "keywords": ["log", "logging"],
   "license": "MIT",
   "main": "./index.js",
   "repository": "Kikobeats/acho",

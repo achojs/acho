@@ -17,7 +17,7 @@ describe 'Acho ::', ->
     @acho.messages.error.length.should.be.equal 1
 
   it 'add a message and print', ->
-    @acho.track 'error', 'hello world'
+    @acho.add 'error', 'hello world'
     @acho.messages.error.length.should.be.equal 2
 
   it 'print a normal message', ->
