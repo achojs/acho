@@ -7,6 +7,7 @@ describe 'Acho ::', ->
     opts =
       color: true
       outputType: (type) -> "[#{type}] » "
+      modifiers: ['bold', 'italic']
     @acho = new Acho(opts)
 
   it 'create a new object', ->

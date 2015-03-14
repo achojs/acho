@@ -9,6 +9,7 @@ module.exports = class Acho
     @level = if options.level? then options.level else DEFAULT.LEVEL
     @types = if options.types? then options.types else DEFAULT.TYPES
     @print = if options.print? then options.print else DEFAULT.PRINT
+    @modifiers = if options.modifiers? then options.modifiers else []
     if options.messages?
       @messages = options.messages
     else
@@ -61,7 +62,8 @@ module.exports = class Acho
     return false if @level is 'silent'
     @types[type].level <= @types[@level].level
 
-  colorize: (color, message) ->
+  colorize: (color, message, modifiers) ->
+    if modifiers? and modifiers.length > 0 then message = @decorate(modifiers, message)
     return message unless @color
     return chalk[color](message) unless color is 'rainbow'
     # rainbow is the core of this library
@@ -72,11 +74,19 @@ module.exports = class Acho
       message[position] = chalk[color](char)
     message.join('')
 
+  decorate: (modifiers, message) ->
+    stylized = chalk
+    for style in modifiers
+      if style not in DEFAULT.MODIFIERS
+        continue
+      stylized = stylized[style]
+    stylized(message)
+
   printLine: (type, message) ->
     return unless @isPrintable type
     colorType = @types[type].color
     messageType = @outputType type
-    messageType = @colorize colorType, messageType
+    messageType = @colorize colorType, messageType, @modifiers
     message = @outputMessage message
     message = @colorize 'gray', message
     console.log messageType + message

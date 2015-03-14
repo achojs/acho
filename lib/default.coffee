@@ -8,6 +8,11 @@ module.exports =
       @printLine(type, message) for message in @messages[type]
   LEVEL: 'info'
   COLOR: false
+  MODIFIERS: [
+    'bold',
+    'italic',
+    'underline',
+  ]
   TYPES:
     error:
       level : 0
