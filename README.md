@@ -11,7 +11,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat)](https://www.npmjs.org/package/acho)
 [![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
 
-> A extremely (but powerful) simple logging system for NodeJS and browser.
+> An extremely (but powerful) simple logging system for NodeJS and browser.
 
 # Why
 
