@@ -92,7 +92,7 @@ console.log(acho.messages.info)
 
 You also can redefine the print method, not exist limits!
 
-```json
+```js
 acho.print = function() {
   // You are in the acho scope, so you can use the properties
   // of the object
@@ -159,7 +159,7 @@ acho = new Acho({
 
 Now is moment to your awesome output:
 
-```
+```js
 acho.info('I have hungry');
 // => '[ info ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I have hungry'
 ```
