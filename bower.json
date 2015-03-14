@@ -1,7 +1,7 @@
 {
   "name": "acho",
-  "description": "A dead simple logger",
-  "version": "0.0.0",
+  "description": "A extremely (but powerful) simple logging system for NodeJS and browser.",
+  "version": "1.0.0",
   "authors": [
    "Kiko Beats josefrancisco.verdu@gmail.com"
   ],
@@ -14,7 +14,7 @@
   ],
 
   "homepage": "https://github.com/Kikobeats/acho",
-  "keywords": [],
+  "keywords": ["log", "logging"],
   "license": "MIT",
   "main": "dist/acho.js",
   "repository": "Kikobeats/acho"
