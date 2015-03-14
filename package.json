@@ -8,7 +8,7 @@
     "url": "https://github.com/Kikobeats"
   },
   "bugs": {
-    "url": "Kikobeats/acho/issues"
+    "url": "https://github.com/Kikobeats/acho/issues"
   },
   "dependencies": {
     "chalk": "*",
@@ -28,7 +28,7 @@
   "engines": {
     "node": "*"
   },
-  "homepage": "Kikobeats/acho",
+  "homepage": "https://github.com/Kikobeats/acho",
   "keywords": [
     "log",
     "logging"
