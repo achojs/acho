@@ -176,6 +176,7 @@ Create a new logger. The options that you can provide are:
 - color **{Boolean}**: If you can colorize the otuput. `false` by default.
 - level **{String}**: Stablish the logging level. `info` by default.
 - types **{Object}**: You can provide the types and priorities.
+- modifiers **{Array}**: You can change decoration of type output. Available: `bold`, `italic` (not compatible in some terminals) and `underline`. Example: `['bold', 'underline']`.
 - outputType **{Function}**: For customize the type in the output.
 - outputMessage **{Function}**: For customize the message in the output.
 - print **{Function}**: Provide a function for print the messages.
