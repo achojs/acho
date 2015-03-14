@@ -11,11 +11,11 @@
     "url": "Kikobeats/acho/issues"
   },
   "dependencies": {
-    "chalk": "*"
+    "chalk": "*",
+    "coffee-script": "*"
   },
   "devDependencies": {
     "browserify": "*",
-    "coffee-script": "*",
     "coffeeify": "*",
     "gulp": "*",
     "gulp-header": "*",
@@ -29,7 +29,10 @@
     "node": "*"
   },
   "homepage": "Kikobeats/acho",
-  "keywords": ["log", "logging"],
+  "keywords": [
+    "log",
+    "logging"
+  ],
   "license": "MIT",
   "main": "./index.js",
   "repository": "Kikobeats/acho",

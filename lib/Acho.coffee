@@ -1,46 +1,24 @@
 'use strict'
 
 chalk = require 'chalk'
-
-DEFAULT =
-  OUTPUT_TYPE: (type) -> "#{type}\t: "
-  OUTPUT_MESSAGE: (message) -> message
-  LEVEL: 'info'
-  COLOR: false
-  TYPES:
-    error:
-      level : 0
-      color : 'red'
-    warning:
-      level : 1
-      color : 'yellow'
-    success:
-      level : 2
-      color : 'green'
-    info:
-      level : 3
-      color : 'white'
-    verbose:
-      level : 4
-      color : 'cyan'
-    debug:
-      level : 5
-      color : 'blue'
-    silly:
-      level : 6
-      color : 'rainbow'
+DEFAULT = require './default'
 
 module.exports = class Acho
-
-  constructor: (options) ->
+  constructor: (options = {}) ->
     @color = if options.color? then options.color else DEFAULT.COLOR
     @level = if options.level? then options.level else DEFAULT.LEVEL
     @types = if options.types? then options.types else DEFAULT.TYPES
-    @messages = {}
-    @messages[type] = [] for type of @types
+    @print = if options.print? then options.print else DEFAULT.PRINT
+    if options.messages?
+      @messages = options.messages
+    else
+      @messages = {}
+      @messages[type] = [] for type of @types
     @outputType = if options.outputType? then options.outputType else DEFAULT.OUTPUT_TYPE
     @outputMessage = if options.outputMessage? then options.outputMessage else DEFAULT.OUTPUT_MESSAGE
     this
+
+  @DEFAULT: DEFAULT
 
   push: (type, message) ->
     @messages[type].push message
@@ -52,42 +30,38 @@ module.exports = class Acho
     this
 
   error: (message) ->
-    @_messageBuilder 'error', message
+    @printLine 'error', message
     this
 
   warning: (message) ->
-    @_messageBuilder 'warning', message
+    @printLine 'warning', message
     this
 
   success: (message) ->
-    @_messageBuilder 'success', message
+    @printLine 'success', message
     this
 
   info: (message) ->
-    @_messageBuilder 'info', message
+    @printLine 'info', message
     this
 
   verbose: (message) ->
-    @_messageBuilder 'verbose', message
+    @printLine 'verbose', message
     this
 
   debug: (message) ->
-    @_messageBuilder 'debug', message
+    @printLine 'debug', message
     this
 
   silly: (message) ->
-    @_messageBuilder 'silly', message
+    @printLine 'silly', message
     this
 
-  print: ->
-    for type of @types
-      @_messageBuilder(type, message) for message in @messages[type]
-
-  _isInLevel: (type) ->
+  isPrintable: (type) ->
     return false if @level is 'silent'
     @types[type].level <= @types[@level].level
 
-  _colorizeMessage: (color, message) ->
+  colorize: (color, message) ->
     return message unless @color
     return chalk[color](message) unless color is 'rainbow'
     # rainbow is the core of this library
@@ -98,11 +72,11 @@ module.exports = class Acho
       message[position] = chalk[color](char)
     message.join('')
 
-  _messageBuilder: (type, message) ->
-    return unless @_isInLevel type
+  printLine: (type, message) ->
+    return unless @isPrintable type
     colorType = @types[type].color
-    messageType = @outputType(type)
-    messageType = @_colorizeMessage(colorType, messageType)
-    message = @outputMessage(message)
-    message = @_colorizeMessage('gray', message)
+    messageType = @outputType type
+    messageType = @colorize colorType, messageType
+    message = @outputMessage message
+    message = @colorize 'gray', message
     console.log messageType + message

@@ -90,12 +90,24 @@ console.log(acho.messages.info)
 // => ['this message is printed and stored']
 ```
 
-because `messages` is public you can define your own way to print the messages:
+You also can redefine the print method, not exist limits!
 
 ```json
+acho.print = function() {
+  // You are in the acho scope, so you can use the properties
+  // of the object
+  console.log();
+  var _this = this;
+  Object.keys(this.types).forEach(function(type) {
+    // if (isSuccessOrInfoMessage(type)) console.log();
+    _this.messages[type].forEach(function(message) {
+      _this.printLine(type, message);
+    });
+  });
+};
 ```
 
-Also you can do anything you need: change the color of a type, add or modify the types, changes the priorities,... **you have the power**.
+Do whatever you need for adapt the library of yours requisites: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit dynamically. **You have the power**.
 
 
 ### Stablish the level
@@ -166,6 +178,7 @@ Create a new logger. The options that you can provide are:
 - types **{Object}**: You can provide the types and priorities.
 - outputType **{Function}**: For customize the type in the output.
 - outputMessage **{Function}**: For customize the message in the output.
+- print **{Function}**: Provide a function for print the messages.
 
 ### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
 
@@ -203,9 +216,21 @@ Output a `debug` message.
 
 Output a `silly` message.
 
+### .isPrintable
+
+Determines if a type of message should be outputted.
+
+### .colorize
+
+Determines is a instance of `acho` is outputted with colors.
+
 ### .print
 
-Output all messages stores internally. 
+Default loop for print the messages that are stored internally that uses `.printLine` in each message iteration.
+
+### .printLine
+
+Combine `.isPrintable` and `.colorize` for print a line correctly.
 
 ## License
 
