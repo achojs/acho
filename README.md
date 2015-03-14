@@ -95,7 +95,7 @@ You also can redefine the print method, not exist limits!
 ```js
 acho.print = function() {
   // You are in the acho scope, so you can use the properties
-  // of the object
+  // of the object. Check the API documentation.
   console.log();
   var _this = this;
   Object.keys(this.types).forEach(function(type) {
@@ -216,21 +216,21 @@ Output a `debug` message.
 
 Output a `silly` message.
 
-### .isPrintable
+### .isPrintable({String} &lt;type&gt;)
 
 Determines if a type of message should be outputted.
 
-### .colorize
+### .colorize({String} &lt;color&gt; {String} &lt;message&gt;)
 
 Determines is a instance of `acho` is outputted with colors.
 
-### .print
-
-Default loop for print the messages that are stored internally that uses `.printLine` in each message iteration.
-
-### .printLine
+### .printLine({String} &lt;type&gt; {String} &lt;message&gt;)
 
 Combine `.isPrintable` and `.colorize` for print a line correctly.
+
+### .print()
+
+Default loop for print the messages that are stored internally. By default uses `.printLine` in each message iteration.
 
 ## License
 
