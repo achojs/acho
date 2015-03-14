@@ -1,12 +1,19 @@
 # acho
 
+<h1 align="center">
+	<br>
+	<img src="http://i.imgur.com/XtTjX8G.png" alt="acho">
+	<br>
+	<br>
+</h1>
+
 [![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat)](https://travis-ci.org/Kikobeats/acho)
 [![Dependency status](http://img.shields.io/david/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat)](https://www.npmjs.org/package/acho)
 [![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
 
-> A extremely (but powerful) logging system for NodeJS and browser.
+> A extremely (but powerful) simple logging system for NodeJS and browser.
 
 # Why
 
@@ -151,6 +158,56 @@ You can change how to output the message in the constructor or in any time.
 
 
 ## API
+
+### .constructor({Object} [options])
+
+Create a new logger. The options that you can provide are:
+
+- color **{Boolean}**: If you can colorize the otuput. `false` by default.
+- level **{String}**: Stablish the logging level. `info` by default.
+- types **{Object}**: You can provide the types and priorities.
+- outputType **{Function}**: For customize the type in the output.
+- outputMessage **{Function}**: For customize the message in the output.
+
+### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
+
+Store internally a `type` message.
+
+### .add({String} &lt;type&gt;, {String} &lt;message&gt;)
+
+Store internally a `type` message and also output it.
+
+### .error({String} &lt;message&gt;)
+
+Output a `error` message.
+
+### .warning({String} &lt;message&gt;)
+
+Output a `warning` message.
+
+### .success({String} &lt;message&gt;)
+
+Output a `success` message.
+
+### .info({String} &lt;message&gt;)
+
+Output a `info` message.
+
+### .verbose({String} &lt;message&gt;)
+
+Output a `verbose` message.
+
+### .debug({String} &lt;message&gt;)
+
+Output a `debug` message.
+
+### .silly({String} &lt;message&gt;)
+
+Output a `silly` message.
+
+### .print
+
+Output all messages stores internally. 
 
 ## License
 

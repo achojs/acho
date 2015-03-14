@@ -1,6 +1,6 @@
 {
   "name": "acho",
-  "description": "A extremely (but powerful) logging system for NodeJS and browser.",
+  "description": "A extremely (but powerful) simple logging system for NodeJS and browser.",
   "version": "0.1.0",
   "author": {
     "name": "Kiko Beats",
@@ -16,7 +16,7 @@
   "devDependencies": {
     "browserify": "*",
     "coffee-script": "*",
-    "coffeeify": "^",
+    "coffeeify": "*",
     "gulp": "*",
     "gulp-header": "*",
     "gulp-uglify": "*",

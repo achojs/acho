@@ -5,6 +5,8 @@ chalk = require 'chalk'
 DEFAULT =
   OUTPUT_TYPE: (type) -> "#{type}\t: "
   OUTPUT_MESSAGE: (message) -> message
+  LEVEL: 'info'
+  COLOR: false
   TYPES:
     error:
       level : 0
@@ -31,8 +33,8 @@ DEFAULT =
 module.exports = class Acho
 
   constructor: (options) ->
-    @color = if options.color? then options.color else false
-    @level = if options.level? then options.level else 'info'
+    @color = if options.color? then options.color else DEFAULT.COLOR
+    @level = if options.level? then options.level else DEFAULT.LEVEL
     @types = if options.types? then options.types else DEFAULT.TYPES
     @messages = {}
     @messages[type] = [] for type of @types
