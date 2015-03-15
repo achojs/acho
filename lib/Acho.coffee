@@ -1,7 +1,7 @@
 'use strict'
 
-chalk = require 'chalk'
 DEFAULT = require './default'
+chalk   = DEFAULT.chalk()
 
 module.exports = class Acho
   constructor: (options = {}) ->
@@ -9,6 +9,7 @@ module.exports = class Acho
     @level = if options.level? then options.level else DEFAULT.LEVEL
     @types = if options.types? then options.types else DEFAULT.TYPES
     @print = if options.print? then options.print else DEFAULT.PRINT
+    @muted = if options.muted? then options.muted else DEFAULT.MUTED
     if options.messages?
       @messages = options.messages
     else
@@ -58,25 +59,21 @@ module.exports = class Acho
     this
 
   isPrintable: (type) ->
-    return false if @level is 'silent'
+    return false if @level is @muted
     @types[type].level <= @types[@level].level
 
-  colorize: (color, message) ->
+  colorize: (colors, message) ->
     return message unless @color
-    return chalk[color](message) unless color is 'rainbow'
-    # rainbow is the core of this library
-    rainbowColors = ['red', 'yellow', 'green', 'blue', 'magenta']
-    message = message.split('')
-    for char, position in message
-      color = rainbowColors[position % rainbowColors.length]
-      message[position] = chalk[color](char)
-    message.join('')
+    colors  = colors.split ' '
+    stylize = chalk
+    stylize = stylize[color] for color in colors when color
+    stylize message
 
   printLine: (type, message) ->
     return unless @isPrintable type
-    colorType = @types[type].color
+    colorType   = @types[type].color
     messageType = @outputType type
     messageType = @colorize colorType, messageType
-    message = @outputMessage message
-    message = @colorize 'gray', message
-    console.log messageType + message
+    message     = @outputMessage message
+    message     = @colorize @types.line.color, message
+    console.log "#{messageType} #{message}"

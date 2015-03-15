@@ -23,6 +23,10 @@ describe 'Acho ::', ->
   it 'print a normal message', ->
     @acho.warning 'warning message'
 
+  it 'change the color behavior',  ->
+    @acho.types.error.color = 'red bold'
+    @acho.print()
+
   it 'print the messages', ->
     @acho.print()
 
