@@ -19,10 +19,11 @@ path =
 
 banner = [
            "/**"
-           " * generator-git - Create the basic scaffolding to start with a git proyect."
-           " * @version v2.0.2"
-           " * @link    https://github.com/Kikobeats/generator-git"
-           " * @license MIT"
+           " * <%= pkg.name %> - <%= pkg.description %>"
+           " * @version v<%= pkg.version %>"
+           " * @link    <%= pkg.homepage %>"
+           " * @author  <%= pkg.author.name %> (<%= pkg.author.url %>)"
+           " * @license <%= pkg.license %>"
            " */"].join("\n")
 
 # -- Tasks ---------------------------------------------------------------------
