@@ -11,14 +11,13 @@
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat)](https://www.npmjs.org/package/acho)
 [![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
 
-> An extremely (but powerful) simple logging system for NodeJS and browser.
+> An extremely simple (but powerful) logging system for NodeJS and browser.
 
 # Why
 
-* Extremely basic and easy to use, customize and extend.
+* Very easy to use, customize and extend.
 * Expressive API with chaineable methods.
-* Mininum dependencies, just focused in one thing.
-
+* Mininum dependencies, just focussing on one thing.
 
 ## Install
 
@@ -26,13 +25,13 @@
 npm install acho
 ```
 
-If you want to use in the browser (powered by [Browserify](http://browserify.org/)):
+If you want to use it in the browser (powered by [Browserify](http://browserify.org/)):
 
 ```bash
 bower install acho --save
 ```
 
-and later link in your HTML:
+and later add it to your HTML:
 
 ```html
 <script src="bower_components/acho/dist/acho.js"></script>
@@ -42,7 +41,7 @@ and later link in your HTML:
 
 ### First steps
 
-For use it, basically you need to create a new logger instance.
+To use it, you just create a new logger instance.
 
 ```js
 var Acho = require('acho');
@@ -56,7 +55,7 @@ acho.info('hello world');
 // => 'hello world'
 ```
 
-All public methods for use the library are chaineables:
+All public methods are chaineables:
 
 ```js
 acho
@@ -66,7 +65,7 @@ acho
 // => 'error: 'something bard happens'
 ```
 
-Maybe you don't want output the message, but store it and for later use it can be a good idea:
+Maybe you don't want to output the message, but store it for later use:
 
 ```js
 acho.push('success', 'good job!');
@@ -74,14 +73,14 @@ console.log(acho.messages.success);
 // => ['good job']
 ```
 
-If you want to print later, just call the method `print`:
+If you want to print previously stored messages, just call the method `print`:
 
 ```js
 acho.print()
 // => 'success: good job!'
 ```
 
-At this moment maybe you are thinking: Can I combine print the message with store the message? Absolutely!
+You might be thinking: Can I combine both, to store and both print a message? Absolutely!
 
 ```js
 acho.add('info', 'this message is printed and stored');
@@ -90,7 +89,7 @@ console.log(acho.messages.info)
 // => ['this message is printed and stored']
 ```
 
-You also can redefine the print method, not exist limits!
+You can also modify the print method!
 
 ```js
 acho.print = function() {
@@ -107,29 +106,28 @@ acho.print = function() {
 };
 ```
 
-Do whatever you need for adapt the library of yours requisites: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit dynamically. **You have the power**.
+You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
 
+### Defining the level
 
-### Stablish the level
+Establishing the loglevel is a good way to filter out undesired information from output. The available levels are:
 
-Stablishing the level of your logs is a good way to avoid some information that maybe you don't want to output. The error levels are:
+- `error`:   Display calls to `.error()` messages.
+- `warning`: Display calls from `.error()`, `.warning()` messages.
+- `success`: Display calls from `.error()`, `.warning()`, `success()` messages.
+- `info`:    Display calls from `.error()`, `.warning()`, `success()`, `info()` messages.
+- `verbose`: Display calls from `.error()`, `.warning()`, `success()`, `info()`, `verbose()` messages.
+- `debug`:   Display calls from `.error()`, `.warning()`, `success()`, `info()`, `verbose()`, `debug()` messages.
+- `silly`:   Display calls from `.error()`, `.warning()`, `success()`, `info()`, `verbose()`, `debug()`, `silly()` messages.
+- `silent`:  Avoid all output.
 
-- `error`: Display calls to `.error() messages`.
-- `warning`: Display calls from `.error()`, `.warning() messages`.
-- `success`: Display calls from `.error()`, `.warning(), `success()` messages`.
-- `info`: Display calls from `.error()`, `.warning(), `success()`, `info()` messages`.
-- `verbose`: Display calls from `.error()`, `.warning(), `success()` `info()`, `verbose()` messages`.
-- `debug`: Display calls from `.error()`, `.warning(), `success()` `info()`, `verbose()` `debug()` messages`.
-- `silly`: Display calls from `.error()`, `.warning(), `success()` `info()`, `verbose()` `debug()` `silly()` messages`
-- `silent`: Avoid all.
-
-The default log level is `info`. You can do it in the the constructor:
+The default log level is `info`. You can define it in the the constructor:
 
 ```js
 var acho = new Acho({level: 'silly'})
 ```
 
-or in any time:
+or at runtime:
 
 ```js
 acho.level = 'debug';
@@ -137,11 +135,11 @@ acho.level = 'debug';
 
 ### Customization
 
-By default the messages structure is minimal: Just the message type followed by the content of the message.
+By default the messages structure is brief: Just the message type followed by the message itself.
 
-But you can easily customize it, for example, adding an timestamp for each message.
+But you can easily modify the output. For example, let's add a timestamp to each message.
 
-For do it, we offer two methods, `outputType`  and `outputMessage`:
+To customize the output we offer two methods, `outputType`  and `outputMessage`:
 
 ```js
 acho = new Acho({
@@ -157,36 +155,36 @@ acho = new Acho({
 });
 ```
 
-Now is moment to your awesome output:
+This results in your awesome output:
 
 ```js
-acho.info('I have hungry');
-// => '[ info ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I have hungry'
+acho.info('I am hungry');
+// => '[ info ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I am hungry'
 ```
 
-You can change how to output the message in the constructor or in any time.
+You can modify the outputted message at any time.
 
 
 ## API
 
 ### .constructor({Object} [options])
 
-Create a new logger. The options that you can provide are:
+Create a new logger. Available options:
 
-- color **{Boolean}**: If you can colorize the otuput. `false` by default.
-- level **{String}**: Stablish the logging level. `info` by default.
+- color **{Boolean}**: Enable or disable colorized output. `false` by default.
+- level **{String}**: Provide the logging level. `info` by default.
 - types **{Object}**: You can provide the types and priorities.
-- outputType **{Function}**: For customize the type in the output.
-- outputMessage **{Function}**: For customize the message in the output.
-- print **{Function}**: Provide a function for print the messages.
+- outputType **{Function}**: Provide a function to customize the type in the output.
+- outputMessage **{Function}**: Provide a function to customize the message in the output.
+- print **{Function}**: Provide a function to print the messages.
 
 ### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
 
-Store internally a `type` message.
+Store a message of given `type` internally.
 
 ### .add({String} &lt;type&gt;, {String} &lt;message&gt;)
 
-Store internally a `type` message and also output it.
+Store a message of given `type` internally and also output it.
 
 ### .error({String} &lt;message&gt;)
 
@@ -226,11 +224,11 @@ Determines is a instance of `acho` is outputted with colors.
 
 ### .printLine({String} &lt;type&gt; {String} &lt;message&gt;)
 
-Combine `.isPrintable` and `.colorize` for print a line correctly.
+Combine `.isPrintable` and `.colorize` to print a line correctly.
 
 ### .print()
 
-Default loop for print the messages that are stored internally. By default uses `.printLine` in each message iteration.
+Default loop to print the messages that are stored internally. By default it uses `.printLine` in each message iteration.
 
 ## License
 
