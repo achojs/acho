@@ -98,7 +98,6 @@ acho.print = function() {
   console.log();
   var _this = this;
   Object.keys(this.types).forEach(function(type) {
-    // if (isSuccessOrInfoMessage(type)) console.log();
     _this.messages[type].forEach(function(message) {
       _this.printLine(type, message);
     });
