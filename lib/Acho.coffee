@@ -1,7 +1,7 @@
 'use strict'
 
 DEFAULT = require './default'
-chalk   = DEFAULT.chalk()
+chalk   = require 'chalk'
 
 module.exports = class Acho
   constructor: (options = {}) ->
@@ -66,7 +66,7 @@ module.exports = class Acho
     return message unless @color
     colors  = colors.split ' '
     stylize = chalk
-    stylize = stylize[color] for color in colors when color
+    stylize = stylize[color] for color in colors
     stylize message
 
   printLine: (type, message) ->

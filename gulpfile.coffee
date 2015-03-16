@@ -3,18 +3,23 @@
 # -- Dependencies --------------------------------------------------------------
 
 gulp       = require 'gulp'
+coffeeify  = require 'coffeeify'
 gutil      = require 'gulp-util'
 browserify = require 'browserify'
 header     = require 'gulp-header'
 uglify     = require 'gulp-uglify'
+buffer     = require 'vinyl-buffer'
 pkg        = require './package.json'
 source     = require 'vinyl-source-stream'
 
 # -- Files ---------------------------------------------------------------------
 
-path =
+src =
+  main: './index.js'
+
+module =
   filename : "#{pkg.name}.js"
-  shorcut  : "#{pkg.name}"
+  shortcut  : "#{pkg.name}"
   dist     : 'dist'
 
 banner = [
@@ -22,26 +27,23 @@ banner = [
            " * <%= pkg.name %> - <%= pkg.description %>"
            " * @version v<%= pkg.version %>"
            " * @link    <%= pkg.homepage %>"
-           " * @author  <%= pkg.author.name %> (<%= pkg.author.url %>)"
            " * @license <%= pkg.license %>"
            " */"].join("\n")
 
 # -- Tasks ---------------------------------------------------------------------
 
 gulp.task 'browserify', ->
-  browserify().require './index.js',
-      expose: path.shorcut,
-      transform: require 'coffeeify'
+  browserify
+      extensions: ['.coffee', '.js']
+    .transform coffeeify
+    .require(src.main, { expose: module.shortcut})
+    .ignore('coffee-script')
     .bundle()
-    .pipe source(path.filename)
-    .pipe gulp.dest path.dist
-    .on('end', ->
-      gulp.src "#{path.dist}/#{path.filename}"
-      .pipe uglify()
-      .pipe header banner, pkg: pkg
-      .pipe gulp.dest path.dist
-      return
-    )
+  .pipe source module.filename
+  .pipe buffer()
+  .pipe uglify()
+  .pipe header banner, pkg: pkg
+  .pipe gulp.dest module.dist
 
 gulp.task 'default', ->
   gulp.start 'browserify'

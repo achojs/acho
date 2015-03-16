@@ -23,6 +23,7 @@
     "gulp-util": "*",
     "mocha": "*",
     "should": "*",
+    "vinyl-buffer": "*",
     "vinyl-source-stream": "*"
   },
   "engines": {

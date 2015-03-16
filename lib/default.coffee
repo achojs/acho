@@ -1,17 +1,6 @@
 'use strict'
 
 module.exports =
-  chalk: ->
-    chalk = require 'chalk'
-    chalk.rainbow = (text) ->
-      text = text.split('')
-      rainbowColors = ['red', 'yellow', 'green', 'blue', 'magenta']
-      colorize = ''
-      for letter, position in text
-        color = rainbowColors[position % rainbowColors.length]
-        colorize += chalk.styles[color].open + letter + chalk.styles[color].close
-      colorize
-    chalk
   OUTPUT_TYPE: (type) -> "#{type}\t: "
   OUTPUT_MESSAGE: (message) -> message
   PRINT: ->
@@ -43,4 +32,4 @@ module.exports =
       color : 'blue'
     silly:
       level : 6
-      color : 'rainbow'
+      color : 'magenta'
