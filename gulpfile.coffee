@@ -30,14 +30,16 @@ banner = [
            " * @license <%= pkg.license %>"
            " */"].join("\n")
 
+properName = module.shortcut.charAt(0).toUpperCase() + module.shortcut.substr(1)           
+
 # -- Tasks ---------------------------------------------------------------------
 
 gulp.task 'browserify', ->
   browserify
       extensions: ['.coffee', '.js']
-      standalone: module.shortcut
+      standalone: properName
     .transform coffeeify
-    .require(src.main, { expose: module.shortcut})
+    .require(src.main, { expose: properName })
     .ignore('coffee-script')
     .bundle()
   .pipe source module.filename
