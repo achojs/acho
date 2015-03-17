@@ -38,6 +38,7 @@
   "main": "./index.js",
   "repository": "Kikobeats/acho",
   "scripts": {
-    "test": "sh test/test.sh"
+    "test": "sh test/test.sh",
+    "build": "node ./node_modules/.bin/gulp --require coffee-script"
   }
 }
