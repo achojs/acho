@@ -12,7 +12,7 @@ echo
 }
 
 run() {
-  mocha \
+  "$PWD"/node_modules/.bin/mocha \
   -b \
   --compilers coffee:coffee-script/register \
   --require should \
