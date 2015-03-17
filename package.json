@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "chalk": "*",
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "existential-default": "^1.0.0"
   },
   "devDependencies": {
     "browserify": "*",
