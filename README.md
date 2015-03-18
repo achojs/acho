@@ -7,7 +7,7 @@
 [![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat)](https://travis-ci.org/Kikobeats/acho)
 [![Dependency status](http://img.shields.io/david/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/Kikobeats/acho.svg?style=flat)](https://www.npmjs.org/package/acho)
+[![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat)](https://www.npmjs.org/package/acho)
 [![Gittip](http://img.shields.io/gittip/Kikobeats.svg?style=flat)](https://www.gittip.com/Kikobeats/)
 
 > An extremely simple (but powerful) logging system for NodeJS and browser.
