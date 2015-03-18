@@ -1,9 +1,8 @@
 # acho
 
 <h1 align="center">
-	<img src="http://i.imgur.com/XtTjX8G.png" alt="acho">
+<img src="http://i.imgur.com/XtTjX8G.png" alt="acho">
 </h1>
-
 
 [![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat)](https://travis-ci.org/Kikobeats/acho)
 [![Dependency status](http://img.shields.io/david/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho)
