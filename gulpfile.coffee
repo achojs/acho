@@ -11,6 +11,7 @@ uglify     = require 'gulp-uglify'
 buffer     = require 'vinyl-buffer'
 pkg        = require './package.json'
 source     = require 'vinyl-source-stream'
+titleize   = require 'titleize'
 
 # -- Files ---------------------------------------------------------------------
 
@@ -30,13 +31,16 @@ banner = [
            " * @license <%= pkg.license %>"
            " */"].join("\n")
 
+properName = titleize(module.shortcut)
+
 # -- Tasks ---------------------------------------------------------------------
 
 gulp.task 'browserify', ->
   browserify
       extensions: ['.coffee', '.js']
+      standalone: properName
     .transform coffeeify
-    .require(src.main, { expose: module.shortcut})
+    .require(src.main, { expose: properName })
     .ignore('coffee-script')
     .bundle()
   .pipe source module.filename

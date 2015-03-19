@@ -40,12 +40,23 @@ and later add it to your HTML:
 
 ### First steps
 
-To use it, you just create a new logger instance.
+Acho exports itself according to UMD best practices, which means that no matter where you are using the library, you get a version tailored for your environment.  If you're using a module loader (or Node), simple require the library as you would any other module.  If you're using a browser, the library falls back to attaching itself to window as the global `Acho`.
 
+To use Acho, just create a new logger instance:
+
+#### CommonJS
 ```js
 var Acho = require('acho');
 var acho = new Acho({color: true});
 ```
+
+#### Global/Browser
+```js
+var acho = new Acho({color: true));
+```
+
+#### AMD
+I don't use personally use AMD, ere go I can't conjure an example, but it should work fine as well.
 
 It's time to use it!
 
@@ -54,7 +65,7 @@ acho.info('hello world');
 // => 'hello world'
 ```
 
-All public methods are chaineables:
+All public methods are chainable:
 
 ```js
 acho
