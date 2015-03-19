@@ -17,6 +17,7 @@
 * Very easy to use, customize and extend.
 * Expressive API with chaineable methods.
 * Mininum dependencies, just focussing on one thing.
+* Compatible with AMD/CommonJS or just global object in the browser.
 
 ## Install
 
@@ -40,23 +41,28 @@ and later add it to your HTML:
 
 ### First steps
 
-Acho exports itself according to UMD best practices, which means that no matter where you are using the library, you get a version tailored for your environment.  If you're using a module loader (or Node), simple require the library as you would any other module.  If you're using a browser, the library falls back to attaching itself to window as the global `Acho`.
+Acho exports itself according to UMD best practices, which means that no matter where you are using the library, you get a version tailored for your environment.
 
-To use Acho, just create a new logger instance:
+If you're using a module loader (or Node), simple require the library as you would any other module.  
+
+If you're using a browser, the library falls back to attaching itself to window as the global `Acho`.
 
 #### CommonJS
+
 ```js
 var Acho = require('acho');
 var acho = new Acho({color: true});
 ```
 
 #### Global/Browser
+
 ```js
 var acho = new Acho({color: true));
 ```
 
 #### AMD
-I don't use personally use AMD, ere go I can't conjure an example, but it should work fine as well.
+
+I don't use personally use AMD, so I can't conjure an example, but it should work fine as well.
 
 It's time to use it!
 
