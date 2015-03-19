@@ -76,4 +76,4 @@ module.exports = class Acho
     messageType = @colorize colorType, messageType
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
-    console.log "#{messageType} #{message}"
+    console.log messageType + message
