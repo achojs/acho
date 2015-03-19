@@ -11,6 +11,7 @@ uglify     = require 'gulp-uglify'
 buffer     = require 'vinyl-buffer'
 pkg        = require './package.json'
 source     = require 'vinyl-source-stream'
+titleize   = require 'titleize'
 
 # -- Files ---------------------------------------------------------------------
 
@@ -30,7 +31,7 @@ banner = [
            " * @license <%= pkg.license %>"
            " */"].join("\n")
 
-properName = module.shortcut.charAt(0).toUpperCase() + module.shortcut.substr(1)           
+properName = titleize(module.shortcut)
 
 # -- Tasks ---------------------------------------------------------------------
 
