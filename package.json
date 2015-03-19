@@ -1,15 +1,25 @@
 {
   "name": "acho",
+  "version": "1.0.3",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
-  "version": "1.0.2",
   "author": {
     "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
+  "scripts": {
+    "test": "sh test/test.sh",
+    "build": "node ./node_modules/.bin/gulp --require coffee-script"
+  },
+  "main": "./index.js",
+  "repository": "Kikobeats/acho",
   "bugs": {
     "url": "https://github.com/Kikobeats/acho/issues"
   },
+  "keywords": [
+    "log",
+    "logging"
+  ],
   "dependencies": {
     "chalk": "*",
     "coffee-script": "*",
@@ -28,19 +38,9 @@
     "vinyl-buffer": "*",
     "vinyl-source-stream": "*"
   },
+  "license": "MIT",
   "engines": {
     "node": "*"
   },
-  "homepage": "https://github.com/Kikobeats/acho",
-  "keywords": [
-    "log",
-    "logging"
-  ],
-  "license": "MIT",
-  "main": "./index.js",
-  "repository": "Kikobeats/acho",
-  "scripts": {
-    "test": "sh test/test.sh",
-    "build": "node ./node_modules/.bin/gulp --require coffee-script"
-  }
+  "homepage": "https://github.com/Kikobeats/acho"
 }
