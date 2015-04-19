@@ -57,7 +57,7 @@ var acho = new Acho({color: true});
 #### Global/Browser
 
 ```js
-var acho = new Acho({color: true));
+var acho = new Acho({color: true});
 ```
 
 #### AMD
