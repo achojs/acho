@@ -43,7 +43,7 @@ and later add it to your HTML:
 
 Acho exports itself according to UMD best practices, which means that no matter where you are using the library, you get a version tailored for your environment.
 
-If you're using a module loader (or Node), simple require the library as you would any other module.  
+If you're using a module loader (or Node), simple require the library as you would any other module.
 
 If you're using a browser, the library falls back to attaching itself to window as the global `Acho`.
 
@@ -128,12 +128,12 @@ You can completely customize the library to your requirements: changes colors, a
 Establishing the loglevel is a good way to filter out undesired information from output. The available levels are:
 
 - `error`:   Display calls to `.error()` messages.
-- `warning`: Display calls from `.error()`, `.warning()` messages.
-- `success`: Display calls from `.error()`, `.warning()`, `success()` messages.
-- `info`:    Display calls from `.error()`, `.warning()`, `success()`, `info()` messages.
-- `verbose`: Display calls from `.error()`, `.warning()`, `success()`, `info()`, `verbose()` messages.
-- `debug`:   Display calls from `.error()`, `.warning()`, `success()`, `info()`, `verbose()`, `debug()` messages.
-- `silly`:   Display calls from `.error()`, `.warning()`, `success()`, `info()`, `verbose()`, `debug()`, `silly()` messages.
+- `warn`: Display calls from `.error()`, `.warn()` messages.
+- `success`: Display calls from `.error()`, `.warn()`, `success()` messages.
+- `info`:    Display calls from `.error()`, `.warn()`, `success()`, `info()` messages.
+- `verbose`: Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()` messages.
+- `debug`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()` messages.
+- `silly`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()`, `silly()` messages.
 - `silent`:  Avoid all output.
 
 The default log level is `info`. You can define it in the the constructor:
@@ -205,9 +205,9 @@ Store a message of given `type` internally and also output it.
 
 Output a `error` message.
 
-### .warning({String} &lt;message&gt;)
+### .warn({String} &lt;message&gt;)
 
-Output a `warning` message.
+Output a `warn` message.
 
 ### .success({String} &lt;message&gt;)
 

@@ -15,7 +15,7 @@ module.exports =
     error:
       level : 0
       color : 'red'
-    warning:
+    warn:
       level : 1
       color : 'yellow'
     success:

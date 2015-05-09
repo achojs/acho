@@ -5,6 +5,7 @@ DEFAULT = require './Default'
 exists  = require 'existential-default'
 
 module.exports = class Acho
+
   constructor: (options = {}) ->
     @color = exists options.color, DEFAULT.COLOR
     @level = exists options.level, DEFAULT.LEVEL
@@ -34,8 +35,8 @@ module.exports = class Acho
     @printLine 'error', message
     this
 
-  warning: (message) ->
-    @printLine 'warning', message
+  warn: (message) ->
+    @printLine 'warn', message
     this
 
   success: (message) ->

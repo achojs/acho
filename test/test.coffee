@@ -21,7 +21,7 @@ describe 'Acho ::', ->
     @acho.messages.error.length.should.be.equal 2
 
   it 'print a normal message', ->
-    @acho.warning 'warning message'
+    @acho.warn 'warn message'
 
   it 'change the color behavior',  ->
     @acho.types.error.color = 'red bold'
@@ -36,7 +36,7 @@ describe 'Acho ::', ->
   describe 'default colors ::', ->
     acho = new Acho level:'silly', color: true
     acho.error 'error message'
-    acho.warning 'warning message'
+    acho.warn 'warn message'
     acho.success 'success message'
     acho.info 'info message'
     acho.verbose 'verbose message'
