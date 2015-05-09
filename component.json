@@ -1,6 +1,6 @@
 {
   "name": "acho",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "main": "dist/acho.js"
 }

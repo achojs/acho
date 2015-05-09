@@ -1,6 +1,6 @@
 {
   "name": "acho",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
   "author": {
     "name": "Kiko Beats",
