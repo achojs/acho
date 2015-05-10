@@ -1,7 +1,7 @@
 {
   "name": "acho",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "authors": [
    "Kiko Beats josefrancisco.verdu@gmail.com"
   ],
@@ -12,11 +12,10 @@
     "test",
     "tests"
   ],
-
   "homepage": "https://github.com/Kikobeats/acho",
   "keywords": [
     "log",
-    "logging"
+    "logging",
     "logger"
   ],
   "license": "MIT",

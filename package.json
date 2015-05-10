@@ -1,6 +1,6 @@
 {
   "name": "acho",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
   "author": {
     "name": "Kiko Beats",
@@ -18,12 +18,12 @@
   },
   "keywords": [
     "log",
-    "logging"
+    "logging",
     "logger"
   ],
   "dependencies": {
     "chalk": "*",
-    "coffee-script": "*",
+    "coffee-script": "*"
   },
   "devDependencies": {
     "browserify": "*",
