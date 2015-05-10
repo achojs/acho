@@ -187,11 +187,13 @@ You can modify the outputted message at any time.
 Create a new logger. Available options:
 
 - color **{Boolean}**: Enable or disable colorized output. `false` by default.
-- level **{String}**: Provide the logging level. `info` by default.
+- level **{String}**: Provides the logging level. `info` by default.
 - types **{Object}**: You can provide the types and priorities.
-- outputType **{Function}**: Provide a function to customize the type in the output.
-- outputMessage **{Function}**: Provide a function to customize the message in the output.
-- print **{Function}**: Provide a function to print the messages.
+- print **{Function}**: Provides a function to print the messages.
+- muted **{String}**: Determines the log level to avoid output messages. `silent` by default.
+- outputType **{Function}**: Provides a function to customize the type in the output.
+- outputMessage **{Function}**: Provides a function to customize the message in the output.
+
 
 ### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
 

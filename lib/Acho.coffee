@@ -2,22 +2,21 @@
 
 chalk   = require 'chalk'
 DEFAULT = require './Default'
-exists  = require 'existential-default'
 
 module.exports = class Acho
 
   constructor: (options = {}) ->
-    @color = exists options.color, DEFAULT.COLOR
-    @level = exists options.level, DEFAULT.LEVEL
-    @types = exists options.types, DEFAULT.TYPES
-    @print = exists options.print, DEFAULT.PRINT
-    @muted = exists options.muted, DEFAULT.MUTED
-    @messages = exists options.messages, do =>
+    @color = options.color or DEFAULT.COLOR
+    @level = options.level or DEFAULT.LEVEL
+    @types = options.types or DEFAULT.TYPES
+    @print = options.print or DEFAULT.PRINT
+    @muted = options.muted or DEFAULT.MUTED
+    @messages = do =>
       messages = {}
       messages[type] = [] for type of @types
       messages
-    @outputType = exists options.outputType, DEFAULT.OUTPUT_TYPE
-    @outputMessage = exists options.outputMessage, DEFAULT.OUTPUT_MESSAGE
+    @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
+    @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
     this
 
   @DEFAULT: DEFAULT

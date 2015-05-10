@@ -19,11 +19,11 @@
   "keywords": [
     "log",
     "logging"
+    "logger"
   ],
   "dependencies": {
     "chalk": "*",
     "coffee-script": "*",
-    "existential-default": "^1.0.0"
   },
   "devDependencies": {
     "browserify": "*",
