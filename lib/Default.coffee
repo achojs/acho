@@ -6,8 +6,8 @@ module.exports =
   PRINT: ->
     for type of @types
       @printLine(type, message) for message in @messages[type]
-  LEVEL: 'info'
   COLOR: false
+  UNMUTED: 'all'
   MUTED: 'silent'
   TYPES:
     line:

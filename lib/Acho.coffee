@@ -7,13 +7,14 @@ module.exports = class Acho
 
   constructor: (options = {}) ->
     @color = options.color or DEFAULT.COLOR
-    @level = options.level or DEFAULT.LEVEL
+    @level = options.level or DEFAULT.UNMUTED
     @types = options.types or DEFAULT.TYPES
     @print = options.print or DEFAULT.PRINT
-    @muted = options.muted or DEFAULT.MUTED
     @messages = do =>
       messages = {}
-      messages[type] = [] for type of @types
+      for type of @types
+        messages[type] = []
+        @[type] = @_printLevelMessage type if type isnt 'line'
       messages
     @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
     @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
@@ -30,44 +31,17 @@ module.exports = class Acho
     @push type, message
     this
 
-  error: (message) ->
-    @printLine 'error', message
-    this
-
-  warn: (message) ->
-    @printLine 'warn', message
-    this
-
-  success: (message) ->
-    @printLine 'success', message
-    this
-
-  info: (message) ->
-    @printLine 'info', message
-    this
-
-  verbose: (message) ->
-    @printLine 'verbose', message
-    this
-
-  debug: (message) ->
-    @printLine 'debug', message
-    this
-
-  silly: (message) ->
-    @printLine 'silly', message
-    this
-
-  isPrintable: (type) ->
-    return false if @level is @muted
-    @types[type].level <= @types[@level].level
-
   colorize: (colors, message) ->
     return message unless @color
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
     stylize message
+
+  isPrintable: (type) ->
+    return true if @level is DEFAULT.UNMUTED
+    return false if @level is DEFAULT.MUTED
+    @types[type].level <= @types[@level].level
 
   printLine: (type, message) ->
     return unless @isPrintable type
@@ -77,3 +51,8 @@ module.exports = class Acho
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
     console.log messageType + message
+
+  _printLevelMessage: (type, message) =>
+    (message) =>
+      @printLine type, message
+      this

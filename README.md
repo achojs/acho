@@ -125,7 +125,7 @@ You can completely customize the library to your requirements: changes colors, a
 
 ### Defining the level
 
-Establishing the loglevel is a good way to filter out undesired information from output. The available levels are:
+Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
 
 - `error`:   Display calls to `.error()` messages.
 - `warn`: Display calls from `.error()`, `.warn()` messages.
@@ -134,9 +134,13 @@ Establishing the loglevel is a good way to filter out undesired information from
 - `verbose`: Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()` messages.
 - `debug`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()` messages.
 - `silly`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()`, `silly()` messages.
-- `silent`:  Avoid all output.
 
-The default log level is `info`. You can define it in the the constructor:
+Additionally exists two special levels:
+
+- `silent`:  Avoid all output.
+- `all`: Allow print all message types.
+
+The default log level is `all`. You can define it in the constructor:
 
 ```js
 var acho = new Acho({level: 'silly'})
@@ -179,7 +183,6 @@ acho.info('I am hungry');
 
 You can modify the outputted message at any time.
 
-
 ## API
 
 ### .constructor({Object} [options])
@@ -187,13 +190,11 @@ You can modify the outputted message at any time.
 Create a new logger. Available options:
 
 - color **{Boolean}**: Enable or disable colorized output. `false` by default.
-- level **{String}**: Provides the logging level. `info` by default.
+- level **{String}**: Provides the logging level. `all` by default.
 - types **{Object}**: You can provide the types and priorities.
 - print **{Function}**: Provides a function to print the messages.
-- muted **{String}**: Determines the log level to avoid output messages. `silent` by default.
 - outputType **{Function}**: Provides a function to customize the type in the output.
 - outputMessage **{Function}**: Provides a function to customize the message in the output.
-
 
 ### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
 
@@ -203,33 +204,11 @@ Store a message of given `type` internally.
 
 Store a message of given `type` internally and also output it.
 
-### .error({String} &lt;message&gt;)
+For each level you have a function following the pattern:
 
-Output a `error` message.
+### .\[loglevel\]({String} &lt;message&gt;)
 
-### .warn({String} &lt;message&gt;)
-
-Output a `warn` message.
-
-### .success({String} &lt;message&gt;)
-
-Output a `success` message.
-
-### .info({String} &lt;message&gt;)
-
-Output a `info` message.
-
-### .verbose({String} &lt;message&gt;)
-
-Output a `verbose` message.
-
-### .debug({String} &lt;message&gt;)
-
-Output a `debug` message.
-
-### .silly({String} &lt;message&gt;)
-
-Output a `silly` message.
+For each log level that you declared in the constructor (or the default log levels provides by the library if you don't declare nothing) will be created a function with the same name to output a message with these log level.
 
 ### .isPrintable({String} &lt;type&gt;)
 
