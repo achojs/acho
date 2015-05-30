@@ -4,6 +4,7 @@
 <img src="http://i.imgur.com/XtTjX8G.png" alt="acho">
 </h1>
 
+![Last version](https://img.shields.io/github/tag/Kikobeats/acho.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat)](https://travis-ci.org/Kikobeats/acho)
 [![Dependency status](http://img.shields.io/david/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho#info=devDependencies)
