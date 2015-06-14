@@ -13,7 +13,7 @@ module.exports = class Acho
     @messages = do =>
       messages = {}
       for type of @types
-        messages[type] = []
+        messages[type] = options.messages?[type] or []
         @[type] = @_printLevelMessage type if type isnt 'line'
       messages
     @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
