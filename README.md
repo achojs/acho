@@ -116,7 +116,8 @@ acho.print = function() {
   var _this = this;
   Object.keys(this.types).forEach(function(type) {
     _this.messages[type].forEach(function(message) {
-      _this.printLine(type, message);
+      var output _this.generateMessage(type, message);
+      console.log(output);
     });
   });
 };
@@ -219,13 +220,13 @@ Determines if a type of message should be outputted.
 
 Determines is a instance of `acho` is outputted with colors.
 
-### .printLine({String} &lt;type&gt; {String} &lt;message&gt;)
+### .generateMessage({String} &lt;type&gt; {String} &lt;message&gt;)
 
 Combine `.isPrintable` and `.colorize` to print a line correctly.
 
 ### .print()
 
-Default loop to print the messages that are stored internally. By default it uses `.printLine` in each message iteration.
+Default loop to print the messages that are stored internally. By default it uses `.generateMessage` in each message iteration.
 
 ## License
 
