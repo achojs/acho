@@ -18,7 +18,7 @@ module.exports =
     message     = @colorize @types.line.color, message
     messageType + message
 
-  COLOR: false
+  COLOR: true
   UNMUTED: 'all'
   MUTED: 'silent'
   TYPES:
