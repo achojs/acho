@@ -106,25 +106,6 @@ console.log(acho.messages.info)
 // => ['this message is printed and stored']
 ```
 
-You can also modify the print method!
-
-```js
-acho.print = function() {
-  // You are in the acho scope, so you can use the properties
-  // of the object. Check the API documentation.
-  console.log();
-  var _this = this;
-  Object.keys(this.types).forEach(function(type) {
-    _this.messages[type].forEach(function(message) {
-      var output _this.generateMessage(type, message);
-      console.log(output);
-    });
-  });
-};
-```
-
-You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
-
 ### Defining the level
 
 Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
@@ -156,20 +137,24 @@ acho.level = 'debug';
 
 ### Customization
 
+You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
+
 By default the messages structure is brief: Just the message type followed by the message itself.
 
-But you can easily modify the output. For example, let's add a timestamp to each message.
-
-To customize the output we offer two methods, `outputType`  and `outputMessage`:
+But you can easily modify the output. For example, let's add a timestamp to each message:
 
 ```js
 acho = new Acho({
   color: true,
   level: 'silly',
+
+  // Customize how to print the 'type' of each message
   outputType: function(type) {
     return '[' + type + '] »';
   },
 
+  // Customize how to print the message.
+  // Add things before and/or after.
   outputMessage: function(message) {
     return Date() + ' :: ' + message;
   }
@@ -183,7 +168,7 @@ acho.info('I am hungry');
 // => '[ info ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I am hungry'
 ```
 
-You can modify the outputted message at any time.
+If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
 
 ## API
 
@@ -194,9 +179,10 @@ Create a new logger. Available options:
 - color **{Boolean}**: Enable or disable colorized output. `false` by default.
 - level **{String}**: Provides the logging level. `all` by default.
 - types **{Object}**: You can provide the types and priorities.
-- print **{Function}**: Provides a function to print the messages.
+- print **{Function}**: Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
 - outputType **{Function}**: Provides a function to customize the type in the output.
 - outputMessage **{Function}**: Provides a function to customize the message in the output.
+- generateMessage **{Function}**: Provides a function that generate the message to be outputted. It combines other internal methods for generate the output (as `.isPrintable` or `.colorize`) and normally you are not interested in the definition of it, but you can provide it as option as well.
 
 ### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
 
@@ -219,14 +205,6 @@ Determines if a type of message should be outputted.
 ### .colorize({String} &lt;color&gt; {String} &lt;message&gt;)
 
 Determines is a instance of `acho` is outputted with colors.
-
-### .generateMessage({String} &lt;type&gt; {String} &lt;message&gt;)
-
-Combine `.isPrintable` and `.colorize` to print a line correctly.
-
-### .print()
-
-Default loop to print the messages that are stored internally. By default it uses `.generateMessage` in each message iteration.
 
 ## License
 
