@@ -5,7 +5,7 @@ module.exports =
   OUTPUT_MESSAGE: (message) -> message
   PRINT: ->
     for type of @types
-      @printLine(type, message) for message in @messages[type]
+      console.log @generateMessage type, message for message in @messages[type]
   COLOR: false
   UNMUTED: 'all'
   MUTED: 'silent'

@@ -14,7 +14,7 @@ module.exports = class Acho
       messages = {}
       for type of @types
         messages[type] = options.messages?[type] or []
-        @[type] = @_printLevelMessage type if type isnt 'line'
+        @[type] = @generateTypeMessage type if type isnt 'line'
       messages
     @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
     @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
@@ -43,16 +43,16 @@ module.exports = class Acho
     return false if @level is DEFAULT.MUTED
     @types[type].level <= @types[@level].level
 
-  printLine: (type, message) ->
+  generateTypeMessage: (type, message) =>
+    (message) =>
+      console.log @generateMessage type, message
+      this
+
+  generateMessage: (type, message) ->
     return unless @isPrintable type
     colorType   = @types[type].color
     messageType = @outputType type
     messageType = @colorize colorType, messageType
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
-    console.log messageType + message
-
-  _printLevelMessage: (type, message) =>
-    (message) =>
-      @printLine type, message
-      this
+    messageType + message
