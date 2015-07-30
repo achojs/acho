@@ -18,9 +18,8 @@ module.exports = class Acho
       messages
     @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
     @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
+    @generateMessage = options.generateMessage or DEFAULT.GENERATE_MESSAGE
     this
-
-  @DEFAULT: DEFAULT
 
   push: (type, message) ->
     @messages[type].push message
@@ -47,12 +46,3 @@ module.exports = class Acho
     (message) =>
       console.log @generateMessage type, message
       this
-
-  generateMessage: (type, message) ->
-    return unless @isPrintable type
-    colorType   = @types[type].color
-    messageType = @outputType type
-    messageType = @colorize colorType, messageType
-    message     = @outputMessage message
-    message     = @colorize @types.line.color, message
-    messageType + message

@@ -1,11 +1,23 @@
 'use strict'
 
 module.exports =
-  OUTPUT_TYPE: (type) -> "#{type}\t: "
-  OUTPUT_MESSAGE: (message) -> message
+
   PRINT: ->
     for type of @types
       console.log @generateMessage type, message for message in @messages[type]
+
+  OUTPUT_MESSAGE: (message) -> message
+  OUTPUT_TYPE: (type) -> "#{type}\t: "
+
+  GENERATE_MESSAGE: (type, message) ->
+    return unless @isPrintable type
+    colorType   = @types[type].color
+    messageType = @outputType type
+    messageType = @colorize colorType, messageType
+    message     = @outputMessage message
+    message     = @colorize @types.line.color, message
+    messageType + message
+
   COLOR: false
   UNMUTED: 'all'
   MUTED: 'silent'
