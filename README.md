@@ -52,13 +52,13 @@ If you're using a browser, the library falls back to attaching itself to window 
 
 ```js
 var Acho = require('acho');
-var acho = new Acho({color: true});
+var acho = new Acho();
 ```
 
 #### Global/Browser
 
 ```js
-var acho = new Acho({color: true});
+var acho = new Acho();
 ```
 
 #### AMD
