@@ -32,7 +32,7 @@ module.exports = class Acho
     this
 
   colorize: (colors, message) ->
-    return message if not @color or process?.env.NODE_ENV is 'production'
+    return message if not @color or process?.env.NODE_ENV.toLowerCase() is 'production'
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
