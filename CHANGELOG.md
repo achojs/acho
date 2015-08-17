@@ -1,7 +1,28 @@
+<a name="2.1.0"></a>
+# 2.1.0 (2015-08-17)
+
+
+* added generateTypeMessage as external parameter.
+ ([a0f67f3](https://github.com/kikobeats/acho/commit/a0f67f3))
+* Added transport option
+ ([a1170e3](https://github.com/kikobeats/acho/commit/a1170e3))
+* fixed production check
+ ([af63da9](https://github.com/kikobeats/acho/commit/af63da9))
+* Improve production comparation
+ ([eee1281](https://github.com/kikobeats/acho/commit/eee1281))
+* updated
+ ([ca112ba](https://github.com/kikobeats/acho/commit/ca112ba))
+* updated
+ ([ad532e2](https://github.com/kikobeats/acho/commit/ad532e2))
+
+
+
 <a name="2.0.0"></a>
 # 2.0.0 (2015-07-31)
 
 
+* 2.0.0 releases
+ ([0daf159](https://github.com/kikobeats/acho/commit/0daf159))
 * avoid avoid colorize messages in production under NodeJS
  ([f6d2d54](https://github.com/kikobeats/acho/commit/f6d2d54))
 * colors by default
