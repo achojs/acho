@@ -195,17 +195,13 @@ Store a message of given `type` internally and also output it.
 
 For each level you have a function following the pattern:
 
+### .print()
+
+Prints all messages internally stored.
+
 ### .\[loglevel\]({String} &lt;message&gt;)
 
 For each log level that you declared in the constructor (or the default log levels provides by the library if you don't declare nothing) will be created a function with the same name to output a message with these log level.
-
-### .isPrintable({String} &lt;type&gt;)
-
-Determines if a type of message should be outputted.
-
-### .colorize({String} &lt;color&gt; {String} &lt;message&gt;)
-
-Determines is a instance of `acho` is outputted with colors.
 
 ## License
 
