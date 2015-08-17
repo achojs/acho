@@ -2,12 +2,13 @@
 
 module.exports =
 
-  PRINT: ->
+  PRINT: (transport) ->
     for type of @types
-      console.log @generateMessage type, message for message in @messages[type]
+      transport @generateMessage type, message for message in @messages[type]
 
   OUTPUT_MESSAGE: (message) -> message
   OUTPUT_TYPE: (type) -> "#{type}\t: "
+  TRANSPORT: console.log
 
   GENERATE_MESSAGE: (type, message) ->
     return unless @isPrintable type

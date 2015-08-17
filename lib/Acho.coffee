@@ -9,7 +9,8 @@ module.exports = class Acho
     @color = options.color or DEFAULT.COLOR
     @level = options.level or DEFAULT.UNMUTED
     @types = options.types or DEFAULT.TYPES
-    @print = options.print or DEFAULT.PRINT
+    @transport = options.transport or DEFAULT.TRANSPORT
+    @print = (options.print or DEFAULT.PRINT).bind(this, @transport)
     @messages = do =>
       messages = {}
       for type of @types
@@ -44,5 +45,5 @@ module.exports = class Acho
 
   generateTypeMessage: (type, message) =>
     (message) =>
-      console.log @generateMessage type, message
+      @transport @generateMessage type, message
       this
