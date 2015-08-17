@@ -176,14 +176,41 @@ If you need customize more the output you can setup `.print` `.generateMessage` 
 
 Create a new logger. Available options:
 
-- color **{Boolean}**: Enable or disable colorized output. `false` by default.
-- level **{String}**: Provides the logging level. `all` by default.
-- types **{Object}**: You can provide the types and priorities.
-- print **{Function}**: Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
-- transport **{Function}**: Defines what happens with the log message. By default is `console.log`.
-- outputType **{Function}**: Provides a function to customize the type in the output.
-- outputMessage **{Function}**: Provides a function to customize the message in the output.
-- generateMessage **{Function}**: Provides a function that generate the message to be outputted. It combines other internal methods for generate the output (as `.isPrintable` or `.colorize`) and normally you are not interested in the definition of it, but you can provide it as option as well.
+#### color **{Boolean}**
+
+Enable or disable colorized output. `false` by default.
+
+#### level **{String}**
+
+Provides the logging level. `all` by default.
+
+#### types **{Object}**
+
+You can provide the types and priorities.
+ 
+#### print **{Function}**
+
+Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
+
+#### transport **{Function}**
+
+Defines what happens with the log message. By default is `console.log`.
+
+#### outputType **{Function}**
+
+Provides a function to customize the type in the output.
+
+#### outputMessage **{Function}**
+
+Provides a function to customize the message in the output.
+
+#### generateMessage **{Function}**
+
+Provides a function that generate the message to be outputted. It combines other internal methods for generate the output (as `.isPrintable` or `.colorize`) and normally you are not interested in the definition of it, but you can provide it as option as well.
+
+#### generateTypeMessage **{Function}**
+
+Provides a function used to generate the type message.
 
 ### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
 
