@@ -10,6 +10,9 @@ module.exports = class Acho
     @level = options.level or DEFAULT.UNMUTED
     @types = options.types or DEFAULT.TYPES
     @transport = options.transport or DEFAULT.TRANSPORT
+    @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
+    @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
+    @generateMessage = options.generateMessage or DEFAULT.GENERATE_MESSAGE
     @print = (options.print or DEFAULT.PRINT).bind(this, @transport)
     @messages = do =>
       messages = {}
@@ -17,9 +20,6 @@ module.exports = class Acho
         messages[type] = options.messages?[type] or []
         @[type] = @generateTypeMessage type if type isnt 'line'
       messages
-    @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
-    @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
-    @generateMessage = options.generateMessage or DEFAULT.GENERATE_MESSAGE
     this
 
   push: (type, message) ->
@@ -32,7 +32,7 @@ module.exports = class Acho
     this
 
   colorize: (colors, message) ->
-    return message if not @color or process?.env.NODE_ENV.toLowerCase() is 'production'
+    return message if not @color or process?.env.NODE_ENV?.toLowerCase() is 'production'
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
