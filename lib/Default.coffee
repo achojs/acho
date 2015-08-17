@@ -2,9 +2,9 @@
 
 module.exports =
 
-  PRINT: (transport) ->
+  PRINT: ->
     for type of @types
-      transport @generateMessage type, message for message in @messages[type]
+      @transport @generateMessage type, message for message in @messages[type]
 
   OUTPUT_MESSAGE: (message) -> message
   OUTPUT_TYPE: (type) -> "#{type}\t: "
@@ -18,6 +18,11 @@ module.exports =
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
     messageType + message
+
+  GENERATE_TYPE_MESSAGE: (type) ->
+    (message) ->
+      @transport @generateMessage type, message
+      this
 
   COLOR: true
   UNMUTED: 'all'

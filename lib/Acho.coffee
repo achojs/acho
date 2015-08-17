@@ -13,7 +13,8 @@ module.exports = class Acho
     @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
     @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
     @generateMessage = options.generateMessage or DEFAULT.GENERATE_MESSAGE
-    @print = (options.print or DEFAULT.PRINT).bind(this, @transport)
+    @generateTypeMessage = options.generateTypeMessage or DEFAULT.GENERATE_TYPE_MESSAGE
+    @print = options.print or DEFAULT.PRINT
     @messages = do =>
       messages = {}
       for type of @types
@@ -42,8 +43,3 @@ module.exports = class Acho
     return true if @level is DEFAULT.UNMUTED
     return false if @level is DEFAULT.MUTED
     @types[type].level <= @types[@level].level
-
-  generateTypeMessage: (type, message) =>
-    (message) =>
-      @transport @generateMessage type, message
-      this
