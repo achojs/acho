@@ -5,10 +5,10 @@
 </h1>
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/acho.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat)](https://travis-ci.org/Kikobeats/acho)
-[![Dependency status](http://img.shields.io/david/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/acho.svg?style=flat)](https://david-dm.org/Kikobeats/acho#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat)](https://www.npmjs.org/package/acho)
+[![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/acho)
+[![Dependency status](http://img.shields.io/david/Kikobeats/acho.svg?style=flat-square)](https://david-dm.org/Kikobeats/acho)
+[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/acho.svg?style=flat-square)](https://david-dm.org/Kikobeats/acho#info=devDependencies)
+[![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
 > An extremely simple (but powerful) logging system for NodeJS and browser.
