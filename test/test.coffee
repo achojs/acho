@@ -1,6 +1,15 @@
 Acho   = require '..'
 should = require 'should'
 
+printLogs = (instance) ->
+  instance.error 'error message'
+  instance.warn 'warn message'
+  instance.success 'success message'
+  instance.info 'info message'
+  instance.verbose 'verbose message'
+  instance.debug 'debug message'
+  instance.silly 'silly message'
+
 describe 'Acho ::', ->
 
   before  ->
@@ -33,12 +42,9 @@ describe 'Acho ::', ->
   it 'try to print a message out of the level',  ->
     @acho.verbose 'test of message'
 
-  describe 'default colors ::', ->
-    acho = new Acho level:'silly', color: true
-    acho.error 'error message'
-    acho.warn 'warn message'
-    acho.success 'success message'
-    acho.info 'info message'
-    acho.verbose 'verbose message'
-    acho.debug 'debug message'
-    acho.silly 'silly message'
+  describe 'logs', ->
+    it 'default skin', ->
+      printLogs new Acho level: 'silly', color: true
+
+    it 'specifying a keyword', ->
+      printLogs new Acho level: 'silly', color: true, keyword: 'acho'

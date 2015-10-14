@@ -6,11 +6,17 @@ DEFAULT = require './Default'
 module.exports = class Acho
 
   constructor: (options = {}) ->
+
+    if options.keyword
+      @keyword = options.keyword
+      @output_keyword = options.outputType or DEFAULT.OUTPUT_KEYWORD
+    else
+      @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
+
     @color = options.color or DEFAULT.COLOR
     @level = options.level or DEFAULT.UNMUTED
     @types = options.types or DEFAULT.TYPES
     @transport = options.transport or DEFAULT.TRANSPORT
-    @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
     @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
     @generateMessage = options.generateMessage or DEFAULT.GENERATE_MESSAGE
     @generateTypeMessage = options.generateTypeMessage or DEFAULT.GENERATE_TYPE_MESSAGE
