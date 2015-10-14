@@ -1,5 +1,7 @@
 'use strict'
 
+ms = require 'pretty-ms'
+
 module.exports =
 
   PRINT: ->
@@ -7,8 +9,10 @@ module.exports =
       @transport @generateMessage type, message for message in @messages[type]
 
   OUTPUT_MESSAGE: (message) -> message
-  OUTPUT_TYPE: (type) -> "#{type}\t "
-  OUTPUT_KEYWORD: -> "#{@keyword} "
+  OUTPUT_TYPE: (type) ->
+    type = @keyword or type
+    if @align and not @timestamp then "#{type}\t " else "#{type} "
+
   TRANSPORT: console.log
 
   GENERATE_MESSAGE: (type, message) ->
@@ -18,13 +22,26 @@ module.exports =
     messageType = @colorize colorType, messageType
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
-    messageType + message
+    timestamp   = ''
+
+    if @timestamp
+      if @timestamp[type]
+        diff = new Date() - @timestamp[type]
+        diff = if diff > 10000 then ms diff else "#{diff}ms"
+        timestamp = @colorize colorType, "+#{diff} "
+        @timestamp[type] = new Date()
+      else
+        @timestamp[type] = new Date()
+
+    messageType + timestamp + message
 
   GENERATE_TYPE_MESSAGE: (type) ->
     (message) ->
       @transport @generateMessage type, message
       this
 
+  DIFF: false
+  ALIGN: true
   COLOR: true
   UNMUTED: 'all'
   MUTED: 'silent'

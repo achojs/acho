@@ -20,7 +20,8 @@
   ],
   "dependencies": {
     "chalk": "*",
-    "coffee-script": "*"
+    "coffee-script": "*",
+    "pretty-ms": "*"
   },
   "devDependencies": {
     "browserify": "*",

@@ -1,6 +1,9 @@
 Acho   = require '..'
 should = require 'should'
 
+randomInterval = (min, max) ->
+  Math.floor(Math.random()*(max-min+1)+min)
+
 printLogs = (instance) ->
   instance.error 'error message'
   instance.warn 'warn message'
@@ -48,3 +51,23 @@ describe 'Acho ::', ->
 
     it 'specifying a keyword', ->
       printLogs new Acho level: 'silly', color: true, keyword: 'acho'
+
+
+    it 'enabling diff between logs', (done) ->
+      acho = new Acho
+        level: 'silly'
+        color: true
+        diff: true
+        # keyword: 'info'
+
+      printWarn = -> acho.warn 'hello world'
+      printErr = -> acho.error 'oh noes!'
+
+      warn = setInterval(printWarn, randomInterval(1000, 2000))
+      err = setInterval(printErr, randomInterval(2000, 2500))
+
+      setTimeout(->
+        clearInterval warn
+        clearInterval err
+        done()
+      , 10000)

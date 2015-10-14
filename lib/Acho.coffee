@@ -1,18 +1,15 @@
 'use strict'
 
-chalk   = require 'chalk'
-DEFAULT = require './Default'
+chalk    = require 'chalk'
+DEFAULT  = require './Default'
 
 module.exports = class Acho
 
   constructor: (options = {}) ->
-
-    if options.keyword
-      @keyword = options.keyword
-      @outputType = options.outputType or DEFAULT.OUTPUT_KEYWORD
-    else
-      @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
-
+    @keyword = options.keyword
+    @align = options.align or DEFAULT.ALIGN
+    @timestamp = [] if options.diff or DEFAULT.DIFF
+    @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
     @color = options.color or DEFAULT.COLOR
     @level = options.level or DEFAULT.UNMUTED
     @types = options.types or DEFAULT.TYPES
