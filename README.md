@@ -168,6 +168,13 @@ acho.info('I am hungry');
 // => '[ info ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I am hungry'
 ```
 
+In addition, you can use a custom keyword to use as logging level instead of print the logging level. Just provide `keyword` parameter in the constructor. Providing it in the above example as `{ keyword: 'acho' }` the result is:
+
+```js
+acho.info('I am hungry');
+// => '[ acho ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I am hungry'
+```
+
 If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
 
 ## API
@@ -175,6 +182,10 @@ If you need customize more the output you can setup `.print` `.generateMessage` 
 ### .constructor({Object} [options])
 
 Create a new logger. Available options:
+
+##### keyword **{String}**
+
+Instead of print the type log level, print the keyword. By default this behavior is not activated.
 
 #### color **{Boolean}**
 
