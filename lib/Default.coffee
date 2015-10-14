@@ -14,7 +14,7 @@ module.exports =
   GENERATE_MESSAGE: (type, message) ->
     return unless @isPrintable type
     colorType   = @types[type].color
-    messageType = if @keyword then @output_keyword() else @outputType type
+    messageType = @outputType(unless @keyword then type)
     messageType = @colorize colorType, messageType
     message     = @outputMessage message
     message     = @colorize @types.line.color, message

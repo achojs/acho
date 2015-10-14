@@ -9,7 +9,7 @@ module.exports = class Acho
 
     if options.keyword
       @keyword = options.keyword
-      @output_keyword = options.outputType or DEFAULT.OUTPUT_KEYWORD
+      @outputType = options.outputType or DEFAULT.OUTPUT_KEYWORD
     else
       @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
 
