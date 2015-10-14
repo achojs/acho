@@ -183,7 +183,7 @@ If you need customize more the output you can setup `.print` `.generateMessage` 
 
 Create a new logger. Available options:
 
-##### keyword **{String}**
+#### keyword **{String}**
 
 Instead of print the type log level, print the keyword. By default this behavior is not activated.
 
