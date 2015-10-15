@@ -7,7 +7,7 @@ module.exports = class Acho
 
   constructor: (options = {}) ->
     @keyword = options.keyword
-    @align = options.align or DEFAULT.ALIGN
+    @align = if options.align? then options.align else DEFAULT.ALIGN
     @timestamp = [] if options.diff or DEFAULT.DIFF
     @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
     @color = options.color or DEFAULT.COLOR

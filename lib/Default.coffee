@@ -9,34 +9,34 @@ module.exports =
       @transport @generateMessage type, message for message in @messages[type]
 
   OUTPUT_MESSAGE: (message) -> message
-  OUTPUT_TYPE: (type) ->
-    type = @keyword or type
-    if @align and not @timestamp then "#{type}\t " else "#{type} "
+  OUTPUT_TYPE: (type, diff = '') ->
+    if @align and not @timestamp then "#{diff}#{type}\t " else "#{diff}#{type} "
 
   TRANSPORT: console.log
 
   GENERATE_MESSAGE: (type, message) ->
     return unless @isPrintable type
     colorType   = @types[type].color
-    messageType = @outputType(unless @keyword then type)
-    messageType = @colorize colorType, messageType
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
-    timestamp   = ''
 
     if @timestamp
       if @timestamp[type]
         diff = new Date() - @timestamp[type]
         diff = if diff > 10000 then ms diff else "#{diff}ms"
-        timestamp = @colorize colorType, "+#{diff} "
         @timestamp[type] = new Date()
+        messageType = @outputType @keyword or type, " +#{diff}"
       else
         @timestamp[type] = new Date()
+        messageType = @outputType @keyword or type
+    else
+      messageType = @outputType @keyword or type
 
-    messageType + timestamp + message
+    messageType = @colorize colorType, messageType
+    messageType + message
 
   GENERATE_TYPE_MESSAGE: (type) ->
-    (message) ->
+    (message) =>
       @transport @generateMessage type, message
       this
 
