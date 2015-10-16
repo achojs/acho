@@ -1,7 +1,17 @@
+<a name="2.3.0"></a>
+# 2.3.0 (2015-10-16)
+
+
+* added experimental .align & .timestamp params ([0a4214f](https://github.com/kikobeats/acho/commit/0a4214f))
+* possibility to decide where put diff in the output ([bb03a48](https://github.com/kikobeats/acho/commit/bb03a48))
+
+
+
 <a name="2.2.1"></a>
 ## 2.2.1 (2015-10-14)
 
 
+* 2.2.1 releases ([425b6d9](https://github.com/kikobeats/acho/commit/425b6d9))
 * code more simply ([9e2d748](https://github.com/kikobeats/acho/commit/9e2d748))
 * fixed keyword style ([9f18a6c](https://github.com/kikobeats/acho/commit/9f18a6c))
 
