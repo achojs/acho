@@ -1,7 +1,7 @@
 # acho
 
 <h1 align="center">
-<img src="https://i.imgur.com/HPlBRLS.gif" alt="acho">
+<img src="https://i.imgur.com/qdpBpnw.gif" alt="acho">
 </h1>
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/acho.svg?style=flat-square)
