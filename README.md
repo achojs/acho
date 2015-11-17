@@ -1,8 +1,6 @@
 # acho
 
-<h1 align="center">
-<img src="https://i.imgur.com/qdpBpnw.gif" alt="acho">
-</h1>
+<img align="center" src="https://i.imgur.com/qdpBpnw.gif" alt="acho">
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/acho.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/acho)
