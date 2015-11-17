@@ -21,16 +21,19 @@
   "dependencies": {
     "chalk": "*",
     "coffee-script": "*",
+    "format-util": "*",
     "pretty-ms": "*"
   },
   "devDependencies": {
     "browserify": "*",
     "coffeeify": "*",
+    "date-utils": "*",
     "gulp": "*",
     "gulp-header": "*",
     "gulp-uglify": "*",
     "gulp-util": "*",
     "mocha": "*",
+    "set-dateout": "*",
     "should": "*",
     "titleize": "*",
     "vinyl-buffer": "*",

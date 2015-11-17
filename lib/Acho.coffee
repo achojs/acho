@@ -2,6 +2,7 @@
 
 chalk    = require 'chalk'
 DEFAULT  = require './Default'
+format   = require 'format-util'
 
 module.exports = class Acho
 
@@ -26,11 +27,13 @@ module.exports = class Acho
       messages
     this
 
-  push: (type, message) ->
+  push: (type, messages...) ->
+    message = @_format messages
     @messages[type].push message
     this
 
-  add: (type, message) ->
+  add: (type, messages...) ->
+    message = @_format messages
     @[type] message
     @push type, message
     this
@@ -46,3 +49,7 @@ module.exports = class Acho
     return true if @level is DEFAULT.UNMUTED
     return false if @level is DEFAULT.MUTED
     @types[type].level <= @types[@level].level
+
+  _format: (messages) ->
+    format.apply null, messages
+
