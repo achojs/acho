@@ -1,7 +1,7 @@
 # acho
 
 <h1 align="center">
-<img src="http://i.imgur.com/XtTjX8G.png" alt="acho">
+<img src="http://g.recordit.co/pskhXwOmMJ.gif" alt="acho">
 </h1>
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/acho.svg?style=flat-square)
@@ -198,7 +198,7 @@ Provides the logging level. `all` by default.
 #### types **{Object}**
 
 You can provide the types and priorities.
- 
+
 #### print **{Function}**
 
 Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
