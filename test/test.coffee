@@ -52,13 +52,11 @@ describe 'Acho ::', ->
     it 'specifying a keyword', ->
       printLogs new Acho level: 'silly', color: true, keyword: 'acho'
 
-
     it 'enabling diff between logs', (done) ->
       acho = new Acho
         level: 'silly'
         color: true
         diff: true
-        # keyword: 'info'
 
       printWarn = -> acho.warn 'hello world'
       printErr = -> acho.error 'oh noes!'

@@ -2,15 +2,17 @@
 
 ms = require 'pretty-ms'
 
-module.exports =
+CONST =
+  MIN_DIFF_MS: 10000
 
+module.exports =
   PRINT: ->
     for type of @types
       @transport @generateMessage type, message for message in @messages[type]
 
   OUTPUT_MESSAGE: (message) -> message
   OUTPUT_TYPE: (type, diff = '') ->
-    if @align and not @timestamp then "#{diff}#{type}\t " else "#{diff}#{type} "
+    if @align and not @timestamp then "#{type}#{diff}\t" else "#{type}#{diff} "
 
   TRANSPORT: console.log
 
@@ -23,7 +25,7 @@ module.exports =
     if @timestamp
       if @timestamp[type]
         diff = new Date() - @timestamp[type]
-        diff = if diff > 10000 then ms diff else "#{diff}ms"
+        diff = if diff > CONST.MIN_DIFF_MS then ms diff else "#{diff}ms"
         @timestamp[type] = new Date()
         messageType = @outputType @keyword or type, " +#{diff}"
       else
