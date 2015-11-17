@@ -1,7 +1,20 @@
+<a name="2.4.0"></a>
+# 2.4.0 (2015-11-17)
+
+
+* added string interpolation support ([f3c7623](https://github.com/kikobeats/acho/commit/f3c7623))
+* better gif 💅 ([adae687](https://github.com/kikobeats/acho/commit/adae687))
+* fixed disabled colors param ([ab7fd74](https://github.com/kikobeats/acho/commit/ab7fd74))
+* fixed extra space with diff param ([f358e5b](https://github.com/kikobeats/acho/commit/f358e5b))
+* updated library preview 💪 ([e207335](https://github.com/kikobeats/acho/commit/e207335))
+
+
+
 <a name="2.3.0"></a>
 # 2.3.0 (2015-10-16)
 
 
+* 2.3.0 releases ([1453d16](https://github.com/kikobeats/acho/commit/1453d16))
 * added experimental .align & .timestamp params ([0a4214f](https://github.com/kikobeats/acho/commit/0a4214f))
 * possibility to decide where put diff in the output ([bb03a48](https://github.com/kikobeats/acho/commit/bb03a48))
 
