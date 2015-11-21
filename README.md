@@ -1,7 +1,9 @@
 # acho
 
-<p style="text-align: center;">
-  <img align="center" src="https://camo.githubusercontent.com/da8068f979eb4b3963ff41daacb7017a9f65cbfc/68747470733a2f2f692e696d6775722e636f6d2f71647042706e772e676966" alt="acho" data-canonical-src="https://i.imgur.com/qdpBpnw.gif" style="max-width:100%;text-align: center;">
+<p align="center">
+  <br>
+  <img src="https://i.imgur.com/qdpBpnw.gif" alt="acho">
+  <br>
 </p>
 
 ![Last version](https://img.shields.io/github/tag/Kikobeats/acho.svg?style=flat-square)
