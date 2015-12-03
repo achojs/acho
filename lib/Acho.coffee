@@ -5,42 +5,40 @@ DEFAULT      = require './Default'
 format       = require 'format-util'
 existsAssign = require 'existential-assign'
 
-module.exports = class Acho
-  constructor: (options = {}) ->
-    options = existsAssign(DEFAULT, options)
-    options.diff = [] if options.diff
-    @[key] = value for key, value of options
+module.exports = (options = {}) ->
+  acho = existsAssign(DEFAULT, options)
+  acho.diff = [] if acho.diff
+  acho[key] = value for key, value of acho
 
-    @messages = do =>
-      messages = {}
-      for type of @types
-        messages[type] = options.messages?[type] or []
-        @[type] = @generateTypeMessage type if type isnt 'line'
-      messages
-    this
+  acho.messages = do ->
+    messages = {}
+    for type of acho.types
+      messages[type] = options.messages?[type] or []
+      acho[type] = acho.generateTypeMessage type if type isnt 'line'
+    messages
 
-  push: (type, messages...) ->
+  acho.push = (type, messages...) ->
     message = @_format messages
     @messages[type].push message
     this
 
-  add: (type, messages...) ->
+  acho.add = (type, messages...) ->
     message = @_format messages
     @[type] message
     @push type, message
     this
 
-  colorize: (colors, message) ->
+  acho.colorize = (colors, message) ->
     return message if not @color or process?.env.NODE_ENV?.toLowerCase() is 'production'
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
     stylize message
 
-  isPrintable: (type) ->
+  acho.isPrintable = (type) ->
     return true if @level is DEFAULT.UNMUTED
     return false if @level is DEFAULT.MUTED
     @types[type].level <= @types[@level].level
 
-  _format: (messages) ->
-    format.apply null, messages
+  acho._format = (messages) -> format.apply null, messages
+  acho

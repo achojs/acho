@@ -4,24 +4,24 @@ require('date-utils')
 var Acho = require('./index.js')
 var setDateout = require('set-dateout')
 
-var base = new Acho({
+var base = Acho({
   align: true
 })
 
-var diff = new Acho({
+var diff = Acho({
   diff: true
 })
 
-var label = new Acho({
+var label = Acho({
   align: false,
   keyword: 'worker#1'
 })
 
-var colors = new Acho({
+var colors = Acho({
   color: false
 })
 
-var visit = new Acho({
+var visit = Acho({
   keyword: 'visit'
 })
 

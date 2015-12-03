@@ -19,7 +19,7 @@ describe 'Acho ::', ->
     opts =
       color: true
       outputType: (type) -> "[#{type}] » "
-    @acho = new Acho(opts)
+    @acho = Acho opts
 
   it 'create a new object', ->
     (typeof @acho is 'object').should.be.equal true
@@ -47,13 +47,13 @@ describe 'Acho ::', ->
 
   describe 'logs', ->
     it 'default skin', ->
-      printLogs new Acho level: 'silly', color: true
+      printLogs Acho level: 'silly', color: true
 
     it 'specifying a keyword', ->
-      printLogs new Acho level: 'silly', color: true, keyword: 'acho'
+      printLogs Acho level: 'silly', color: true, keyword: 'acho'
 
     it 'enabling diff between logs', (done) ->
-      acho = new Acho
+      acho = Acho
         level: 'silly'
         color: true
         diff: true
