@@ -52,4 +52,3 @@ module.exports = class Acho
 
   _format: (messages) ->
     format.apply null, messages
-

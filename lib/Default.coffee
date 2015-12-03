@@ -18,22 +18,24 @@ module.exports =
 
   GENERATE_MESSAGE: (type, message) ->
     return unless @isPrintable type
+
     colorType   = @types[type].color
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
+
+    keyword     = if @keyword? then @keyword else type
+    diff        = null
 
     if @timestamp
       if @timestamp[type]
         diff = new Date() - @timestamp[type]
         diff = if diff > CONST.MIN_DIFF_MS then ms diff else "#{diff}ms"
         @timestamp[type] = new Date()
-        messageType = @outputType @keyword or type, " +#{diff}"
+        diff = " +#{diff}"
       else
         @timestamp[type] = new Date()
-        messageType = @outputType @keyword or type
-    else
-      messageType = @outputType @keyword or type
 
+    messageType = @outputType keyword, diff
     messageType = @colorize colorType, messageType
     messageType + message
 
