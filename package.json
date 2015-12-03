@@ -19,10 +19,10 @@
     "logging"
   ],
   "dependencies": {
-    "chalk": "*",
-    "coffee-script": "*",
-    "format-util": "*",
-    "pretty-ms": "*"
+    "chalk": "latest",
+    "coffee-script": "latest",
+    "format-util": "latest",
+    "pretty-ms": "latest"
   },
   "devDependencies": {
     "browserify": "*",

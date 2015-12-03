@@ -1,24 +1,16 @@
 'use strict'
 
-chalk    = require 'chalk'
-DEFAULT  = require './Default'
-format   = require 'format-util'
+chalk        = require 'chalk'
+DEFAULT      = require './Default'
+format       = require 'format-util'
+existsAssign = require 'existential-assign'
 
 module.exports = class Acho
-
   constructor: (options = {}) ->
-    @keyword = options.keyword
-    @align = if options.align? then options.align else DEFAULT.ALIGN
-    @timestamp = [] if options.diff or DEFAULT.DIFF
-    @outputType = options.outputType or DEFAULT.OUTPUT_TYPE
-    @color = if options.color? then options.color else DEFAULT.COLOR
-    @level = options.level or DEFAULT.UNMUTED
-    @types = options.types or DEFAULT.TYPES
-    @transport = options.transport or DEFAULT.TRANSPORT
-    @outputMessage = options.outputMessage or DEFAULT.OUTPUT_MESSAGE
-    @generateMessage = options.generateMessage or DEFAULT.GENERATE_MESSAGE
-    @generateTypeMessage = options.generateTypeMessage or DEFAULT.GENERATE_TYPE_MESSAGE
-    @print = options.print or DEFAULT.PRINT
+    options = existsAssign(DEFAULT, options)
+    options.diff = [] if options.diff
+    @[key] = value for key, value of options
+
     @messages = do =>
       messages = {}
       for type of @types

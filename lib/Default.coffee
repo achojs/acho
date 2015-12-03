@@ -6,17 +6,17 @@ CONST =
   MIN_DIFF_MS: 10000
 
 module.exports =
-  PRINT: ->
+  print: ->
     for type of @types
       @transport @generateMessage type, message for message in @messages[type]
 
-  OUTPUT_MESSAGE: (message) -> message
-  OUTPUT_TYPE: (type, diff = '') ->
-    if @align and not @timestamp then "#{type}#{diff}\t" else "#{type}#{diff} "
+  outputMessage: (message) -> message
+  outputType: (type, diff = '') ->
+    if @align and not @diff then "#{type}#{diff}\t" else "#{type}#{diff} "
 
-  TRANSPORT: console.log
+  transport: console.log
 
-  GENERATE_MESSAGE: (type, message) ->
+  generateMessage: (type, message) ->
     return unless @isPrintable type
 
     colorType   = @types[type].color
@@ -26,31 +26,32 @@ module.exports =
     keyword     = if @keyword? then @keyword else type
     diff        = null
 
-    if @timestamp
-      if @timestamp[type]
-        diff = new Date() - @timestamp[type]
+    if @diff
+      if @diff[type]
+        diff = new Date() - @diff[type]
         diff = if diff > CONST.MIN_DIFF_MS then ms diff else "#{diff}ms"
-        @timestamp[type] = new Date()
+        @diff[type] = new Date()
         diff = " +#{diff}"
       else
-        @timestamp[type] = new Date()
+        @diff[type] = new Date()
 
     messageType = @outputType keyword, diff
     messageType = @colorize colorType, messageType
     messageType + message
 
-  GENERATE_TYPE_MESSAGE: (type) ->
+  generateTypeMessage: (type) ->
     (message...) =>
       message = @_format message
       @transport @generateMessage type, message
       this
 
-  DIFF: false
-  ALIGN: true
-  COLOR: true
-  UNMUTED: 'all'
-  MUTED: 'silent'
-  TYPES:
+  keyword: null
+  diff: false
+  align: true
+  color: true
+  unmuted: 'all'
+  muted: 'silent'
+  types:
     line:
       color: 'gray'
     error:
