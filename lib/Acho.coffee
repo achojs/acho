@@ -1,9 +1,8 @@
 'use strict'
 
-chalk        = require 'chalk'
+
 DEFAULT      = require './Default'
 CONST        = require './Constants'
-format       = require 'format-util'
 existsAssign = require 'existential-assign'
 
 module.exports = (options = {}) ->
@@ -28,19 +27,5 @@ module.exports = (options = {}) ->
     @[type] message
     @push type, message
     this
-
-  acho.colorize = (colors, message) ->
-    return message if not @color or CONST.ENV is 'production'
-    colors  = colors.split ' '
-    stylize = chalk
-    stylize = stylize[color] for color in colors
-    stylize message
-
-  acho.isPrintable = (type) ->
-    return true if @level is CONST.UNMUTED
-    return false if @level is CONST.MUTED
-    @types[type].level <= @types[@level].level
-
-  acho.format = (messages) -> format.apply null, messages
 
   acho

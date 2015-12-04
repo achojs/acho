@@ -1,7 +1,9 @@
 'use strict'
 
-ms    = require 'pretty-ms'
-CONST = require './Constants'
+chalk      = require 'chalk'
+ms         = require 'pretty-ms'
+CONST      = require './Constants'
+formatUtil = require 'format-util'
 
 module.exports =
   print: ->
@@ -42,6 +44,20 @@ module.exports =
       message = @format message
       @transport @generateMessage type, message
       this
+
+  colorize: (colors, message) ->
+    return message if not @color or CONST.ENV is 'production'
+    colors  = colors.split ' '
+    stylize = chalk
+    stylize = stylize[color] for color in colors
+    stylize message
+
+  isPrintable: (type) ->
+    return true if @level is CONST.UNMUTED
+    return false if @level is CONST.MUTED
+    @types[type].level <= @types[@level].level
+
+  format: (messages) -> formatUtil.apply null, messages
 
   keyword: null
   diff: false
