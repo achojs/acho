@@ -38,7 +38,7 @@ module.exports =
     messageType + message
 
   generateTypeMessage: (type) ->
-    (message...) =>
+    (message...) ->
       message = @format message
       @transport @generateMessage type, message
       this
