@@ -181,7 +181,7 @@ If you need customize more the output you can setup `.print` `.generateMessage` 
 
 ## API
 
-### .constructor({Object} [options])
+### Acho({Object} [options])
 
 Create a new logger. Available options:
 
