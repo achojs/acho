@@ -2,8 +2,11 @@
 
 chalk        = require 'chalk'
 DEFAULT      = require './Default'
+CONST        = require './Constants'
 format       = require 'format-util'
 existsAssign = require 'existential-assign'
+
+getEnvironment = -> process?.env.NODE_ENV?.toLowerCase() or undefined
 
 module.exports = (options = {}) ->
   acho = existsAssign(DEFAULT, options)
@@ -18,27 +21,28 @@ module.exports = (options = {}) ->
     messages
 
   acho.push = (type, messages...) ->
-    message = @_format messages
+    message = @format messages
     @messages[type].push message
     this
 
   acho.add = (type, messages...) ->
-    message = @_format messages
+    message = @format messages
     @[type] message
     @push type, message
     this
 
   acho.colorize = (colors, message) ->
-    return message if not @color or process?.env.NODE_ENV?.toLowerCase() is 'production'
+    return message if not @color or getEnvironment() is 'production'
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
     stylize message
 
   acho.isPrintable = (type) ->
-    return true if @level is DEFAULT.UNMUTED
-    return false if @level is DEFAULT.MUTED
+    return true if @level is CONST.UNMUTED
+    return false if @level is CONST.MUTED
     @types[type].level <= @types[@level].level
 
-  acho._format = (messages) -> format.apply null, messages
+  acho.format = (messages) -> format.apply null, messages
+
   acho

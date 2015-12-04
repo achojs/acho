@@ -1,9 +1,7 @@
 'use strict'
 
-ms = require 'pretty-ms'
-
-CONST =
-  MIN_DIFF_MS: 10000
+ms    = require 'pretty-ms'
+CONST = require './Constants'
 
 module.exports =
   print: ->
@@ -41,7 +39,7 @@ module.exports =
 
   generateTypeMessage: (type) ->
     (message...) =>
-      message = @_format message
+      message = @format message
       @transport @generateMessage type, message
       this
 
@@ -49,8 +47,9 @@ module.exports =
   diff: false
   align: true
   color: true
-  unmuted: 'all'
-  muted: 'silent'
+
+  level: CONST.UNMUTED
+
   types:
     line:
       color: 'gray'
