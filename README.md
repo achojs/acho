@@ -54,13 +54,13 @@ If you're using a browser, the library falls back to attaching itself to window 
 
 ```js
 var Acho = require('acho');
-var acho = new Acho();
+var acho = Acho();
 ```
 
 #### Global/Browser
 
 ```js
-var acho = new Acho();
+var acho = Acho();
 ```
 
 #### AMD
@@ -128,7 +128,7 @@ Additionally exists two special levels:
 The default log level is `all`. You can define it in the constructor:
 
 ```js
-var acho = new Acho({level: 'silly'})
+var acho = Acho({level: 'silly'})
 ```
 
 or at runtime:
@@ -146,7 +146,7 @@ By default the messages structure is brief: Just the message type followed by th
 But you can easily modify the output. For example, let's add a timestamp to each message:
 
 ```js
-acho = new Acho({
+acho = Acho({
   color: true,
   level: 'silly',
 
@@ -183,7 +183,7 @@ If you need customize more the output you can setup `.print` `.generateMessage` 
 
 ### Acho({Object} [options])
 
-Create a new logger. Available options:
+Create a logger. Available options:
 
 #### keyword **{String}**
 
