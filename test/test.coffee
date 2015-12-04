@@ -22,7 +22,7 @@ describe 'Acho ::', ->
     @acho = Acho opts
 
   it 'create a new object', ->
-    (typeof @acho is 'object').should.be.equal true
+    @acho.should.be.object
 
   it 'add a message into the collection', ->
     @acho.push 'error', 'hello world'
