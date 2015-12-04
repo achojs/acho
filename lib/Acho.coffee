@@ -6,8 +6,6 @@ CONST        = require './Constants'
 format       = require 'format-util'
 existsAssign = require 'existential-assign'
 
-getEnvironment = -> process?.env.NODE_ENV?.toLowerCase() or undefined
-
 module.exports = (options = {}) ->
   acho = existsAssign(DEFAULT, options)
   acho.diff = [] if acho.diff
@@ -32,7 +30,7 @@ module.exports = (options = {}) ->
     this
 
   acho.colorize = (colors, message) ->
-    return message if not @color or getEnvironment() is 'production'
+    return message if not @color or CONST.ENV is 'production'
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
