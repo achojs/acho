@@ -21,6 +21,7 @@
   "dependencies": {
     "chalk": "latest",
     "coffee-script": "latest",
+    "existential-assign": "latest",
     "format-util": "latest",
     "pretty-ms": "latest"
   },
