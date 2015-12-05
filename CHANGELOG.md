@@ -1,7 +1,33 @@
+<a name="2.4.1"></a>
+## 2.4.1 (2015-12-05)
+
+
+* added existential-assign dep ([f8b35d4](https://github.com/kikobeats/acho/commit/f8b35d4))
+* better gif, round 2. ([675710e](https://github.com/kikobeats/acho/commit/675710e))
+* bye fat arrow ([431b1d1](https://github.com/kikobeats/acho/commit/431b1d1))
+* composition over inheritance ([963907e](https://github.com/kikobeats/acho/commit/963907e))
+* little refactor ([28f225c](https://github.com/kikobeats/acho/commit/28f225c))
+* little refactor ([3906739](https://github.com/kikobeats/acho/commit/3906739))
+* Moved configurable stuff into Default ([f7c3b26](https://github.com/kikobeats/acho/commit/f7c3b26))
+* moved getEnvironment inot CONST.ENV ([403cf73](https://github.com/kikobeats/acho/commit/403cf73))
+* no moar new keyword ([8417785](https://github.com/kikobeats/acho/commit/8417785))
+* refactor test, more expressive ([cb0f665](https://github.com/kikobeats/acho/commit/cb0f665))
+* refactored, less is more ([a2edabd](https://github.com/kikobeats/acho/commit/a2edabd))
+* removed new keyword, not necessary any more ([85bc524](https://github.com/kikobeats/acho/commit/85bc524))
+* removed unnecessary new keyword ([9905b4a](https://github.com/kikobeats/acho/commit/9905b4a))
+* Update .travis.yml ([284724c](https://github.com/kikobeats/acho/commit/284724c))
+* Update README.md ([01aea77](https://github.com/kikobeats/acho/commit/01aea77))
+* Update README.md ([86cf60e](https://github.com/kikobeats/acho/commit/86cf60e))
+* updated ([b603a19](https://github.com/kikobeats/acho/commit/b603a19))
+* updated bumped settings ([1010569](https://github.com/kikobeats/acho/commit/1010569))
+
+
+
 <a name="2.4.0"></a>
 # 2.4.0 (2015-11-17)
 
 
+* 2.4.0 releases ([fd6fb87](https://github.com/kikobeats/acho/commit/fd6fb87))
 * added string interpolation support ([f3c7623](https://github.com/kikobeats/acho/commit/f3c7623))
 * better gif 💅 ([adae687](https://github.com/kikobeats/acho/commit/adae687))
 * fixed disabled colors param ([ab7fd74](https://github.com/kikobeats/acho/commit/ab7fd74))
