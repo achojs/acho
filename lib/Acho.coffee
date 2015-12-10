@@ -1,6 +1,5 @@
 'use strict'
 
-
 DEFAULT      = require './Default'
 CONST        = require './Constants'
 existsAssign = require 'existential-assign'
