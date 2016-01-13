@@ -53,7 +53,7 @@
     "prepublish": "npm run dirty && npm run clean && npm install && npm test",
     "pretest": "npm run lint",
     "push": "git tag $newVersion && git push origin $newVersion --follow-tags",
-    "test": " && sh test/test.sh"
+    "test": "sh test/test.sh"
   },
   "license": "MIT"
 }
