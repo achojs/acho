@@ -23,6 +23,10 @@ plugins:
       plugin: 'bumped-terminal'
       command: 'npm run commit'
 
+    'Detecting problem before publish':
+      plugin: 'bumped-terminal'
+      command: 'npm run dirty && npm run clean && npm install && npm test'
+
     'Publishing tag at Github':
       plugin: 'bumped-terminal'
       command: 'npm run push'
