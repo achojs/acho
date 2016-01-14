@@ -47,11 +47,8 @@
   },
   "scripts": {
     "clean": "rm -rf node_modules",
-    "dirty": "./node_modules/.bin/git-dirty",
-    "commit": "git add CHANGELOG.md bower.json package.json dist && git commit -m \"$newVersion releases\"",
-    "lint": "./node_modules/.bin/standard lib",
+    "lint": "standard lib",
     "pretest": "npm run lint",
-    "push": "git tag $newVersion && git push origin $newVersion --follow-tags",
     "test": "sh test/test.sh"
   },
   "license": "MIT"
