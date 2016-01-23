@@ -1,13 +1,28 @@
+<a name="2.4.2"></a>
+## 2.4.2 (2016-01-23)
+
+
+* Delete extra space ([d8eeb8f](https://github.com/kikobeats/acho/commit/d8eeb8f))
+* Delete line break ([0edd794](https://github.com/kikobeats/acho/commit/0edd794))
+* Fix tests script ([cd34ec8](https://github.com/kikobeats/acho/commit/cd34ec8))
+* Move prepublish into bumped step ([eefa46a](https://github.com/kikobeats/acho/commit/eefa46a))
+* Update bumped config ([16128e6](https://github.com/kikobeats/acho/commit/16128e6))
+* update scripts ([d74876f](https://github.com/kikobeats/acho/commit/d74876f))
+* Update scripts, more simple ([d5f4209](https://github.com/kikobeats/acho/commit/d5f4209))
+
+
+
 <a name="2.4.1"></a>
 ## 2.4.1 (2015-12-05)
 
 
+* 2.4.1 releases ([58c3b3d](https://github.com/kikobeats/acho/commit/58c3b3d))
 * added existential-assign dep ([f8b35d4](https://github.com/kikobeats/acho/commit/f8b35d4))
 * better gif, round 2. ([675710e](https://github.com/kikobeats/acho/commit/675710e))
 * bye fat arrow ([431b1d1](https://github.com/kikobeats/acho/commit/431b1d1))
 * composition over inheritance ([963907e](https://github.com/kikobeats/acho/commit/963907e))
-* little refactor ([28f225c](https://github.com/kikobeats/acho/commit/28f225c))
 * little refactor ([3906739](https://github.com/kikobeats/acho/commit/3906739))
+* little refactor ([28f225c](https://github.com/kikobeats/acho/commit/28f225c))
 * Moved configurable stuff into Default ([f7c3b26](https://github.com/kikobeats/acho/commit/f7c3b26))
 * moved getEnvironment inot CONST.ENV ([403cf73](https://github.com/kikobeats/acho/commit/403cf73))
 * no moar new keyword ([8417785](https://github.com/kikobeats/acho/commit/8417785))
