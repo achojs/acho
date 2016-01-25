@@ -189,6 +189,8 @@ Create a logger. Available options:
 
 Instead of print the type log level, print the keyword. By default this behavior is not activated.
 
+You can pass the special keyword 'symbol' to show an unicode icon. This is special behavior for CLI programs.
+
 #### color **{Boolean}**
 
 Enable or disable colorized output. `false` by default.
