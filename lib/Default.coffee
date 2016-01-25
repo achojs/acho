@@ -1,9 +1,11 @@
 'use strict'
 
-chalk      = require 'chalk'
 humanizeMs = require 'ms'
+chalk      = require 'chalk'
+figures    = require 'figures'
 CONST      = require './Constants'
 formatUtil = require 'format-util'
+
 module.exports =
   print: ->
     for type of @types
@@ -12,6 +14,8 @@ module.exports =
   outputMessage: (message) -> message
   outputType: (type) ->
     align = if @align then "\t" else " "
+    if @keyword
+      type = if @keyword is CONST.SYMBOL_KEYWORD then @types[type].symbol else type
     "#{type}#{align}"
 
   transport: console.log
@@ -22,8 +26,6 @@ module.exports =
     colorType   = @types[type].color
     message     = @outputMessage message
     message     = @colorize @types.line.color, message
-
-    keyword     = if @keyword? then @keyword else type
     diff        = null
 
     if @diff
@@ -35,7 +37,7 @@ module.exports =
         @diff[type] = new Date()
         diff = " +0ms"
 
-    messageType = @outputType keyword
+    messageType = @outputType type
     messageType = @colorize colorType, messageType
 
     output = messageType + message
@@ -71,25 +73,40 @@ module.exports =
 
   types:
     line:
-      color: 'gray'
+      color : 'gray'
+      symbol: ''
+
     error:
       level : 0
       color : 'red'
+      symbol: figures.cross
+
     warn:
       level : 1
       color : 'yellow'
+      symbol: figures.warning
+
     success:
       level : 2
       color : 'green'
+      symbol: figures.tick
+
     info:
       level : 3
       color : 'white'
+      symbol: figures.info
+
     verbose:
       level : 4
       color : 'cyan'
+      symbol: figures.info
+
     debug:
       level : 5
       color : 'blue'
+      symbol: figures.info
+
     silly:
       level : 6
       color : 'magenta'
+      symbol: figures.info

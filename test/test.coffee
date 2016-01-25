@@ -52,11 +52,15 @@ describe 'Acho ::', ->
     it 'specifying a keyword', ->
       printLogs Acho level: 'silly', color: true, keyword: 'acho'
 
+    it 'specifying a special "symbol" keyword', ->
+      printLogs Acho level: 'silly', color: true, keyword: 'symbol'
+
     it 'enabling diff between logs', (done) ->
       acho = Acho
         level: 'silly'
         color: true
         diff: true
+        align: false
 
       printWarn = -> acho.warn 'hello world'
       printErr = -> acho.error 'oh noes!'
