@@ -1,18 +1,18 @@
 'use strict'
 
 chalk      = require 'chalk'
-ms         = require 'pretty-ms'
+humanizeMs = require 'ms'
 CONST      = require './Constants'
 formatUtil = require 'format-util'
-
 module.exports =
   print: ->
     for type of @types
       @transport @generateMessage type, message for message in @messages[type]
 
   outputMessage: (message) -> message
-  outputType: (type, diff = '') ->
-    if @align and not @diff then "#{type}#{diff}\t" else "#{type}#{diff} "
+  outputType: (type) ->
+    align = if @align then "\t" else " "
+    "#{type}#{align}"
 
   transport: console.log
 
@@ -28,16 +28,19 @@ module.exports =
 
     if @diff
       if @diff[type]
-        diff = new Date() - @diff[type]
-        diff = if diff > CONST.MIN_DIFF_MS then ms diff else "#{diff}ms"
-        @diff[type] = new Date()
+        diff = humanizeMs(new Date() - @diff[type])
         diff = " +#{diff}"
+        @diff[type] = new Date()
       else
         @diff[type] = new Date()
+        diff = " +0ms"
 
-    messageType = @outputType keyword, diff
+    messageType = @outputType keyword
     messageType = @colorize colorType, messageType
-    messageType + message
+
+    output = messageType + message
+    output += @colorize colorType, diff if diff
+    output
 
   generateTypeMessage: (type) ->
     (message...) ->

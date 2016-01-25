@@ -5,11 +5,14 @@
   "version": "2.4.2",
   "main": "./index.js",
   "author": {
-    "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
+    "email": "josefrancisco.verdu@gmail.com",
     "url": "https://github.com/Kikobeats"
   },
-  "repository": "Kikobeats/acho",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kikobeats/acho.git"
+  },
   "bugs": {
     "url": "https://github.com/Kikobeats/acho/issues"
   },
@@ -19,11 +22,11 @@
     "logging"
   ],
   "dependencies": {
-    "chalk": "latest",
-    "coffee-script": "latest",
-    "existential-assign": "latest",
-    "format-util": "latest",
-    "pretty-ms": "latest"
+    "chalk": "~1.1.1",
+    "coffee-script": "~1.10.0",
+    "existential-assign": "~1.2.2",
+    "format-util": "1.0.3",
+    "ms": "~0.7.1"
   },
   "devDependencies": {
     "browserify": "latest",
