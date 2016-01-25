@@ -1,7 +1,19 @@
+<a name="2.5.0"></a>
+# 2.5.0 (2016-01-25)
+
+
+* Add documentation ([c4795a5](https://github.com/kikobeats/acho/commit/c4795a5))
+* Add symbol special keyword ([c287277](https://github.com/kikobeats/acho/commit/c287277))
+* Separate align from diff ([134fa13](https://github.com/kikobeats/acho/commit/134fa13))
+* update scripts ([cd64037](https://github.com/kikobeats/acho/commit/cd64037))
+
+
+
 <a name="2.4.2"></a>
 ## 2.4.2 (2016-01-23)
 
 
+* 2.4.2 releases ([8b27e1a](https://github.com/kikobeats/acho/commit/8b27e1a))
 * Delete extra space ([d8eeb8f](https://github.com/kikobeats/acho/commit/d8eeb8f))
 * Delete line break ([0edd794](https://github.com/kikobeats/acho/commit/0edd794))
 * Fix tests script ([cd34ec8](https://github.com/kikobeats/acho/commit/cd34ec8))
