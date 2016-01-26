@@ -2,9 +2,23 @@
 
 humanizeMs = require 'ms'
 chalk      = require 'chalk'
-figures    = require 'figures'
 CONST      = require './Constants'
 formatUtil = require 'format-util'
+
+figure = do ->
+  main =
+    info    : 'ℹ'
+    success : '✔'
+    warning : '⚠'
+    error   : '✖'
+
+  win =
+    info    : 'i'
+    success : '√'
+    warning : '‼'
+    error   : '×'
+
+  if process.platform is 'win32' then win else main
 
 module.exports =
   print: ->
@@ -74,39 +88,38 @@ module.exports =
   types:
     line:
       color : 'gray'
-      symbol: ''
 
     error:
       level : 0
       color : 'red'
-      symbol: figures.cross
+      symbol: figure.error
 
     warn:
       level : 1
       color : 'yellow'
-      symbol: figures.warning
+      symbol: figure.warning
 
     success:
       level : 2
       color : 'green'
-      symbol: figures.tick
+      symbol: figure.success
 
     info:
       level : 3
       color : 'white'
-      symbol: figures.info
+      symbol: figure.info
 
     verbose:
       level : 4
       color : 'cyan'
-      symbol: figures.info
+      symbol: figure.info
 
     debug:
       level : 5
       color : 'blue'
-      symbol: figures.info
+      symbol: figure.info
 
     silly:
       level : 6
       color : 'magenta'
-      symbol: figures.info
+      symbol: figure.info
