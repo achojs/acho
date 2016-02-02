@@ -2,7 +2,7 @@
   "name": "acho",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
   "homepage": "https://github.com/Kikobeats/acho",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "main": "dist/acho.js",
   "author": {
     "name": "Kiko Beats"
@@ -13,6 +13,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kikobeats/acho.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kikobeats/acho/issues"
   },
   "keywords": [
     "log",
@@ -26,8 +29,5 @@
     "test",
     "tests"
   ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kikobeats/acho/issues"
-  }
+  "license": "MIT"
 }
