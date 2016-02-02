@@ -1,8 +1,17 @@
+<a name="2.5.2"></a>
+## 2.5.2 (2016-02-02)
+
+
+* Update dependencies ([e4e3206](https://github.com/kikobeats/acho/commit/e4e3206))
+
+
+
 <a name="2.5.1"></a>
 ## 2.5.1 (2016-01-26)
 
 
 * Delete unnecessary dependency ([831c4e2](https://github.com/kikobeats/acho/commit/831c4e2))
+* Release 2.5.1 ([1249c33](https://github.com/kikobeats/acho/commit/1249c33))
 
 
 
