@@ -1,11 +1,11 @@
 'use strict'
 
-DEFAULT      = require './Default'
-CONST        = require './Constants'
-existsAssign = require 'existential-assign'
+DEFAULT       = require './Default'
+CONST         = require './Constants'
+existsDefault = require 'existential-default'
 
 module.exports = (options = {}) ->
-  acho = existsAssign(DEFAULT, options)
+  acho = existsDefault(options, DEFAULT)
   acho.diff = [] if acho.diff
   acho[key] = value for key, value of acho
 
