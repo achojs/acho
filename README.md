@@ -185,45 +185,59 @@ If you need customize more the output you can setup `.print` `.generateMessage` 
 
 Create a logger. Available options:
 
-#### keyword **{String}**
+##### **{String}** keyword
+
+Default: `loglevel`
 
 Instead of print the type log level, print the keyword. By default this behavior is not activated.
 
-You can pass the special keyword 'symbol' to show an unicode icon. This is special behavior for CLI programs.
+You can pass the special keyword `symbol` to show an unicode icon. This is special behavior for CLI programs.
 
-#### color **{Boolean}**
+#### **{Boolean** diff
 
-Enable or disable colorized output. `false` by default.
+Default: `false`
 
-#### level **{String}**
+Prints timestamp between log from the same level.
 
-Provides the logging level. `all` by default.
+##### **{Boolean}** color 
 
-#### types **{Object}**
+Default: `false`.
+
+Enable or disable colorized output.
+
+##### **{String}** level 
+
+Default: `all`
+
+Provides the logging level.
+
+##### **{Object}** types 
 
 You can provide the types and priorities.
 
-#### print **{Function}**
+##### **{Function}** print 
 
 Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
 
-#### transport **{Function}**
+##### **{Function}** transport 
 
-Defines what happens with the log message. By default is `console.log`.
+Default: `console.log`
 
-#### outputType **{Function}**
+Defines what happens with the log message.
+
+##### **{Function}** outputType 
 
 Provides a function to customize the type in the output.
 
-#### outputMessage **{Function}**
+##### **{Function}** outputMessage 
 
 Provides a function to customize the message in the output.
 
-#### generateMessage **{Function}**
+##### **{Function}** generateMessage 
 
 Provides a function that generate the message to be outputted. It combines other internal methods for generate the output (as `.isPrintable` or `.colorize`) and normally you are not interested in the definition of it, but you can provide it as option as well.
 
-#### generateTypeMessage **{Function}**
+##### **{Function}** generateTypeMessage 
 
 Provides a function used to generate the type message.
 
