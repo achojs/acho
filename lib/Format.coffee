@@ -63,7 +63,6 @@ format = (fmt) ->
 
   fmt += ' ' + serialize arg for arg in args if args.length
   fmt = fmt.replace(REGEX.escape, '%') if fmt.replace?
-
   serialize fmt
 
 module.exports = format
