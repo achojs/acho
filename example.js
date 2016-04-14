@@ -79,9 +79,14 @@ messageTimeout('error', 'under production', colors)
 lineBreakTimeout()
 
 messageTimeout('silly', 'and more more more...', base)
+
+lineBreakTimeout()
+
 messageTimeout('debug', 'string interpolation', base)
 messageTimeout('verbose', 'logs align', base)
 messageTimeout('info', 'custom levels and transports', base)
+messageTimeout('info', 'object serialization', base)
+messageTimeout('info', {foo: 'bar', hello: 'world'}, base)
 
 lineBreakTimeout()
 

@@ -2,8 +2,8 @@
 
 humanizeMs = require 'ms'
 chalk      = require 'chalk'
+formatUtil = require './Format'
 CONST      = require './Constants'
-formatUtil = require 'format-util'
 
 figure = do ->
   main =
