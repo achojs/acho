@@ -193,51 +193,51 @@ Instead of print the type log level, print the keyword. By default this behavior
 
 You can pass the special keyword `symbol` to show an unicode icon. This is special behavior for CLI programs.
 
-#### **{Boolean** diff
+#### **{Boolean}** diff
 
 Default: `false`
 
 Prints timestamp between log from the same level.
 
-##### **{Boolean}** color 
+##### **{Boolean}** color
 
 Default: `false`.
 
 Enable or disable colorized output.
 
-##### **{String}** level 
+##### **{String}** level
 
 Default: `all`
 
 Provides the logging level.
 
-##### **{Object}** types 
+##### **{Object}** types
 
 You can provide the types and priorities.
 
-##### **{Function}** print 
+##### **{Function}** print
 
 Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
 
-##### **{Function}** transport 
+##### **{Function}** transport
 
 Default: `console.log`
 
 Defines what happens with the log message.
 
-##### **{Function}** outputType 
+##### **{Function}** outputType
 
 Provides a function to customize the type in the output.
 
-##### **{Function}** outputMessage 
+##### **{Function}** outputMessage
 
 Provides a function to customize the message in the output.
 
-##### **{Function}** generateMessage 
+##### **{Function}** generateMessage
 
 Provides a function that generate the message to be outputted. It combines other internal methods for generate the output (as `.isPrintable` or `.colorize`) and normally you are not interested in the definition of it, but you can provide it as option as well.
 
-##### **{Function}** generateTypeMessage 
+##### **{Function}** generateTypeMessage
 
 Provides a function used to generate the type message.
 
