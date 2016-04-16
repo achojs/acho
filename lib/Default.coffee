@@ -61,7 +61,8 @@ module.exports =
   generateTypeMessage: (type) ->
     (message...) ->
       message = @format message
-      @transport @generateMessage type, message
+      message = @generateMessage type, message
+      @transport message if message
       this
 
   colorize: (colors, message) ->
