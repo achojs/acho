@@ -29,7 +29,7 @@ module.exports =
   outputType: (type) ->
     align = if @align then "\t" else " "
     if @keyword
-      type = if @keyword is CONST.SYMBOL_KEYWORD then @types[type].symbol else type
+      type = if @keyword is CONST.SYMBOL_KEYWORD then @types[type].symbol else @keyword
     "#{type}#{align}"
 
   transport: console.log
