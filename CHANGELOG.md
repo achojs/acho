@@ -1,3 +1,10 @@
+<a name="2.6.1"></a>
+## 2.6.1 (2016-04-16)
+
+* Fix setup a custom keyword ([30dcf5d](https://github.com/kikobeats/acho/commit/30dcf5d))
+
+
+
 <a name="2.6.0"></a>
 # 2.6.0 (2016-04-16)
 
