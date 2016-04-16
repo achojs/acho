@@ -1,3 +1,13 @@
+<a name="2.6.0"></a>
+# 2.6.0 (2016-04-16)
+
+* Add object serialization ([428859e](https://github.com/kikobeats/acho/commit/428859e))
+* Fix typo ([bb5a29f](https://github.com/kikobeats/acho/commit/bb5a29f))
+* Update docs ([ce0064e](https://github.com/kikobeats/acho/commit/ce0064e))
+* Update docs ([a038f4f](https://github.com/kikobeats/acho/commit/a038f4f))
+
+
+
 <a name="2.5.3"></a>
 ## 2.5.3 (2016-02-02)
 
