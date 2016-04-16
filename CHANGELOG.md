@@ -1,3 +1,10 @@
+<a name="2.6.2"></a>
+## 2.6.2 (2016-04-16)
+
+* Fix mute levels ([3c3c307](https://github.com/kikobeats/acho/commit/3c3c307))
+
+
+
 <a name="2.6.1"></a>
 ## 2.6.1 (2016-04-16)
 
