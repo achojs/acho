@@ -81,7 +81,7 @@ acho
 .info('hello world')
 .error('something bad happens');
 // => 'info: hello world'
-// => 'error: 'something bard happens'
+// => 'error: 'something bad happens'
 ```
 
 Maybe you don't want to output the message, but store it for later use:
