@@ -4,56 +4,106 @@ should = require 'should'
 randomInterval = (min, max) ->
   Math.floor(Math.random()*(max-min+1)+min)
 
-printLogs = (instance) ->
-  instance.error 'error message'
-  instance.warn 'warn message'
-  instance.success 'success message'
-  instance.info 'info message'
-  instance.verbose 'verbose message'
-  instance.debug 'debug message'
-  instance.silly 'silly message'
+printLogs = (acho) ->
+  acho.error 'error message'
+  acho.warn 'warn message'
+  acho.success 'success message'
+  acho.info 'info message'
+  acho.verbose 'verbose message'
+  acho.debug 'debug message'
+  acho.silly 'silly message'
+
+createFakeTransport = ->
+  store = []
+  transport = ->
+    console.log.apply(console, arguments)
+    store.push.apply(store, arguments)
+  transport.store = store
+  transport
 
 describe 'Acho ::', ->
 
-  before  ->
+  beforeEach ->
     opts =
       color: true
       outputType: (type) -> "[#{type}] » "
+      transport: createFakeTransport()
     @acho = Acho opts
 
-  it 'create a new object', ->
-    @acho.should.be.object
+  describe 'initialization', ->
 
-  it 'add a message into the collection', ->
-    @acho.push 'error', 'hello world'
-    @acho.messages.error.length.should.be.equal 1
+    it 'invoke constructor without new keyword', ->
+      @acho.should.be.an.object
 
-  it 'add a message and print', ->
-    @acho.add 'error', 'hello world'
-    @acho.messages.error.length.should.be.equal 2
+    it 'invoke constructor new keyword', ->
+      new Acho().should.be.an.object
 
-  it 'print a normal message', ->
-    @acho.warn 'warn message'
+  describe 'internal store', ->
 
-  it 'change the color behavior',  ->
-    @acho.types.error.color = 'red bold'
-    @acho.print()
+    it 'passing a initial store state', ->
+      instance = Acho
+        transport: createFakeTransport()
+        messages:
+          info: ['info message']
 
-  it 'print the messages', ->
-    @acho.print()
+      instance.print()
+      instance.transport.store.length.should.be.equal 1
+      expected = '\u001b[37minfo\t\u001b[39m\u001b[90minfo message\u001b[39m'
+      instance.transport.store[0].should.be.equal expected
 
-  it 'try to print a message out of the level',  ->
-    @acho.verbose 'test of message'
+    it '.push: add message into a internal level collection', ->
+      @acho.push 'error', 'hello world'
+      @acho.messages.error.length.should.be.equal 1
 
-  describe 'logs', ->
+    it '.add: push and print a message', ->
+      @acho.add 'error', 'hello world'
+
+      @acho.transport.store.length.should.be.equal 1
+      @acho.messages.error.length.should.be.equal 1
+
+      expected = '\u001b[31m[error] » \u001b[39m\u001b[90mhello world\u001b[39m'
+      @acho.transport.store[0].should.be.equal expected
+      @acho.messages.error[0].should.be.equal 'hello world'
+
+  describe 'print', ->
+
+    it 'print a normal level message', ->
+      @acho.warn 'warn message'
+
+      @acho.transport.store.length.should.be.equal 1
+      expected = '\u001b[33m[warn] » \u001b[39m\u001b[90mwarn message\u001b[39m'
+      @acho.transport.store[0].should.be.equal expected
+
+    it 'change the color behavior',  ->
+      @acho.types.error.color = 'red bold'
+      @acho.push 'error', 'hello world'
+      @acho.print()
+
+      @acho.transport.store.length.should.be.equal 1
+      expected = '\u001b[31m\u001b[1m[error] » \u001b[22m\u001b[39m\u001b[90mhello world\u001b[39m'
+      @acho.transport.store[0].should.be.equal expected
+
+    it 'no ouptut messages out of the level',  ->
+      level = @acho.level
+      @acho.level = 'success'
+      @acho.verbose 'test of message'
+      @acho.transport.store.length.should.be.equal 0
+
+  describe 'customization', ->
     it 'default skin', ->
-      printLogs Acho level: 'silly', color: true
+      instance = Acho level: 'silly', color: true
+      printLogs instance
+      (instance.keyword?).should.be.false
 
     it 'specifying a keyword', ->
-      printLogs Acho level: 'silly', color: true, keyword: 'acho'
+      instance = Acho level: 'silly', color: true, keyword: 'acho'
+      printLogs instance
+      instance.keyword.should.be.equal 'acho'
 
     it 'specifying a special "symbol" keyword', ->
-      printLogs Acho level: 'silly', color: true, keyword: 'symbol'
+      instance = Acho level: 'silly', color: true, keyword: 'symbol'
+      printLogs instance
+      instance.keyword.should.be.equal 'symbol'
 
     it 'enabling diff between logs', (done) ->
       acho = Acho
@@ -72,4 +122,4 @@ describe 'Acho ::', ->
         clearInterval warn
         clearInterval err
         done()
-      , 10000)
+      , 5000)
