@@ -1,3 +1,13 @@
+<a name="2.7.1"></a>
+## 2.7.1 (2016-04-18)
+
+* Add instanceof for new keyword ([e02a43e](https://github.com/kikobeats/acho/commit/e02a43e))
+* Add messages flag documentation ([c735734](https://github.com/kikobeats/acho/commit/c735734))
+* Refactor tests, more useful ([d85467f](https://github.com/kikobeats/acho/commit/d85467f))
+* update bumped settings ([189711a](https://github.com/kikobeats/acho/commit/189711a))
+
+
+
 <a name="2.7.0"></a>
 # 2.7.0 (2016-04-18)
 
