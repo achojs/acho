@@ -246,6 +246,10 @@ Provides the logging level.
 
 You can provide the types and priorities.
 
+##### **{Object}** messages
+
+It provides a initial internal store state per each log level. This option is useful when you want to integrate the logger with the ouptut of a delayed function.
+
 ##### **{Function}** print
 
 Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
