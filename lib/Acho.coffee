@@ -4,7 +4,9 @@ DEFAULT       = require './Default'
 CONST         = require './Constants'
 existsDefault = require 'existential-default'
 
-module.exports = (options = {}) ->
+Acho = (options = {}) ->
+  return new Acho options unless this instanceof Acho
+
   acho = existsDefault(options, DEFAULT)
   acho.diff = [] if acho.diff
   acho[key] = value for key, value of acho
@@ -28,3 +30,5 @@ module.exports = (options = {}) ->
     this
 
   acho
+
+module.exports = Acho
