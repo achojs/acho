@@ -25,9 +25,9 @@ plugins:
 
     'Detecting problem before publish':
       plugin: 'bumped-terminal'
-      command: 'git-dirty && npm test'
+      command: 'git-dirty'
 
-    'Publishing tag at Github':
+    'Publishing tag at GitHub':
       plugin: 'bumped-terminal'
       command: 'git tag $newVersion && git push && git push --tags'
 
