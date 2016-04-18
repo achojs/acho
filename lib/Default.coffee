@@ -27,7 +27,7 @@ module.exports =
 
   outputMessage: (message) -> message
   outputType: (type) ->
-    align = if @align then "\t" else " "
+    align = if @align then @align else " "
     if @keyword
       type = if @keyword is CONST.SYMBOL_KEYWORD then @types[type].symbol else @keyword
     "#{type}#{align}"
@@ -81,7 +81,7 @@ module.exports =
 
   keyword: null
   diff: false
-  align: true
+  align: "\t"
   color: true
 
   level: CONST.UNMUTED
