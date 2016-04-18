@@ -17,7 +17,7 @@
 
 # Why
 
-* Very easy to use, customize and extend.
+* Easy to use, customize and extend.
 * Expressive API with chaineable methods.
 * Mininum dependencies, just focussing on one thing.
 * Compatible with AMD/CommonJS or just global object in the browser.
@@ -69,43 +69,66 @@ I don't use personally use AMD, so I can't conjure an example, but it should wor
 
 It's time to use it!
 
+<p align="center">
+  <br>
+  <img src="docs/images/00.png" alt="acho">
+  <br>
+</p>
+
 ```js
 acho.info('hello world');
-// => 'hello world'
 ```
 
 All public methods are chainable:
+
+<p align="center">
+  <br>
+  <img src="docs/images/01.png" alt="acho">
+  <br>
+</p>
 
 ```js
 acho
 .info('hello world')
 .error('something bad happens');
-// => 'info: hello world'
-// => 'error: 'something bad happens'
 ```
 
 Maybe you don't want to output the message, but store it for later use:
 
+<p align="center">
+  <br>
+  <img src="docs/images/02.png" alt="acho">
+  <br>
+</p>
+
 ```js
-acho.push('success', 'good job!');
+acho.push('success', 'good job', 'well done', 'great!');
 console.log(acho.messages.success);
-// => ['good job']
 ```
 
 If you want to print previously stored messages, just call the method `print`:
 
+<p align="center">
+  <br>
+  <img src="docs/images/03.png" alt="acho">
+  <br>
+</p>
+
 ```js
 acho.print()
-// => 'success: good job!'
 ```
 
 You might be thinking: Can I combine both, to store and both print a message? Absolutely!
 
+<p align="center">
+  <br>
+  <img src="docs/images/04.png" alt="acho">
+  <br>
+</p>
+
 ```js
 acho.add('info', 'this message is printed and stored');
-// => 'info: 'this message is printed and stored'
 console.log(acho.messages.info)
-// => ['this message is printed and stored']
 ```
 
 ### Defining the level
@@ -145,14 +168,20 @@ By default the messages structure is brief: Just the message type followed by th
 
 But you can easily modify the output. For example, let's add a timestamp to each message:
 
+<p align="center">
+  <br>
+  <img src="docs/images/05.png" alt="acho">
+  <br>
+</p>
+
 ```js
-acho = Acho({
+var acho = Acho({
   color: true,
   level: 'silly',
 
   // Customize how to print the 'type' of each message
   outputType: function(type) {
-    return '[' + type + '] »';
+    return '[' + type + '] » ';
   },
 
   // Customize how to print the message.
@@ -161,20 +190,8 @@ acho = Acho({
     return Date() + ' :: ' + message;
   }
 });
-```
 
-This results in your awesome output:
-
-```js
 acho.info('I am hungry');
-// => '[ info ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I am hungry'
-```
-
-In addition, you can use a custom keyword to use as logging level instead of print the logging level. Just provide `keyword` parameter in the constructor. Providing it in the above example as `{ keyword: 'acho' }` the result is:
-
-```js
-acho.info('I am hungry');
-// => '[ acho ] » Fri Mar 13 2015 18:12:48 GMT+0100 (CET) :: I am hungry'
 ```
 
 If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
@@ -185,6 +202,8 @@ If you need customize more the output you can setup `.print` `.generateMessage` 
 
 Create a logger. Available options:
 
+<img src="docs/images/07.png" align="right">
+
 ##### **{String}** keyword
 
 Default: `loglevel`
@@ -193,11 +212,23 @@ Instead of print the type log level, print the keyword. By default this behavior
 
 You can pass the special keyword `symbol` to show an unicode icon. This is special behavior for CLI programs.
 
-#### **{Boolean}** diff
+<img src="docs/images/08.png" align="right">
+
+##### **{String}** align
+
+Default: `\t`
+
+It adds an alignment separator between the type of the message and the message.
+
+You can provide your own separator or disable it providing a `false`.
+
+<img src="docs/images/06.png" align="right">
+
+##### **{Boolean}** diff
 
 Default: `false`
 
-Prints timestamp between log from the same level.
+Prints timestamp between log from the same level. Specially useful to debug timmings.
 
 ##### **{Boolean}** color
 
