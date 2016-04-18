@@ -1,3 +1,12 @@
+<a name="2.7.0"></a>
+# 2.7.0 (2016-04-18)
+
+* Add possibility to setup custom align ([c52064f](https://github.com/kikobeats/acho/commit/c52064f))
+* Better docs ([e17548a](https://github.com/kikobeats/acho/commit/e17548a))
+* Typo ([64c6bc9](https://github.com/kikobeats/acho/commit/64c6bc9))
+
+
+
 <a name="2.6.2"></a>
 ## 2.6.2 (2016-04-16)
 
