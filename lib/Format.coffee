@@ -4,19 +4,23 @@ REGEX =
   escape: /%{2,2}/g
   type: /(%?)(%([jds]))/g
 
+hasWhiteSpace = (s) ->
+  s.indexOf(' ') isnt -1
+
 serialize = (obj, key) ->
   # symbols cannot be directly casted to strings
-  if typeof key == 'symbol'
+  if typeof key is 'symbol'
     key = key.toString()
-  if typeof obj == 'symbol'
+  if typeof obj is 'symbol'
     obj = obj.toString()
-  if obj == null
+  if obj is null
     obj = 'null'
-  else if obj == undefined
+  else if obj is undefined
     obj = 'undefined'
-  else if obj == false
+  else if obj is false
     obj = 'false'
-  if typeof obj != 'object'
+  if typeof obj isnt 'object'
+    obj = '\'' + obj + '\'' if key and typeof obj is 'string' and hasWhiteSpace(obj)
     return if key then key + '=' + obj else obj
   if obj instanceof Buffer
     return if key then key + '=' + obj.toString('base64') else obj.toString('base64')
@@ -32,7 +36,7 @@ serialize = (obj, key) ->
       while j < l
         msg += serialize(obj[keys[i]][j])
         if j < l - 1
-          msg += ', '
+          msg += ' '
         j++
       msg += ']'
     else if obj[keys[i]] instanceof Date
@@ -40,7 +44,7 @@ serialize = (obj, key) ->
     else
       msg += serialize(obj[keys[i]], keys[i])
     if i < length - 1
-      msg += ', '
+      msg += ' '
     i++
   msg
 
