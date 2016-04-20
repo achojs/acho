@@ -1,3 +1,11 @@
+<a name="2.7.2"></a>
+## 2.7.2 (2016-04-20)
+
+* Add a more intelligent align ([644cddd](https://github.com/kikobeats/acho/commit/644cddd))
+* Improve serialization ([c583358](https://github.com/kikobeats/acho/commit/c583358))
+
+
+
 <a name="2.7.1"></a>
 ## 2.7.1 (2016-04-18)
 
