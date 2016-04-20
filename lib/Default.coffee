@@ -27,9 +27,22 @@ module.exports =
 
   outputMessage: (message) -> message
   outputType: (type) ->
-    align = if @align then @align else " "
     if @keyword
-      type = if @keyword is CONST.SYMBOL_KEYWORD then @types[type].symbol else @keyword
+      if @keyword is CONST.SYMBOL_KEYWORD
+        type = then @types[type].symbol
+      else
+        type = @keyword
+
+    if @align
+      if CONST.ENV is 'production'
+        align = ' '
+      else if @keyword
+        align = ' '
+      else
+        align = @align
+    else
+      align = ' '
+
     "#{type}#{align}"
 
   transport: console.log

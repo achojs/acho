@@ -4,9 +4,7 @@ require('date-utils')
 var Acho = require('./index.js')
 var setDateout = require('set-dateout')
 
-var base = Acho({
-  align: true
-})
+var base = Acho()
 
 var diff = Acho({
   diff: true
@@ -17,8 +15,9 @@ var label = Acho({
   keyword: 'worker#1'
 })
 
-var colors = Acho({
-  color: false
+var production = Acho({
+  color: false,
+  align: false
 })
 
 var visit = Acho({
@@ -73,8 +72,8 @@ messageTimeout('warn', 'easily', label)
 
 lineBreakTimeout()
 
-messageTimeout('error', 'automatically color disabled', colors)
-messageTimeout('error', 'under production', colors)
+messageTimeout('error', 'automatically color and align disabled', production)
+messageTimeout('error', 'under production scenario', production)
 
 lineBreakTimeout()
 
