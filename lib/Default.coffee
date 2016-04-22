@@ -52,7 +52,7 @@ module.exports =
 
     colorType   = @types[type].color
     message     = @outputMessage message
-    message     = @colorize @types.line.color, message
+    message     = @colorizeMessage type, message
     diff        = null
 
     if @diff
@@ -78,6 +78,21 @@ module.exports =
       @transport message if message
       this
 
+  colorizeMessage: (type, message) ->
+    return message if not @color or CONST.ENV is 'production'
+    lineColor = @types.line.color
+    typeColor = @types[type].color
+
+    message.split(' ').map((msg) =>
+      msg = msg.split '='
+      if msg.length > 1
+        msg[0] = @colorize typeColor, msg[0]
+        msg[1] = @colorize lineColor, msg[1]
+        msg.join @colorize lineColor, '='
+      else
+        @colorize lineColor, msg
+    ).join(' ')
+
   colorize: (colors, message) ->
     return message if not @color or CONST.ENV is 'production'
     colors  = colors.split ' '
@@ -94,14 +109,14 @@ module.exports =
 
   keyword: null
   diff: false
-  align: "\t"
+  align: "\t\t\t"
   color: true
 
   level: CONST.UNMUTED
 
   types:
     line:
-      color : 'gray'
+      color : 'white dim'
 
     error:
       level : 0
