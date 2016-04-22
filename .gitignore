@@ -23,6 +23,7 @@ nbproject
 ############################
 # Tests
 ############################
+test.js
 testApp
 coverage
 

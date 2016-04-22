@@ -1,3 +1,11 @@
+<a name="2.8.0"></a>
+# 2.8.0 (2016-04-22)
+
+* Add keys color based on the level ([d120614](https://github.com/kikobeats/acho/commit/d120614))
+* Add testing file ([2934428](https://github.com/kikobeats/acho/commit/2934428))
+
+
+
 <a name="2.7.2"></a>
 ## 2.7.2 (2016-04-20)
 

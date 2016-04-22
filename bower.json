@@ -2,7 +2,7 @@
   "name": "acho",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
   "homepage": "https://github.com/Kikobeats/acho",
-  "version": "2.7.2",
+  "version": "2.8.0",
   "main": "dist/acho.js",
   "author": {
     "name": "Kiko Beats"
