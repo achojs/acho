@@ -73,7 +73,8 @@ module.exports =
 
   generateTypeMessage: (type) ->
     (message...) ->
-      message = @format message
+      color = @types[type].color
+      message = @format message, color
       message = @generateMessage type, message
       @transport message if message
       this
@@ -90,7 +91,9 @@ module.exports =
     return false if @level is CONST.MUTED
     @types[type].level <= @types[@level].level
 
-  format: (messages) -> formatUtil.apply null, messages
+  format: (messages, color) ->
+    messages.push color
+    formatUtil.apply null, messages
 
   keyword: null
   diff: false

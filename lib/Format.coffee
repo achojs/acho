@@ -1,5 +1,7 @@
 'use strict'
 
+chalk = require 'chalk'
+
 REGEX =
   escape: /%{2,2}/g
   type: /(%?)(%([jds]))/g
@@ -7,7 +9,7 @@ REGEX =
 hasWhiteSpace = (s) ->
   s.indexOf(' ') isnt -1
 
-serialize = (obj, key) ->
+serialize = (color, obj, key) ->
   # symbols cannot be directly casted to strings
   if typeof key is 'symbol'
     key = key.toString()
@@ -34,7 +36,7 @@ serialize = (obj, key) ->
       j = 0
       l = obj[keys[i]].length
       while j < l
-        msg += serialize(obj[keys[i]][j])
+        msg += serialize(color, obj[keys[i]][j])
         if j < l - 1
           msg += ' '
         j++
@@ -42,7 +44,7 @@ serialize = (obj, key) ->
     else if obj[keys[i]] instanceof Date
       msg += keys[i] + '=' + obj[keys[i]]
     else
-      msg += serialize(obj[keys[i]], keys[i])
+      msg += serialize(color, obj[keys[i]], chalk[color](keys[i]))
     if i < length - 1
       msg += ' '
     i++
@@ -50,6 +52,8 @@ serialize = (obj, key) ->
 
 format = (fmt) ->
   args = Array::slice.call(arguments, 1)
+  color = args.pop()
+
   if args.length
     fmt = fmt.replace(REGEX.type, (match, escaped, ptn, flag) ->
       arg = args.shift()
@@ -59,14 +63,14 @@ format = (fmt) ->
         when 'd'
           arg = Number(arg)
         when 'j'
-          arg = serialize arg
+          arg = serialize color, arg
       return arg if !escaped
       args.unshift arg
       match
     )
 
-  fmt += ' ' + serialize arg for arg in args if args.length
+  fmt += ' ' + serialize color, arg for arg in args if args.length
   fmt = fmt.replace(REGEX.escape, '%') if fmt.replace?
-  serialize fmt
+  serialize color, fmt
 
 module.exports = format
