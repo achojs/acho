@@ -1,9 +1,10 @@
 'use strict'
 
 module.exports =
-  MIN_DIFF_MS: 10000
-  MUTED: 'silent'
-  UNMUTED: 'all'
-  SYMBOL_KEYWORD: 'symbol'
-  LINE_COLOR: 'white dim'
-  ENV: do -> process?.env.NODE_ENV?.toLowerCase() or undefined
+  DECORATE_COUNTER_ZERO_N : 4
+  MIN_DIFF_MS             : 10000
+  UNMUTED                 : 'all'
+  LINE_COLOR              : 'gray'
+  SYMBOL_KEYWORD          : 'symbol'
+  MUTED                   : 'silent'
+  ENV                     : do -> process?.env.NODE_ENV?.toLowerCase() or undefined

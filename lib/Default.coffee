@@ -47,8 +47,20 @@ module.exports =
     type = type.toUpperCase() if @upperCase
     type
 
+  decorateCounter: (counter) ->
+    str = '' + counter
+    n = CONST.DECORATE_COUNTER_ZERO_N - str.length
+    return '0'.repeat(n) + str if n > 0
+    str
+
   outputCounter: ->
-    "[ #{++@counter} ]"
+    now = new Date
+    diff = now - @timestamp
+
+    ++@counter if (diff > 1000)
+
+    @timestamp = new Date()
+    " [#{@decorateCounter(@counter)}]"
 
   transport: console.log
 
@@ -71,10 +83,13 @@ module.exports =
 
     messageType = @outputType type
     messageType = @colorize colorType, messageType
+    messageType = (@types[type].align or '') + messageType
 
     messageCounter = @outputCounter()
+    messageCounter = @colorize CONST.LINE_COLOR, messageCounter
 
-    output = messageType + @align + messageCounter + @align + message
+
+    output = messageType + messageCounter + @align + message
     output += @colorize colorType, diff if diff
     output
 
@@ -120,10 +135,12 @@ module.exports =
 
   keyword: null
   diff: false
-  align: "\t"
+  align: "\t\t\t"
   color: true
   counter: 0
   cli: false
+
+  timestamp: new Date()
 
   level: CONST.UNMUTED
 
@@ -133,17 +150,19 @@ module.exports =
 
       debug:
         level : 4
-        color : 'gray'
+        color : 'white'
         symbol: figure.info
 
       info:
         level : 3
         color : 'blue'
+        align : ' '
         symbol: figure.info
 
       warn:
         level : 2
         color : 'yellow'
+        align : ' '
         symbol: figure.warning
 
       error:
