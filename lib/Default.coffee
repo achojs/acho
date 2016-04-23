@@ -26,6 +26,7 @@ module.exports =
       @transport @generateMessage type, message for message in @messages[type]
 
   outputMessage: (message) -> message
+
   outputType: (type) ->
     if @keyword
       if @keyword is CONST.SYMBOL_KEYWORD
@@ -42,6 +43,8 @@ module.exports =
         align = @align
     else
       align = ' '
+
+    type = type.toUpperCase() if @upperCase
 
     "#{type}#{align}"
 

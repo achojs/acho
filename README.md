@@ -236,6 +236,12 @@ Default: `false`.
 
 Enable or disable colorized output.
 
+##### **{Boolean}** upperCase
+
+Default: `false`.
+
+Enable or disable print log level in upper case.
+
 ##### **{String}** level
 
 Default: `all`
