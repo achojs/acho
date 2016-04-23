@@ -124,37 +124,57 @@ module.exports =
     line:
       color : 'white dim'
 
-    error:
+    emerg:
       level : 0
       color : 'red'
       symbol: figure.error
 
-    warn:
+    alert:
       level : 1
       color : 'yellow'
       symbol: figure.warning
 
-    success:
+    crit:
       level : 2
+      color : 'yellow'
+      symbol: figure.warning
+
+    error:
+      level : 3
+      color : 'red'
+      symbol: figure.error
+
+    warn:
+      level : 4
+      color : 'yellow'
+      symbol: figure.warning
+
+    notice:
+      level : 5
+      color : 'cyan bold'
+      symbol: figure.success
+
+    success:
+      level : 6
       color : 'green'
       symbol: figure.success
 
     info:
-      level : 3
+      level : 7
       color : 'white'
       symbol: figure.info
 
     verbose:
-      level : 4
+      level : 8
       color : 'cyan'
       symbol: figure.info
 
     debug:
-      level : 5
+      level : 9
       color : 'blue'
       symbol: figure.info
 
     silly:
-      level : 6
+      level : 10
       color : 'magenta'
       symbol: figure.info
