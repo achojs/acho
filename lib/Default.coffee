@@ -25,6 +25,12 @@ module.exports =
     for type of @types
       @transport @generateMessage type, message for message in @messages[type]
 
+  decorateCounter: (counter) ->
+    str = '' + counter
+    n = CONST.DECORATE_COUNTER_ZERO_N - str.length
+    return '0'.repeat(n) + str if n > 0
+    str
+
   outputMessage: (message) -> message
 
   outputType: (type) ->
@@ -47,18 +53,10 @@ module.exports =
     type = type.toUpperCase() if @upperCase
     type
 
-  decorateCounter: (counter) ->
-    str = '' + counter
-    n = CONST.DECORATE_COUNTER_ZERO_N - str.length
-    return '0'.repeat(n) + str if n > 0
-    str
-
   outputCounter: ->
     now = new Date
     diff = now - @timestamp
-
     ++@counter if (diff > 1000)
-
     @timestamp = new Date()
     " [#{@decorateCounter(@counter)}]"
 
@@ -66,7 +64,6 @@ module.exports =
 
   generateMessage: (type, message) ->
     return unless @isPrintable type
-
     colorType   = @types[type].color
     message     = @outputMessage message
     message     = @colorizeMessage type, message
@@ -87,7 +84,6 @@ module.exports =
 
     messageCounter = @outputCounter()
     messageCounter = @colorize CONST.LINE_COLOR, messageCounter
-
 
     output = messageType + messageCounter + @align + message
     output += @colorize colorType, diff if diff
