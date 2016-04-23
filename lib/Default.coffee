@@ -45,8 +45,10 @@ module.exports =
       align = ' '
 
     type = type.toUpperCase() if @upperCase
+    type
 
-    "#{type}#{align}"
+  outputCounter: ->
+    "[ #{++@counter} ]"
 
   transport: console.log
 
@@ -70,7 +72,9 @@ module.exports =
     messageType = @outputType type
     messageType = @colorize colorType, messageType
 
-    output = messageType + message
+    messageCounter = @outputCounter()
+
+    output = messageType + @align + messageCounter + @align + message
     output += @colorize colorType, diff if diff
     output
 
@@ -84,7 +88,8 @@ module.exports =
 
   colorizeMessage: (type, message) ->
     return message if not @color or CONST.ENV is 'production'
-    lineColor = @types.line.color
+
+    lineColor = CONST.LINE_COLOR
     typeColor = @types[type].color
 
     message.split(' ').map((msg) =>
@@ -115,66 +120,65 @@ module.exports =
 
   keyword: null
   diff: false
-  align: "\t\t\t"
+  align: "\t"
   color: true
+  counter: 0
+  cli: false
 
   level: CONST.UNMUTED
 
   types:
-    line:
-      color : 'white dim'
 
-    emerg:
-      level : 0
-      color : 'red'
-      symbol: figure.error
+    logging:
 
-    alert:
-      level : 1
-      color : 'yellow'
-      symbol: figure.warning
+      debug:
+        level : 4
+        color : 'gray'
+        symbol: figure.info
 
-    crit:
-      level : 2
-      color : 'yellow'
-      symbol: figure.warning
+      info:
+        level : 3
+        color : 'blue'
+        symbol: figure.info
 
-    error:
-      level : 3
-      color : 'red'
-      symbol: figure.error
+      warn:
+        level : 2
+        color : 'yellow'
+        symbol: figure.warning
 
-    warn:
-      level : 4
-      color : 'yellow'
-      symbol: figure.warning
+      error:
+        level : 1
+        color : 'red'
+        symbol: figure.error
 
-    notice:
-      level : 5
-      color : 'cyan bold'
-      symbol: figure.success
+      fatal:
+        level : 0
+        color : 'red'
+        symbol: figure.error
 
-    success:
-      level : 6
-      color : 'green'
-      symbol: figure.success
+    cli:
 
-    info:
-      level : 7
-      color : 'white'
-      symbol: figure.info
+      debug:
+        level : 4
+        color : 'blue'
+        symbol: figure.info
 
-    verbose:
-      level : 8
-      color : 'cyan'
-      symbol: figure.info
+      info:
+        level : 3
+        color : 'white'
+        symbol: figure.info
 
-    debug:
-      level : 9
-      color : 'blue'
-      symbol: figure.info
+      success:
+        level : 2
+        color : 'green'
+        symbol: figure.success
 
-    silly:
-      level : 10
-      color : 'magenta'
-      symbol: figure.info
+      warn:
+        level : 1
+        color : 'yellow'
+        symbol: figure.warning
+
+      error:
+        level : 0
+        color : 'red'
+        symbol: figure.error

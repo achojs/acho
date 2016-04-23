@@ -5,4 +5,5 @@ module.exports =
   MUTED: 'silent'
   UNMUTED: 'all'
   SYMBOL_KEYWORD: 'symbol'
+  LINE_COLOR: 'white dim'
   ENV: do -> process?.env.NODE_ENV?.toLowerCase() or undefined
