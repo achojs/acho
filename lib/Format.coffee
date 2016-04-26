@@ -26,6 +26,8 @@ serialize = (color, obj, key) ->
     return if key then key + '=' + obj else obj
   if obj instanceof Buffer
     return if key then key + '=' + obj.toString('base64') else obj.toString('base64')
+  if obj instanceof Error
+    return obj.message or obj
   msg = ''
   keys = Object.keys(obj)
   length = keys.length
