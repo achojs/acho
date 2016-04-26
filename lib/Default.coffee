@@ -58,7 +58,10 @@ module.exports =
     diff = now - @timestamp
     ++@counter if (diff > 1000)
     @timestamp = new Date()
-    " [#{@decorateCounter(@counter)}]"
+    "[#{@decorateCounter(@counter)}]"
+
+  outputContext: ->
+    @context
 
   transport: console.log
 
@@ -85,7 +88,10 @@ module.exports =
     messageCounter = @outputCounter()
     messageCounter = @colorize CONST.LINE_COLOR, messageCounter
 
-    output = messageType + messageCounter + @align + message
+    messageContext = @outputContext()
+    messageContext = @colorize CONST.LINE_COLOR, messageContext
+
+    output = "#{messageType} #{messageCounter} #{messageContext} #{@align}#{message}"
     output += @colorize colorType, diff if diff
     output
 
@@ -131,10 +137,11 @@ module.exports =
 
   keyword: null
   diff: false
-  align: "\t\t\t"
+  align: "\t\t"
   color: true
   counter: 0
   cli: false
+  context: 'test'
 
   timestamp: new Date()
 
