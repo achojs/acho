@@ -39,29 +39,22 @@ module.exports =
         type = then @types[type].symbol
       else
         type = @keyword
-
-    if @align
-      if CONST.ENV is 'production'
-        align = ' '
-      else if @keyword
-        align = ' '
-      else
-        align = @align
-    else
-      align = ' '
-
     type = type.toUpperCase() if @upperCase
     type
 
+  outputAlign: ->
+    return ' ' if CONST.ENV is 'production' or not @align or @keyword
+    @align
+
   outputCounter: ->
+    return '' unless @timestamp
     now = new Date
     diff = now - @timestamp
     ++@counter if (diff > 1000)
     @timestamp = new Date()
     "[#{@decorateCounter(@counter)}]"
 
-  outputContext: ->
-    @context
+  outputContext: -> @context
 
   transport: console.log
 
@@ -91,7 +84,9 @@ module.exports =
     messageContext = @outputContext()
     messageContext = @colorize CONST.LINE_COLOR, messageContext
 
-    output = "#{messageType} #{messageCounter} #{messageContext} #{@align}#{message}"
+    align = @outputAlign()
+
+    output = "#{messageType} #{messageCounter} #{messageContext}#{align}#{message}"
     output += @colorize colorType, diff if diff
     output
 
@@ -136,12 +131,12 @@ module.exports =
     formatUtil.apply null, messages
 
   keyword: null
+  context: null
   diff: false
   align: "\t\t"
   color: true
   counter: 0
   cli: false
-  context: 'test'
 
   timestamp: new Date()
 
