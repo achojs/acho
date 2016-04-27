@@ -131,7 +131,7 @@ module.exports =
     formatUtil.apply null, messages
 
   keyword: null
-  context: null
+  context: ''
   diff: false
   align: "\t\t"
   color: true
