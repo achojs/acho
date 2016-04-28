@@ -143,59 +143,29 @@ module.exports =
   level: CONST.UNMUTED
 
   types:
+    debug:
+      level : 4
+      color : 'white'
+      symbol: figure.info
 
-    logging:
+    info:
+      level : 3
+      color : 'blue'
+      align : ' '
+      symbol: figure.info
 
-      debug:
-        level : 4
-        color : 'white'
-        symbol: figure.info
+    warn:
+      level : 2
+      color : 'yellow'
+      align : ' '
+      symbol: figure.warning
 
-      info:
-        level : 3
-        color : 'blue'
-        align : ' '
-        symbol: figure.info
+    error:
+      level : 1
+      color : 'red'
+      symbol: figure.error
 
-      warn:
-        level : 2
-        color : 'yellow'
-        align : ' '
-        symbol: figure.warning
-
-      error:
-        level : 1
-        color : 'red'
-        symbol: figure.error
-
-      fatal:
-        level : 0
-        color : 'red'
-        symbol: figure.error
-
-    cli:
-
-      debug:
-        level : 4
-        color : 'blue'
-        symbol: figure.info
-
-      info:
-        level : 3
-        color : 'white'
-        symbol: figure.info
-
-      success:
-        level : 2
-        color : 'green'
-        symbol: figure.success
-
-      warn:
-        level : 1
-        color : 'yellow'
-        symbol: figure.warning
-
-      error:
-        level : 0
-        color : 'red'
-        symbol: figure.error
+    fatal:
+      level : 0
+      color : 'red'
+      symbol: figure.error

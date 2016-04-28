@@ -13,8 +13,6 @@ Acho = (options = {}) ->
 
   acho.messages = do ->
     messages = {}
-    acho.types = if acho.cli then acho.types.cli else acho.types.logging
-
     for type of acho.types
       messages[type] = options.messages?[type] or []
       acho[type] = acho.generateTypeMessage type
