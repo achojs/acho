@@ -5,21 +5,6 @@ chalk      = require 'chalk'
 formatUtil = require './Format'
 CONST      = require './Constants'
 
-figure = do ->
-  main =
-    info    : 'ℹ'
-    success : '✔'
-    warning : '⚠'
-    error   : '✖'
-
-  win =
-    info    : 'i'
-    success : '√'
-    warning : '‼'
-    error   : '×'
-
-  if process.platform is 'win32' then win else main
-
 module.exports =
   print: ->
     for type of @types
@@ -43,7 +28,7 @@ module.exports =
     type
 
   outputAlign: ->
-    return ' ' if CONST.ENV is 'production' or not @align or @keyword
+    return ' ' if CONST.ENV is 'production' or not @align
     @align
 
   outputCounter: ->
@@ -53,6 +38,10 @@ module.exports =
     ++@counter if (diff > 1000)
     @timestamp = new Date()
     "[#{@decorateCounter(@counter)}]"
+
+  outputSeparator: (type) ->
+    return '' if @keyword
+    @types[type].separator or ''
 
   outputContext: -> @context
 
@@ -76,7 +65,8 @@ module.exports =
 
     messageType = @outputType type
     messageType = @colorize colorType, messageType
-    messageType = (@types[type].align or '') + messageType
+
+    separator = @outputSeparator(type)
 
     messageCounter = @outputCounter()
     messageCounter = @colorize CONST.LINE_COLOR, messageCounter
@@ -86,7 +76,7 @@ module.exports =
 
     align = @outputAlign()
 
-    output = "#{messageType} #{messageCounter} #{messageContext}#{align}#{message}"
+    output = "#{messageType}#{separator} #{messageCounter} #{messageContext}#{align}#{message}"
     output += @colorize colorType, diff if diff
     output
 
@@ -146,26 +136,26 @@ module.exports =
     debug:
       level : 4
       color : 'white'
-      symbol: figure.info
+      symbol: CONST.FIGURE.info
 
     info:
-      level : 3
-      color : 'blue'
-      align : ' '
-      symbol: figure.info
+      level     : 3
+      color     : 'blue'
+      separator : ' '
+      symbol    : CONST.FIGURE.info
 
     warn:
-      level : 2
-      color : 'yellow'
-      align : ' '
-      symbol: figure.warning
+      level     : 2
+      color     : 'yellow'
+      separator : ' '
+      symbol    : CONST.FIGURE.warning
 
     error:
       level : 1
       color : 'red'
-      symbol: figure.error
+      symbol: CONST.FIGURE.error
 
     fatal:
       level : 0
       color : 'red'
-      symbol: figure.error
+      symbol: CONST.FIGURE.error
