@@ -2,7 +2,8 @@
 
 var Acho = require('..')
 var acho = Acho({
-  upperCase: true
+  upperCase: true,
+  // keyword: 'symbol'
 })
 
 var levels = Object.keys(acho.types)
