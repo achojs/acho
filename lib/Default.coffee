@@ -104,7 +104,7 @@ module.exports =
     lineColor = CONST.LINE_COLOR
     typeColor = @types[type].color
 
-    message.split(' ').map((msg) =>
+    message.toString().split(' ').map((msg) =>
       msg = msg.split '='
       if msg.length > 1
         msg[0] = @colorize typeColor, msg[0]
