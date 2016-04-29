@@ -135,23 +135,21 @@ console.log(acho.messages.info)
 
 Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
 
-- `error`:   Display calls to `.error()` messages.
-- `warn`: Display calls from `.error()`, `.warn()` messages.
-- `success`: Display calls from `.error()`, `.warn()`, `success()` messages.
-- `info`:    Display calls from `.error()`, `.warn()`, `success()`, `info()` messages.
-- `verbose`: Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()` messages.
-- `debug`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()` messages.
-- `silly`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()`, `silly()` messages.
+- `fatal` : Display calls to `.fatal()` messages.
+- `error` : Display calls to `.fatal()`, `.error()` messages.
+- `warn`  : Display calls from `.fatal()`, `.error()`, `.warn()` messages.
+- `info`  : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()` messages.
+- `debug` : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()`, `debug()` messages.
 
 Additionally exists two special levels:
 
-- `silent`:  Avoid all output.
-- `all`: Allow print all message types.
+- `muted` :  Avoid all output.
+- `all`   : Allow print all message types.
 
 The default log level is `all`. You can define it in the constructor:
 
 ```js
-var acho = Acho({level: 'silly'})
+var acho = Acho({level: 'debug'})
 ```
 
 or at runtime:
@@ -177,7 +175,7 @@ But you can easily modify the output. For example, let's add a timestamp to each
 ```js
 var acho = Acho({
   color: true,
-  level: 'silly',
+  level: 'debug',
 
   // Customize how to print the 'type' of each message
   outputType: function(type) {
