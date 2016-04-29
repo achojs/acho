@@ -216,7 +216,7 @@ You can pass the special keyword `symbol` to show an unicode icon. This is speci
 
 ##### **{String}** align
 
-Default: `\t`
+Default: ` `
 
 It adds an alignment separator between the type of the message and the message.
 
@@ -236,17 +236,33 @@ Default: `false`.
 
 Enable or disable colorized output.
 
+Under production scenario (`NODE_ENV=production`) it's automatically stablish to `false`.
+
 ##### **{Boolean}** upperCase
 
 Default: `false`.
 
 Enable or disable print log level in upper case.
 
+##### **{Boolean}** timestamp
+
+Default: `false`.
+
+Prints a counter timestamp associated with each log line. Useful for debug log traces.
+
 ##### **{String}** level
 
 Default: `all`
 
-Provides the logging level.
+Provides the logging level. This sets from what level print logs using tranport.
+
+Additionally you can provide `muted` to express don't print logs.
+
+##### **{Function}** transport
+
+Default: `console.log`
+
+Defines where write the log message.
 
 ##### **{Object}** types
 
@@ -259,12 +275,6 @@ It provides a initial internal store state per each log level. This option is us
 ##### **{Function}** print
 
 Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
-
-##### **{Function}** transport
-
-Default: `console.log`
-
-Defines what happens with the log message.
 
 ##### **{Function}** outputType
 
