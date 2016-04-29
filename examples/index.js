@@ -1,10 +1,10 @@
 'use strict'
 
 require('date-utils')
-var Acho = require('./index.js')
+var Acho = require('..')
 var setDateout = require('set-dateout')
 
-var base = Acho()
+var base = Acho({})
 
 var diff = Acho({
   diff: true
@@ -49,12 +49,11 @@ var lineBreakTimeout = (function () {
   }
 })()
 
-messageTimeout('info', 'Simple', base)
-messageTimeout('success', 'Tiny', base)
-messageTimeout('verbose', 'Customizable', base)
-messageTimeout('silly', 'Logger for NodeJS and Browser', base)
-messageTimeout('warn', 'in less than...', base)
-messageTimeout('error', '10KB!.', base)
+messageTimeout('info', 'Hackable', base)
+messageTimeout('debug', 'Logging', base)
+messageTimeout('warn', 'for NodeJS and Browser', base)
+messageTimeout('error', 'in less than', base)
+messageTimeout('fatal', '10KB!.', base)
 
 lineBreakTimeout(1)
 
@@ -62,8 +61,8 @@ messageTimeout('info', 'Do you wanna to know more?', base)
 
 lineBreakTimeout()
 
-messageTimeout('success', 'support diff', diff)
-messageTimeout('success', 'between messages', diff)
+messageTimeout('debug', 'support diff', diff)
+messageTimeout('debug', 'between messages', diff)
 
 lineBreakTimeout()
 
@@ -77,16 +76,16 @@ messageTimeout('error', 'under production scenario', production)
 
 lineBreakTimeout()
 
-messageTimeout('silly', 'and more more more...', base)
+messageTimeout('debug', 'and more more more...', base)
 
 lineBreakTimeout()
 
 messageTimeout('debug', 'string interpolation', base)
-messageTimeout('verbose', 'logs align', base)
+messageTimeout('debug', 'logs align', base)
 messageTimeout('info', 'custom levels and transports', base)
 messageTimeout('info', 'object serialization', base)
 messageTimeout('info', {foo: 'bar', hello: 'world'}, base)
 
 lineBreakTimeout()
 
-messageTimeout('success', 'https://github.com/Kikobeats/acho', visit)
+messageTimeout('debug', 'https://github.com/Kikobeats/acho', visit)

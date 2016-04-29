@@ -4,55 +4,56 @@ humanizeMs = require 'ms'
 chalk      = require 'chalk'
 formatUtil = require './Format'
 CONST      = require './Constants'
-
-figure = do ->
-  main =
-    info    : 'ℹ'
-    success : '✔'
-    warning : '⚠'
-    error   : '✖'
-
-  win =
-    info    : 'i'
-    success : '√'
-    warning : '‼'
-    error   : '×'
-
-  if process.platform is 'win32' then win else main
+repeat     = require 'repeat-string'
 
 module.exports =
   print: ->
     for type of @types
       @transport @generateMessage type, message for message in @messages[type]
 
+  decorateCounter: (counter) ->
+    str = '' + counter
+    n = CONST.DECORATE_COUNTER_ZERO_N - str.length
+    return repeat('0', n) + str if n > 0
+    str
+
   outputMessage: (message) -> message
+
   outputType: (type) ->
     if @keyword
       if @keyword is CONST.SYMBOL_KEYWORD
         type = then @types[type].symbol
       else
         type = @keyword
+    type = type.toUpperCase() if @upperCase
+    type
 
-    if @align
-      if CONST.ENV is 'production'
-        align = ' '
-      else if @keyword
-        align = ' '
-      else
-        align = @align
-    else
-      align = ' '
+  outputAlign: ->
+    return ' ' if CONST.ENV is 'production' or not @align
+    @align
 
-    "#{type}#{align}"
+  outputCounter: ->
+    return '' unless @timestamp
+    now = new Date
+    diff = now - @timestamp
+    ++@counter if (diff > 1000)
+    @timestamp = new Date()
+    " [#{@decorateCounter(@counter)}]"
+
+  outputSeparator: (type) ->
+    return '' if @keyword
+    @types[type].separator or ''
+
+  outputContext: ->
+    unless @context then '' else " #{@context}"
 
   transport: console.log
 
   generateMessage: (type, message) ->
     return unless @isPrintable type
-
     colorType   = @types[type].color
     message     = @outputMessage message
-    message     = @colorize @types.line.color, message
+    message     = @colorizeMessage type, message
     diff        = null
 
     if @diff
@@ -67,7 +68,17 @@ module.exports =
     messageType = @outputType type
     messageType = @colorize colorType, messageType
 
-    output = messageType + message
+    separator = @outputSeparator(type)
+
+    messageCounter = @outputCounter()
+    messageCounter = @colorize CONST.LINE_COLOR, messageCounter
+
+    messageContext = @outputContext()
+    messageContext = @colorize CONST.LINE_COLOR, messageContext
+
+    align = @outputAlign()
+
+    output = "#{separator}#{messageType}#{messageCounter}#{messageContext}#{align}#{message}"
     output += @colorize colorType, diff if diff
     output
 
@@ -78,6 +89,22 @@ module.exports =
       message = @generateMessage type, message
       @transport message if message
       this
+
+  colorizeMessage: (type, message) ->
+    return message if not @color or CONST.ENV is 'production'
+
+    lineColor = CONST.LINE_COLOR
+    typeColor = @types[type].color
+
+    message.toString().split(' ').map((msg) =>
+      msg = msg.split '='
+      if msg.length > 1
+        msg[0] = @colorize typeColor, msg[0]
+        msg[1] = @colorize lineColor, msg[1]
+        msg.join @colorize lineColor, '='
+      else
+        @colorize lineColor, msg
+    ).join(' ')
 
   colorize: (colors, message) ->
     return message if not @color or CONST.ENV is 'production'
@@ -95,48 +122,36 @@ module.exports =
     messages.push color
     formatUtil.apply null, messages
 
-  keyword: null
-  diff: false
-  align: "\t"
+  align: " "
   color: true
+  counter: 0
 
   level: CONST.UNMUTED
 
   types:
-    line:
-      color : 'gray'
-
-    error:
-      level : 0
-      color : 'red'
-      symbol: figure.error
-
-    warn:
-      level : 1
-      color : 'yellow'
-      symbol: figure.warning
-
-    success:
-      level : 2
-      color : 'green'
-      symbol: figure.success
+    debug:
+      level : 4
+      color : 'white'
+      symbol: CONST.FIGURE.info
 
     info:
-      level : 3
-      color : 'white'
-      symbol: figure.info
+      level     : 3
+      color     : 'blue'
+      separator : ' '
+      symbol    : CONST.FIGURE.info
 
-    verbose:
-      level : 4
-      color : 'cyan'
-      symbol: figure.info
+    warn:
+      level     : 2
+      color     : 'yellow'
+      separator : ' '
+      symbol    : CONST.FIGURE.warning
 
-    debug:
-      level : 5
-      color : 'blue'
-      symbol: figure.info
+    error:
+      level : 1
+      color : 'red'
+      symbol: CONST.FIGURE.error
 
-    silly:
-      level : 6
-      color : 'magenta'
-      symbol: figure.info
+    fatal:
+      level : 0
+      color : 'red'
+      symbol: CONST.FIGURE.error

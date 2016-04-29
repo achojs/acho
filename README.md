@@ -135,23 +135,21 @@ console.log(acho.messages.info)
 
 Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
 
-- `error`:   Display calls to `.error()` messages.
-- `warn`: Display calls from `.error()`, `.warn()` messages.
-- `success`: Display calls from `.error()`, `.warn()`, `success()` messages.
-- `info`:    Display calls from `.error()`, `.warn()`, `success()`, `info()` messages.
-- `verbose`: Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()` messages.
-- `debug`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()` messages.
-- `silly`:   Display calls from `.error()`, `.warn()`, `success()`, `info()`, `verbose()`, `debug()`, `silly()` messages.
+- `fatal` : Display calls to `.fatal()` messages.
+- `error` : Display calls to `.fatal()`, `.error()` messages.
+- `warn`  : Display calls from `.fatal()`, `.error()`, `.warn()` messages.
+- `info`  : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()` messages.
+- `debug` : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()`, `debug()` messages.
 
 Additionally exists two special levels:
 
-- `silent`:  Avoid all output.
-- `all`: Allow print all message types.
+- `muted` :  Avoid all output.
+- `all`   : Allow print all message types.
 
 The default log level is `all`. You can define it in the constructor:
 
 ```js
-var acho = Acho({level: 'silly'})
+var acho = Acho({level: 'debug'})
 ```
 
 or at runtime:
@@ -177,7 +175,7 @@ But you can easily modify the output. For example, let's add a timestamp to each
 ```js
 var acho = Acho({
   color: true,
-  level: 'silly',
+  level: 'debug',
 
   // Customize how to print the 'type' of each message
   outputType: function(type) {
@@ -216,7 +214,7 @@ You can pass the special keyword `symbol` to show an unicode icon. This is speci
 
 ##### **{String}** align
 
-Default: `\t`
+Default: ` `
 
 It adds an alignment separator between the type of the message and the message.
 
@@ -236,11 +234,33 @@ Default: `false`.
 
 Enable or disable colorized output.
 
+Under production scenario (`NODE_ENV=production`) it's automatically stablish to `false`.
+
+##### **{Boolean}** upperCase
+
+Default: `false`.
+
+Enable or disable print log level in upper case.
+
+##### **{Boolean}** timestamp
+
+Default: `false`.
+
+Prints a counter timestamp associated with each log line. Useful for debug log traces.
+
 ##### **{String}** level
 
 Default: `all`
 
-Provides the logging level.
+Provides the logging level. This sets from what level print logs using tranport.
+
+Additionally you can provide `muted` to express don't print logs.
+
+##### **{Function}** transport
+
+Default: `console.log`
+
+Defines where write the log message.
 
 ##### **{Object}** types
 
@@ -253,12 +273,6 @@ It provides a initial internal store state per each log level. This option is us
 ##### **{Function}** print
 
 Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
-
-##### **{Function}** transport
-
-Default: `console.log`
-
-Defines what happens with the log message.
 
 ##### **{Function}** outputType
 
