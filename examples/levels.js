@@ -2,6 +2,8 @@
 
 var Acho = require('..')
 var acho = Acho({
+  diff: true,
+  timestamp: true,
   upperCase: true,
   // keyword: 'symbol'
 })
