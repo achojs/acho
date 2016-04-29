@@ -44,7 +44,7 @@ module.exports =
     @types[type].separator or ''
 
   outputContext: ->
-    " #{@context}" or ''
+    unless @context then '' else " #{@context}"
 
   transport: console.log
 
