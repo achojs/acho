@@ -43,7 +43,8 @@ module.exports =
     return '' if @keyword
     @types[type].separator or ''
 
-  outputContext: -> @context or ''
+  outputContext: ->
+    " #{@context}" or ''
 
   transport: console.log
 
