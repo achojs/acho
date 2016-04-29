@@ -4,6 +4,7 @@ humanizeMs = require 'ms'
 chalk      = require 'chalk'
 formatUtil = require './Format'
 CONST      = require './Constants'
+repeat     = require 'repeat-string'
 
 module.exports =
   print: ->
@@ -13,7 +14,7 @@ module.exports =
   decorateCounter: (counter) ->
     str = '' + counter
     n = CONST.DECORATE_COUNTER_ZERO_N - str.length
-    return '0'.repeat(n) + str if n > 0
+    return repeat('0', n) + str if n > 0
     str
 
   outputMessage: (message) -> message
