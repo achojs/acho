@@ -5,6 +5,7 @@ var acho = Acho({
   diff: true,
   timestamp: true,
   upperCase: true,
+  context: 'generated'
   // keyword: 'symbol'
 })
 
