@@ -19,6 +19,6 @@ module.exports =
   UNMUTED                 : 'all'
   LINE_COLOR              : 'gray'
   SYMBOL_KEYWORD          : 'symbol'
-  MUTED                   : 'silent'
+  MUTED                   : 'muted'
   ENV                     : do -> process?.env.NODE_ENV?.toLowerCase() or undefined
   FIGURE                  : figure[process.platform is 'win32']
