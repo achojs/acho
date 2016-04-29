@@ -37,13 +37,13 @@ module.exports =
     diff = now - @timestamp
     ++@counter if (diff > 1000)
     @timestamp = new Date()
-    "[#{@decorateCounter(@counter)}]"
+    " [#{@decorateCounter(@counter)}]"
 
   outputSeparator: (type) ->
     return '' if @keyword
     @types[type].separator or ''
 
-  outputContext: -> @context
+  outputContext: -> @context or ''
 
   transport: console.log
 
@@ -76,7 +76,7 @@ module.exports =
 
     align = @outputAlign()
 
-    output = "#{messageType}#{separator} #{messageCounter} #{messageContext}#{align}#{message}"
+    output = "#{separator}#{messageType}#{messageCounter}#{messageContext}#{align}#{message}"
     output += @colorize colorType, diff if diff
     output
 
@@ -120,15 +120,9 @@ module.exports =
     messages.push color
     formatUtil.apply null, messages
 
-  keyword: null
-  context: ''
-  diff: false
-  align: "\t\t"
+  align: " "
   color: true
   counter: 0
-  cli: false
-
-  timestamp: new Date()
 
   level: CONST.UNMUTED
 
