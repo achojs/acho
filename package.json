@@ -1,7 +1,7 @@
 {
   "name": "acho",
   "description": "An extremely simple (but powerful) logging system for NodeJS and browser.",
-  "homepage": "https://github.com/Kikobeats/acho",
+  "homepage": "https://github.com/achohq/acho",
   "version": "2.8.0",
   "main": "./index.js",
   "author": {
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kikobeats/acho.git"
+    "url": "git+https://github.com/achohq/acho.git"
   },
   "bugs": {
-    "url": "https://github.com/Kikobeats/acho/issues"
+    "url": "https://github.com/achohq/acho/issues"
   },
   "keywords": [
     "hackable",
