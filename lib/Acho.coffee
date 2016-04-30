@@ -1,20 +1,20 @@
 'use strict'
 
-DEFAULT       = require './Default'
-CONST         = require './Constants'
-existsDefault = require 'existential-default'
+DEFAULT  = require './Default'
+CONST    = require './Constants'
+defaults = require 'lodash.defaults'
 
-Acho = (options = {}) ->
-  return new Acho options unless this instanceof Acho
+Acho = (params = {}) ->
+  return new Acho params unless this instanceof Acho
 
-  acho = existsDefault(options, DEFAULT)
+  acho = defaults({}, params, DEFAULT)
   acho.diff = [] if acho.diff
   acho[key] = value for key, value of acho
 
   acho.messages = do ->
     messages = {}
     for type of acho.types
-      messages[type] = options.messages?[type] or []
+      messages[type] = params.messages?[type] or []
       acho[type] = acho.generateTypeMessage type
     messages
 
@@ -30,5 +30,11 @@ Acho = (options = {}) ->
     this
 
   acho
+
+Acho.skin = (skinFn) ->
+  skin = skinFn(CONST)
+  (params = {}) ->
+    defaults(params, skin)
+    Acho(params)
 
 module.exports = Acho
