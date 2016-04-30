@@ -6,10 +6,10 @@
   <br>
 </p>
 
-![Last version](https://img.shields.io/github/tag/Kikobeats/acho.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/Kikobeats/acho/master.svg?style=flat-square)](https://travis-ci.org/Kikobeats/acho)
-[![Dependency status](http://img.shields.io/david/Kikobeats/acho.svg?style=flat-square)](https://david-dm.org/Kikobeats/acho)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/Kikobeats/acho.svg?style=flat-square)](https://david-dm.org/Kikobeats/acho#info=devDependencies)
+![Last version](https://img.shields.io/github/tag/achohq/acho.svg?style=flat-square)
+[![Build Status](http://img.shields.io/travis/achohq/acho/master.svg?style=flat-square)](https://travis-ci.org/achohq/acho)
+[![Dependency status](http://img.shields.io/david/achohq/acho.svg?style=flat-square)](https://david-dm.org/achohq/acho)
+[![Dev Dependencies Status](http://img.shields.io/david/dev/achohq/acho.svg?style=flat-square)](https://david-dm.org/achohq/acho#info=devDependencies)
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
