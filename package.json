@@ -32,6 +32,7 @@
     "repeat-string": "~1.5.4"
   },
   "devDependencies": {
+    "acho-skin-cli": "~1.0.0",
     "browserify": "latest",
     "coffeeify": "latest",
     "date-utils": "latest",
