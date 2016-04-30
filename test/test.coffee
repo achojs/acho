@@ -1,20 +1,8 @@
+'use strict'
+
 Acho   = require '..'
+util = require './util'
 should = require 'should'
-
-randomInterval = (min, max) ->
-  Math.floor(Math.random()*(max-min+1)+min)
-
-printLogs = (acho) ->
-  levels = Object.keys(acho.types)
-  levels.forEach (level) -> acho[level](level + ' message')
-
-createFakeTransport = ->
-  store = []
-  transport = ->
-    console.log.apply(console, arguments)
-    store.push.apply(store, arguments)
-  transport.store = store
-  transport
 
 describe 'Acho ::', ->
 
@@ -22,7 +10,7 @@ describe 'Acho ::', ->
     opts =
       color: true
       outputType: (type) -> "[#{type}] » "
-      transport: createFakeTransport()
+      transport: util.createFakeTransport()
     @acho = Acho opts
 
   describe 'initialization', ->
@@ -37,7 +25,7 @@ describe 'Acho ::', ->
 
     it 'passing a initial store state', ->
       instance = Acho
-        transport: createFakeTransport()
+        transport: util.createFakeTransport()
         messages:
           info: ['info message']
 
@@ -87,17 +75,17 @@ describe 'Acho ::', ->
   describe 'customization', ->
     it 'default skin', ->
       instance = Acho()
-      printLogs instance
+      util.printLogs instance
       (instance.keyword?).should.be.false
 
     it 'specifying a keyword', ->
       instance = Acho color: true, keyword: 'acho'
-      printLogs instance
+      util.printLogs instance
       instance.keyword.should.be.equal 'acho'
 
     it 'specifying a special "symbol" keyword', ->
       instance = Acho color: true, keyword: 'symbol'
-      printLogs instance
+      util.printLogs instance
       instance.keyword.should.be.equal 'symbol'
 
     it 'enabling diff between logs', (done) ->
@@ -105,8 +93,8 @@ describe 'Acho ::', ->
       printWarn = -> acho.warn 'hello world'
       printErr = -> acho.error 'oh noes!'
 
-      warn = setInterval(printWarn, randomInterval(1000, 2000))
-      err = setInterval(printErr, randomInterval(2000, 2500))
+      warn = setInterval(printWarn, util.randomInterval(1000, 2000))
+      err = setInterval(printErr, util.randomInterval(2000, 2500))
 
       setTimeout(->
         clearInterval warn
