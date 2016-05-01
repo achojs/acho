@@ -1,3 +1,40 @@
+<a name="3.0.0"></a>
+# 3.0.0 (2016-05-01)
+
+* Add .skin method ([ac1a16d](https://github.com/achohq/acho/commit/ac1a16d))
+* Add docs ([822b697](https://github.com/achohq/acho/commit/822b697))
+* Add experimental RFC5424 levels ([37661c4](https://github.com/achohq/acho/commit/37661c4))
+* Add repeat polyfill ([b2a3337](https://github.com/achohq/acho/commit/b2a3337))
+* Add testing dependency ([1a14ea6](https://github.com/achohq/acho/commit/1a14ea6))
+* Add timestamp ([8dc0d20](https://github.com/achohq/acho/commit/8dc0d20))
+* Add uppercase param ([41fd01c](https://github.com/achohq/acho/commit/41fd01c))
+* Correctly indent context ([1fe6f9b](https://github.com/achohq/acho/commit/1fe6f9b))
+* Disable timestamp by default ([efbc12f](https://github.com/achohq/acho/commit/efbc12f))
+* Expand example ([5cef0cd](https://github.com/achohq/acho/commit/5cef0cd))
+* Fix links references ([e08da90](https://github.com/achohq/acho/commit/e08da90))
+* Fix output boolean values ([e320e95](https://github.com/achohq/acho/commit/e320e95))
+* Fix tests ([8a36b70](https://github.com/achohq/acho/commit/8a36b70))
+* Fix typo ([25dcbc7](https://github.com/achohq/acho/commit/25dcbc7))
+* Fix typo ([81631e9](https://github.com/achohq/acho/commit/81631e9))
+* Improve color style ([786810e](https://github.com/achohq/acho/commit/786810e))
+* Little refactor ([2664f02](https://github.com/achohq/acho/commit/2664f02))
+* Move CLI types out of the project ([d02b6a2](https://github.com/achohq/acho/commit/d02b6a2))
+* move repository references ([f481011](https://github.com/achohq/acho/commit/f481011))
+* output correctly align and context ([ed1e454](https://github.com/achohq/acho/commit/ed1e454))
+* Refactor tests ([91cbdc9](https://github.com/achohq/acho/commit/91cbdc9))
+* Reorganize examples ([305f8e5](https://github.com/achohq/acho/commit/305f8e5))
+* Separate align from separator ([671b472](https://github.com/achohq/acho/commit/671b472))
+* Separate cli mode from logging levels ([585423a](https://github.com/achohq/acho/commit/585423a))
+* silent → muted ([c317250](https://github.com/achohq/acho/commit/c317250))
+* Support Error serialization ([0064885](https://github.com/achohq/acho/commit/0064885))
+* Update docs ([2e29c7f](https://github.com/achohq/acho/commit/2e29c7f))
+* Update example ([209a142](https://github.com/achohq/acho/commit/209a142))
+* Update examples ([da0bba5](https://github.com/achohq/acho/commit/da0bba5))
+* WIP ([0146df6](https://github.com/achohq/acho/commit/0146df6))
+* chore(package): update existential-default to version 1.2.1 ([fc88993](https://github.com/achohq/acho/commit/fc88993))
+
+
+
 <a name="2.8.0"></a>
 # 2.8.0 (2016-04-22)
 
