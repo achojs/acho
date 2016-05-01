@@ -1,6 +1,25 @@
 <a name="3.0.0"></a>
 # 3.0.0 (2016-05-01)
 
+## Breaking Changes
+
+- Simplifiest default logging levels to `.fatal()`, `.error()`, `.warn()`, `info()`, `debug()`.
+- Mute levels use `muted` keyword instead of `silent`.
+
+## New Features
+
+- Add `upperCase` flag to prints loglevels in uppercase.
+- Add `timestamp` flag to prints counter associated with each log.
+- Add `.skin` to make easy load different log levels. Check [acho-skin-cli](https://github.com/achohq/acho-skin-cli).
+
+## Fixes, refactoring and optimizations
+
+- Use [lodash#defaults](https://lodash.com/docs#defaults) instead of [existential-defaults](https://github.com/Kikobeats/existential-default) (more lightweight).
+- Indent log levels from the left instead of from the right (so cute!).
+- Logfmt now works with Error's message.
+
+## Commits
+
 * Add .skin method ([ac1a16d](https://github.com/achohq/acho/commit/ac1a16d))
 * Add docs ([822b697](https://github.com/achohq/acho/commit/822b697))
 * Add experimental RFC5424 levels ([37661c4](https://github.com/achohq/acho/commit/37661c4))
