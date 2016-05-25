@@ -3,6 +3,7 @@
 humanizeMs = require 'ms'
 chalk      = require 'chalk'
 formatUtil = require './Format'
+stripAnsi  = require 'strip-ansi'
 CONST      = require './Constants'
 repeat     = require 'repeat-string'
 
@@ -91,7 +92,7 @@ module.exports =
       this
 
   colorizeMessage: (type, message) ->
-    return message if not @color or CONST.ENV is 'production'
+    return stripAnsi message if not @color or CONST.ENV is 'production'
 
     lineColor = CONST.LINE_COLOR
     typeColor = @types[type].color
@@ -107,7 +108,7 @@ module.exports =
     ).join(' ')
 
   colorize: (colors, message) ->
-    return message if not @color or CONST.ENV is 'production'
+    return stripAnsi message if not @color or CONST.ENV is 'production'
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
