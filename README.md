@@ -234,8 +234,6 @@ Default: `false`.
 
 Enable or disable colorized output.
 
-Under production scenario (`NODE_ENV=production`) it's automatically stablish to `false`.
-
 ##### **{Boolean}** upperCase
 
 Default: `false`.

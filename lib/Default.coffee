@@ -30,7 +30,7 @@ module.exports =
     type
 
   outputAlign: ->
-    return ' ' if CONST.ENV is 'production' or not @align
+    return ' ' unless @align
     @align
 
   outputCounter: ->
@@ -92,7 +92,7 @@ module.exports =
       this
 
   colorizeMessage: (type, message) ->
-    return stripAnsi message if not @color or CONST.ENV is 'production'
+    return stripAnsi message unless @color
 
     lineColor = CONST.LINE_COLOR
     typeColor = @types[type].color
@@ -108,7 +108,7 @@ module.exports =
     ).join(' ')
 
   colorize: (colors, message) ->
-    return stripAnsi message if not @color or CONST.ENV is 'production'
+    return stripAnsi message unless @color
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
