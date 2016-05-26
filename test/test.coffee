@@ -31,7 +31,7 @@ describe 'Acho ::', ->
 
       instance.print()
       instance.transport.store.length.should.be.equal 1
-      expected = ' \u001b[34minfo\u001b[39m \u001b[90minfo\u001b[39m \u001b[90mmessage\u001b[39m'
+      expected = ' \u001b[34minfo\u001b[39m \u001b[90minfo message\u001b[39m'
       instance.transport.store[0].should.be.equal expected
 
     it '.push: add message into a internal level collection', ->
@@ -44,7 +44,7 @@ describe 'Acho ::', ->
       @acho.transport.store.length.should.be.equal 1
       @acho.messages.error.length.should.be.equal 1
 
-      expected = '\u001b[31m[error] » \u001b[39m \u001b[90mhello\u001b[39m \u001b[90mworld\u001b[39m'
+      expected = '\u001b[31m[error] » \u001b[39m \u001b[90mhello world\u001b[39m'
       @acho.transport.store[0].should.be.equal expected
       @acho.messages.error[0].should.be.equal 'hello world'
 
@@ -54,7 +54,7 @@ describe 'Acho ::', ->
       @acho.warn 'warn message'
 
       @acho.transport.store.length.should.be.equal 1
-      expected = ' \u001b[33m[warn] » \u001b[39m \u001b[90mwarn\u001b[39m \u001b[90mmessage\u001b[39m'
+      expected = ' \u001b[33m[warn] » \u001b[39m \u001b[90mwarn message\u001b[39m'
       @acho.transport.store[0].should.be.equal expected
 
     it 'change the color behavior',  ->
@@ -63,7 +63,7 @@ describe 'Acho ::', ->
       @acho.print()
 
       @acho.transport.store.length.should.be.equal 1
-      expected = '\u001b[31m\u001b[1m[error] » \u001b[22m\u001b[39m \u001b[90mhello\u001b[39m \u001b[90mworld\u001b[39m'
+      expected = '\u001b[31m\u001b[1m[error] » \u001b[22m\u001b[39m \u001b[90mhello world\u001b[39m'
       @acho.transport.store[0].should.be.equal expected
 
     it 'no ouptut messages out of the level',  ->

@@ -93,8 +93,8 @@ module.exports =
 
   colorizeMessage: (type, message) ->
     return stripAnsi message unless @color
-
     lineColor = CONST.LINE_COLOR
+    return @colorize lineColor, message if message.indexOf '=' is -1
     typeColor = @types[type].color
 
     message.toString().split(' ').map((msg) =>
