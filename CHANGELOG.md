@@ -1,3 +1,10 @@
+<a name="3.0.2"></a>
+## 3.0.2 (2016-05-26)
+
+* Better smart colorize ([a7b2c78](https://github.com/achohq/acho/commit/a7b2c78))
+
+
+
 <a name="3.0.1"></a>
 ## 3.0.1 (2016-05-26)
 
