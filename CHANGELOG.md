@@ -1,3 +1,12 @@
+<a name="3.0.1"></a>
+## 3.0.1 (2016-05-26)
+
+* Avoid production special cases ([62db27a](https://github.com/achohq/acho/commit/62db27a))
+* strip ansi under production ([837ff8d](https://github.com/achohq/acho/commit/837ff8d))
+* Update ([2f5de4f](https://github.com/achohq/acho/commit/2f5de4f))
+
+
+
 <a name="3.0.0"></a>
 # 3.0.0 (2016-05-01)
 
