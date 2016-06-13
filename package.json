@@ -37,12 +37,14 @@
     "browserify": "latest",
     "coffeeify": "latest",
     "date-utils": "latest",
+    "coveralls": "latest",
     "git-dirty": "latest",
     "gulp": "latest",
     "gulp-header": "latest",
     "gulp-uglify": "latest",
     "gulp-util": "latest",
     "mocha": "latest",
+    "nyc": "latest",
     "set-dateout": "latest",
     "should": "latest",
     "standard": "latest",
@@ -57,7 +59,8 @@
     "clean": "rm -rf node_modules",
     "lint": "standard lib",
     "pretest": "npm run lint",
-    "test": "mocha"
+    "test": "nyc mocha",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "license": "MIT"
 }
