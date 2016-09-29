@@ -241,9 +241,9 @@ Default: `false`.
 
 Enable or disable print log level in upper case.
 
-##### **{Boolean}** timestamp
+##### **{Number}** timestamp
 
-Default: `false`.
+Default: `0`.
 
 Prints a counter timestamp associated with each log line. Useful for debug log traces.
 

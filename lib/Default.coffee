@@ -1,6 +1,6 @@
 'use strict'
 
-humanizeMs = require 'ms'
+ms         = require 'ms'
 chalk      = require 'chalk'
 formatUtil = require './Format'
 CONST      = require './Constants'
@@ -33,11 +33,17 @@ module.exports =
 
   outputCounter: ->
     return '' unless @timestamp
-    now = Date.now()
-    diff = now - @timestamp
-    ++@counter if (diff >= 1000)
-    @timestamp = Date.now()
-    " [#{@decorateCounter(@counter)}]"
+
+    @_counterTimestamp ||= 0
+    @_lastTimestamp ||= null
+
+    diff = Date.now() - @_lastTimestamp
+
+    if diff >= @timestamp
+      ++@_counterTimestamp
+      @_lastTimestamp = Date.now()
+
+    " [#{@decorateCounter(@_counterTimestamp)}]"
 
   outputSeparator: (type) ->
     return '' if @keyword
@@ -57,7 +63,7 @@ module.exports =
 
     if @diff
       if @diff[type]
-        diff = humanizeMs(Date.now() - @diff[type])
+        diff = ms(Date.now() - @diff[type])
         diff = " +#{diff}"
         @diff[type] = Date.now()
       else
@@ -123,7 +129,7 @@ module.exports =
 
   align: " "
   color: true
-  counter: 0
+  timestamp: 0
 
   level: CONST.UNMUTED
 
