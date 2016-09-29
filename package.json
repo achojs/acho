@@ -28,8 +28,7 @@
     "chalk": "~1.1.1",
     "coffee-script": "~1.11.0",
     "lodash.defaults": "~4.2.0",
-    "ms": "~0.7.1",
-    "repeat-string": "~1.5.4"
+    "ms": "~0.7.1"
   },
   "devDependencies": {
     "acho-skin-cli": "latest",
@@ -52,7 +51,7 @@
     "vinyl-source-stream": "latest"
   },
   "engines": {
-    "node": ">= 0.10"
+    "node": ">= 4"
   },
   "files": [
     "index.js",
