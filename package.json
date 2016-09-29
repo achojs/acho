@@ -26,8 +26,8 @@
   ],
   "dependencies": {
     "chalk": "~1.1.1",
-    "coffee-script": "~1.10.0",
-    "lodash.defaults": "~4.0.1",
+    "coffee-script": "~1.11.0",
+    "lodash.defaults": "~4.2.0",
     "ms": "~0.7.1",
     "repeat-string": "~1.5.4",
     "strip-ansi": "~3.0.1"
