@@ -5,8 +5,8 @@
   "version": "3.0.2",
   "main": "./index.js",
   "author": {
-    "name": "Kiko Beats",
     "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
     "url": "https://github.com/Kikobeats"
   },
   "repository": {
@@ -35,8 +35,8 @@
     "acho-skin-cli": "latest",
     "browserify": "latest",
     "coffeeify": "latest",
-    "date-utils": "latest",
     "coveralls": "latest",
+    "date-utils": "latest",
     "git-dirty": "latest",
     "gulp": "latest",
     "gulp-header": "latest",
@@ -54,12 +54,16 @@
   "engines": {
     "node": ">= 0.10"
   },
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "clean": "rm -rf node_modules",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard lib",
     "pretest": "npm run lint",
-    "test": "nyc mocha",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "test": "nyc mocha"
   },
   "license": "MIT"
 }
