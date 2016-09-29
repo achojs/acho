@@ -3,7 +3,6 @@
 humanizeMs = require 'ms'
 chalk      = require 'chalk'
 formatUtil = require './Format'
-stripAnsi  = require 'strip-ansi'
 CONST      = require './Constants'
 
 module.exports =
@@ -91,7 +90,7 @@ module.exports =
       this
 
   colorizeMessage: (type, message) ->
-    return stripAnsi message unless @color
+    return message unless @color
     lineColor = CONST.LINE_COLOR
     return @colorize lineColor, message if message.indexOf '=' is -1
     typeColor = @types[type].color
