@@ -37,4 +37,6 @@ Acho.skin = (skinFn) ->
     defaults(params, skin)
     Acho(params)
 
+Acho.defaults = DEFAULT
+
 module.exports = Acho
