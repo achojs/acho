@@ -1,6 +1,16 @@
 <a name="3.1.0"></a>
 # 3.1.0 (2016-09-29)
 
+### Minor
+
+* Expose defaults under `Acho.defaults`.
+* Configurable `timestamp` passing a `Number` (Previously it was a `Boolean`).
+* Drop 0.12 and 0.10 support. Remove polyfill dependency.
+* Remove `strip-ansi`.
+* Little `Date` optimization.
+
+### Commits
+
 * Add coverage ([1aa6461](https://github.com/achohq/acho/commit/1aa6461))
 * Add files section ([8bd39a6](https://github.com/achohq/acho/commit/8bd39a6))
 * Configurable timestamp timing ([4fc59d3](https://github.com/achohq/acho/commit/4fc59d3))
@@ -407,6 +417,3 @@
 * updated ([2a5d5f7](https://github.com/kikobeats/acho/commit/2a5d5f7))
 * updated ([1c12565](https://github.com/kikobeats/acho/commit/1c12565))
 * updated ([68b5472](https://github.com/kikobeats/acho/commit/68b5472))
-
-
-
