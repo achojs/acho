@@ -1,3 +1,20 @@
+<a name="3.1.0"></a>
+# 3.1.0 (2016-09-29)
+
+* Add coverage ([1aa6461](https://github.com/achohq/acho/commit/1aa6461))
+* Add files section ([8bd39a6](https://github.com/achohq/acho/commit/8bd39a6))
+* Configurable timestamp timing ([4fc59d3](https://github.com/achohq/acho/commit/4fc59d3))
+* Drop node < 4 support ([42f80ef](https://github.com/achohq/acho/commit/42f80ef))
+* Drop repeat-string dep ([dfe30f2](https://github.com/achohq/acho/commit/dfe30f2))
+* Expose Acho.defaults ([daf6938](https://github.com/achohq/acho/commit/daf6938))
+* Move strip ansi from message out of the logger ([b179882](https://github.com/achohq/acho/commit/b179882))
+* new Date() → Date.now() ([254a6f3](https://github.com/achohq/acho/commit/254a6f3))
+* Remove stripAnsi reference ([0799f10](https://github.com/achohq/acho/commit/0799f10))
+* Remove unused var ([a619744](https://github.com/achohq/acho/commit/a619744))
+* chore(package): update dependencies ([c9459ce](https://github.com/achohq/acho/commit/c9459ce))
+
+
+
 <a name="3.0.2"></a>
 ## 3.0.2 (2016-05-26)
 
