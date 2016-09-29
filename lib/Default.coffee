@@ -106,7 +106,7 @@ module.exports =
     ).join(' ')
 
   colorize: (colors, message) ->
-    return stripAnsi message unless @color
+    return message unless @color
     colors  = colors.split ' '
     stylize = chalk
     stylize = stylize[color] for color in colors
