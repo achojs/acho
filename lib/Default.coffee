@@ -33,10 +33,10 @@ module.exports =
 
   outputCounter: ->
     return '' unless @timestamp
-    now = new Date
+    now = Date.now()
     diff = now - @timestamp
-    ++@counter if (diff > 1000)
-    @timestamp = new Date()
+    ++@counter if (diff >= 1000)
+    @timestamp = Date.now()
     " [#{@decorateCounter(@counter)}]"
 
   outputSeparator: (type) ->
@@ -57,11 +57,11 @@ module.exports =
 
     if @diff
       if @diff[type]
-        diff = humanizeMs(new Date() - @diff[type])
+        diff = humanizeMs(Date.now() - @diff[type])
         diff = " +#{diff}"
-        @diff[type] = new Date()
+        @diff[type] = Date.now()
       else
-        @diff[type] = new Date()
+        @diff[type] = Date.now()
         diff = " +0ms"
 
     messageType = @outputType type
