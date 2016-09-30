@@ -66,7 +66,7 @@ var acho = Acho();
 
 #### AMD
 
-I don't use personally use AMD, so I can't conjure an example, but it should work fine as well.
+I don't personally use AMD, so I can't conjure an example, but it should work fine as well.
 
 It's time to use it!
 
