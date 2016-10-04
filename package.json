@@ -28,7 +28,7 @@
     "chalk": "~1.1.1",
     "coffee-script": "~1.11.0",
     "lodash.defaults": "~4.2.0",
-    "ms": "~0.7.1"
+    "pretty-ms": "~2.1.0"
   },
   "devDependencies": {
     "acho-skin-cli": "latest",
