@@ -1,3 +1,12 @@
+<a name="3.1.1"></a>
+## 3.1.1 (2016-10-04)
+
+* Change ms dep in favour of pretty-ms ([1ede313](https://github.com/achohq/acho/commit/1ede313))
+* Removed typo ([d747872](https://github.com/achohq/acho/commit/d747872))
+* Update ([0ca4660](https://github.com/achohq/acho/commit/0ca4660))
+
+
+
 <a name="3.1.0"></a>
 # 3.1.0 (2016-09-29)
 
