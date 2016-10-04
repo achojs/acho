@@ -1,8 +1,8 @@
 'use strict'
 
-ms         = require 'ms'
 chalk      = require 'chalk'
 formatUtil = require './Format'
+ms         = require 'pretty-ms'
 CONST      = require './Constants'
 
 module.exports =
