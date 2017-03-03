@@ -2,12 +2,11 @@
 
 DEFAULT  = require './Default'
 CONST    = require './Constants'
-defaults = require 'lodash.defaults'
 
 Acho = (params = {}) ->
   return new Acho params unless this instanceof Acho
 
-  acho = defaults({}, params, DEFAULT)
+  acho = Object.assign({}, DEFAULT, params)
   acho.diff = [] if acho.diff
   acho[key] = value for key, value of acho
 
@@ -34,8 +33,7 @@ Acho = (params = {}) ->
 Acho.skin = (skinFn) ->
   skin = skinFn(CONST)
   (params = {}) ->
-    defaults(params, skin)
-    Acho(params)
+    Acho(Object.assign({}, params, skin))
 
 Acho.defaults = DEFAULT
 
