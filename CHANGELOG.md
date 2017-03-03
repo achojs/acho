@@ -1,3 +1,11 @@
+<a name="3.1.2"></a>
+## 3.1.2 (2017-03-03)
+
+* Remove unnecessary dependency ([2e22e0f](https://github.com/achohq/acho/commit/2e22e0f))
+* fix(package): update coffee-script to version 1.12.0 ([79ce119](https://github.com/achohq/acho/commit/79ce119))
+
+
+
 <a name="3.1.1"></a>
 ## 3.1.1 (2016-10-04)
 
