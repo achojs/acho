@@ -215,7 +215,7 @@ You can pass the special keyword `symbol` to show an unicode icon. This is speci
 
 ##### **{String}** align
 
-Default: ` `
+Default: `' '`
 
 It adds an alignment separator between the type of the message and the message.
 
