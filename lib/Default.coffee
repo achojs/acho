@@ -152,11 +152,11 @@ module.exports =
       symbol    : CONST.FIGURE.warning
 
     error:
-      level : 1
-      color : 'red'
-      symbol: CONST.FIGURE.error
+      level  : 1
+      color  : 'red'
+      symbol : CONST.FIGURE.error
 
     fatal:
-      level : 0
-      color : 'red'
-      symbol: CONST.FIGURE.error
+      level  : 0
+      color  : 'red'
+      symbol : CONST.FIGURE.error

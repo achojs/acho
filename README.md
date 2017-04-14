@@ -159,6 +159,8 @@ or at runtime:
 acho.level = 'debug';
 ```
 
+See more at [examples/levels](https://github.com/achohq/acho/blob/master/examples/levels.js).
+
 ### Customization
 
 You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
@@ -194,6 +196,52 @@ acho.info('I am hungry');
 ```
 
 If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
+
+## Formatters
+
+We use [printf-style](https://wikipedia.org/wiki/Printf_format_string) formatting. Below are the officially supported formatters:
+
+| Formatter | Representation                                                |
+|-----------|---------------------------------------------------------------|
+| `%s`      | String.                                                       |
+| `%d`      | Number (both integer and float).                              |
+| `%j`      | JSON serialization in one line                                |
+| `%J`      | JSON pretty object in multiple lines                          |
+| `%%`      | Single percent sign ('%'). This does not consume an argument. |
+
+By default, the `%j` is applied when you pass an object to be logged:
+
+```js
+acho.info({hello: 'world', foo: 'bar'})
+// => 'info hello=world foo=bar'
+```
+
+If you want to use a different formatter, use printf markup:
+
+```js
+acho.info('formatting with object interpolation %J', {
+  hello: 'world',
+  foo: 'bar',
+  deep: {
+    foo: 'bar',
+    arr: [1, 2, 3, 4, 5]
+  }
+})
+
+// info formatting with object interpolation
+//  hello: "world"
+//    foo: "bar"
+//   deep:
+//         foo: "bar"
+//         arr:
+//              0: 1
+//              1: 2
+//              2: 3
+//              3: 4
+//              4: 5
+```
+
+See more at [examples/formatter](https://github.com/achohq/acho/blob/master/examples/formatter.js).
 
 ## API
 

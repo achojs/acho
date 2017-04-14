@@ -1,20 +1,36 @@
 'use strict'
 
+fmtObj = require 'fmt-obj'
 slice = require 'sliced'
 chalk = require 'chalk'
 
+CONST = require './Constants'
+
 ESCAPE_REGEX = /%{2,2}/g
-TYPE_REGEX = /(%?)(%([jds]))/g
+TYPE_REGEX = /(%?)(%([Jjds]))/g
 
 isString = (obj) -> typeof obj is 'string'
 isSymbol = (obj) -> typeof obj is 'symbol'
 isObject = (obj) -> typeof obj is 'object'
 isFalsy = (value) -> [null, undefined, false].indexOf(value) isnt -1
 isArray = (arr) -> Array.isArray(arr)
-colorize = (value, color) -> chalk[color](value)
 hasWhiteSpace = (s) -> s.indexOf(' ') isnt -1
 
-serialize = (color, obj, key) ->
+colorize = (value, color) -> chalk[color](value)
+
+prettyObj = (obj, color) ->
+  lineColor = chalk[CONST.LINE_COLOR]
+
+  fmtObj(obj, Infinity,
+    punctuation: lineColor
+    annotation: lineColor
+    property: chalk[color]
+    literal: lineColor
+    number: lineColor
+    string: lineColor
+  )
+
+serialize = (obj, color, key) ->
   # symbols cannot be directly casted to strings
   key = key.toString() if isSymbol key
   obj = obj.toString() if isSymbol obj
@@ -38,12 +54,12 @@ serialize = (color, obj, key) ->
     key = keys[i]
     value = obj[key]
 
-    if isArray(value)
+    if isArray value
       msg += key + '=['
       j = 0
       l = value.length
       while j < l
-        msg += serialize(color, value[j])
+        msg += serialize(value[j], color)
         if j < l - 1
           msg += ' '
         j++
@@ -51,7 +67,7 @@ serialize = (color, obj, key) ->
     else if value instanceof Date
       msg += key + '=' + value
     else
-      msg += serialize(color, value, colorize(key, color))
+      msg += serialize(value, color, colorize(key, color))
     if i < length - 1
       msg += ' '
     i++
@@ -70,14 +86,16 @@ format = (fmt) ->
         when 'd'
           arg = colorize(Number(arg), color)
         when 'j'
-          arg = serialize color, arg
+          arg = serialize arg, color
+        when 'J'
+          arg = prettyObj arg, color
       return arg if !escaped
       args.unshift arg
       match
     )
 
-  fmt += ' ' + serialize color, arg for arg in args if args.length
+  fmt += ' ' + serialize arg, color for arg in args if args.length
   fmt = fmt.replace(ESCAPE_REGEX, '%') if fmt.replace?
-  serialize color, fmt
+  serialize fmt, color
 
 module.exports = format
