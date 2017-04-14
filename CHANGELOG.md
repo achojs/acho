@@ -1,3 +1,15 @@
+<a name="3.2.0"></a>
+# 3.2.0 (2017-04-14)
+
+* Add %J formatter ([4192659](https://github.com/achohq/acho/commit/4192659))
+* Refactor formatter ([99585a6](https://github.com/achohq/acho/commit/99585a6))
+* Update deps ([e5283d7](https://github.com/achohq/acho/commit/e5283d7))
+* Update README.md ([b325807](https://github.com/achohq/acho/commit/b325807))
+* Update travis builds ([77a2452](https://github.com/achohq/acho/commit/77a2452))
+* chore(package): update dependencies ([76eb538](https://github.com/achohq/acho/commit/76eb538))
+
+
+
 <a name="3.1.2"></a>
 ## 3.1.2 (2017-03-03)
 
