@@ -1,3 +1,10 @@
+<a name="3.2.1"></a>
+## 3.2.1 (2017-04-17)
+
+* Fix function params ([645037c](https://github.com/achohq/acho/commit/645037c))
+
+
+
 <a name="3.2.0"></a>
 # 3.2.0 (2017-04-14)
 
