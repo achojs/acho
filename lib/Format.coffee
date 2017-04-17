@@ -37,7 +37,7 @@ serialize = (obj, color, key) ->
   obj = JSON.stringify obj if isFalsy obj
 
   if !isObject obj
-    obj = "'#{obj}'" if key and isString obj and hasWhiteSpace obj
+    obj = "'#{obj}'" if key and isString(obj) and hasWhiteSpace(obj)
     return if key then "#{key}=#{obj}" else obj
 
   if obj instanceof Buffer
