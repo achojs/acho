@@ -4,6 +4,7 @@
   "homepage": "https://github.com/achohq/acho",
   "version": "3.2.1",
   "main": "./index.js",
+  "types": "./dist/acho.d.ts",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
