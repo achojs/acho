@@ -1,6 +1,6 @@
 'use strict'
 
-fmtObj = require 'fmt-obj'
+{createFormatter} = require 'fmt-obj'
 slice = require 'sliced'
 chalk = require 'chalk'
 
@@ -18,17 +18,23 @@ hasWhiteSpace = (s) -> s.indexOf(' ') isnt -1
 
 colorize = (value, color) -> chalk[color](value)
 
-prettyObj = (obj, color) ->
+prettyObj = (obj, color, opts = {}) ->
   lineColor = chalk[CONST.LINE_COLOR]
+  {offset = 2, depth = Infinity} = opts
 
-  fmtObj(obj, Infinity,
-    punctuation: lineColor
-    annotation: lineColor
-    property: chalk[color]
-    literal: lineColor
-    number: lineColor
-    string: lineColor
-  )
+  fmtObj = createFormatter({
+    offset,
+    formatter: {
+      punctuation: lineColor
+      annotation: lineColor
+      property: chalk[color]
+      literal: lineColor
+      number: lineColor
+      string: lineColor
+    }
+  })
+
+  fmtObj(obj, depth)
 
 serialize = (obj, color, key) ->
   # symbols cannot be directly casted to strings
@@ -93,8 +99,8 @@ format = (fmt) ->
       args.unshift arg
       match
     )
-
   fmt += ' ' + serialize arg, color for arg in args if args.length
+
   fmt = fmt.replace(ESCAPE_REGEX, '%') if fmt.replace?
   serialize fmt, color
 
