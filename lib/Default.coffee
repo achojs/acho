@@ -1,7 +1,7 @@
 'use strict'
 
 chalk      = require 'chalk'
-formatUtil = require './Format'
+format = require './Format'
 ms         = require 'pretty-ms'
 CONST      = require './Constants'
 
@@ -125,10 +125,10 @@ module.exports =
 
   format: (messages, color) ->
     opts = {@offset, @depth}
-    formatter = formatUtil(opts)
+    applyFormatter = format opts
 
     messages.push color
-    formatter messages...
+    applyFormatter messages...
 
   align: " "
   color: true
