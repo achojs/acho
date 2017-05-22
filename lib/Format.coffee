@@ -104,8 +104,8 @@ format = (opts) ->
         args.unshift arg
         match
       )
+      messages += ' ' + serialize arg, color for arg in args unless isEmpty args
 
-    messages += ' ' + serialize arg, color for arg in args unless isEmpty args
     messages = messages.replace(ESCAPE_REGEX, '%') if messages.replace?
     serialize messages, color
 
