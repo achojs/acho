@@ -1,6 +1,6 @@
 {
   "name": "acho",
-  "description": "Simple & hackable log system for NodeJS/Browser.",
+  "description": "Simple & hackable log system for NodeJS.",
   "homepage": "https://github.com/achohq/acho",
   "version": "3.2.1",
   "main": "./index.js",
@@ -33,23 +33,14 @@
   },
   "devDependencies": {
     "acho-skin-cli": "latest",
-    "browserify": "latest",
-    "coffeeify": "latest",
     "coveralls": "latest",
     "date-utils": "latest",
     "git-dirty": "latest",
-    "gulp": "latest",
-    "gulp-header": "latest",
-    "gulp-uglify": "latest",
-    "gulp-util": "latest",
     "mocha": "latest",
     "nyc": "latest",
     "set-dateout": "latest",
     "should": "latest",
     "standard": "latest",
-    "titleize": "latest",
-    "vinyl-buffer": "latest",
-    "vinyl-source-stream": "latest"
   },
   "engines": {
     "node": ">= 4"

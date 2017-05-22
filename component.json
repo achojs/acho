@@ -1,6 +1,6 @@
 {
   "name": "acho",
-  "description": "Simple & hackable log system for NodeJS/Browser.",
+  "description": "Simple & hackable log system for NodeJS.",
   "version": "1.0.6",
   "main": "dist/acho.js"
 }

@@ -14,7 +14,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> Simple & hackable log system for NodeJS/Browser.
+> Simple & hackable log system for NodeJS.
 
 # Why
 
