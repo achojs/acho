@@ -99,7 +99,7 @@ format = (fmt) ->
       args.unshift arg
       match
     )
-  fmt += ' ' + serialize arg, color for arg in args if args.length
+    fmt += ' ' + serialize arg, color for arg in args if args.length
 
   fmt = fmt.replace(ESCAPE_REGEX, '%') if fmt.replace?
   serialize fmt, color
