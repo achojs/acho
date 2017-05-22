@@ -27,7 +27,7 @@
   "dependencies": {
     "chalk": "~1.1.1",
     "coffee-script": "~1.12.4",
-    "fmt-obj": "~1.3.0",
+    "fmt-obj": "~2.0.0",
     "pretty-ms": "~2.1.0",
     "sliced": "~1.0.1"
   },
