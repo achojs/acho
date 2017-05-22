@@ -1,3 +1,20 @@
+<a name="3.3.0"></a>
+# 3.3.0 (2017-05-22)
+
+* Add fmt-objet configuration from Acho settings ([aa2e7a5](https://github.com/achohq/acho/commit/aa2e7a5))
+* Avoid eval twice times for the same ([b4a0c61](https://github.com/achohq/acho/commit/b4a0c61))
+* Avoid unnecessary check ([9585396](https://github.com/achohq/acho/commit/9585396))
+* Better naming ([a2c1a2e](https://github.com/achohq/acho/commit/a2c1a2e))
+* Fix bumped config ([da83300](https://github.com/achohq/acho/commit/da83300))
+* Fix linter ([5857501](https://github.com/achohq/acho/commit/5857501))
+* Remove browser build ([f69bb73](https://github.com/achohq/acho/commit/f69bb73))
+* Update copy ([63b6c12](https://github.com/achohq/acho/commit/63b6c12))
+* Update fmt-objt interface ([71ab2f3](https://github.com/achohq/acho/commit/71ab2f3))
+* Update travis builds ([990e1b3](https://github.com/achohq/acho/commit/990e1b3))
+* fix(package): update fmt-obj to version 2.0.0 ([22d0546](https://github.com/achohq/acho/commit/22d0546))
+
+
+
 <a name="3.2.1"></a>
 ## 3.2.1 (2017-04-17)
 
