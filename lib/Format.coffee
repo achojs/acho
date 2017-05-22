@@ -9,18 +9,22 @@ CONST = require './Constants'
 ESCAPE_REGEX = /%{2,2}/g
 TYPE_REGEX = /(%?)(%([Jjds]))/g
 
+isEmpty = (arr) -> arr.length is 0
 isString = (obj) -> typeof obj is 'string'
 isSymbol = (obj) -> typeof obj is 'symbol'
 isObject = (obj) -> typeof obj is 'object'
+isBuffer = (buf) -> buf instanceof Buffer
+isError = (err) -> err instanceof Error
+isDate = (date) -> date instanceof Date
 isFalsy = (value) -> [null, undefined, false].indexOf(value) isnt -1
 isArray = (arr) -> Array.isArray(arr)
 hasWhiteSpace = (s) -> s.indexOf(' ') isnt -1
 
 colorize = (value, color) -> chalk[color](value)
 
-prettyObj = (obj, color, opts = {}) ->
+prettyObj = (obj, color, opts) ->
   lineColor = chalk[CONST.LINE_COLOR]
-  {offset = 2, depth = Infinity} = opts
+  {offset, depth} = opts
 
   fmtObj = createFormatter({
     offset,
@@ -42,18 +46,18 @@ serialize = (obj, color, key) ->
   obj = obj.toString() if isSymbol obj
   obj = JSON.stringify obj if isFalsy obj
 
-  if !isObject obj
+  unless isObject obj
     obj = "'#{obj}'" if key and isString(obj) and hasWhiteSpace(obj)
     return if key then "#{key}=#{obj}" else obj
 
-  if obj instanceof Buffer
+  if isBuffer obj
     obj = obj.toString 'base64'
     return if key then "#{key}=#{obj}" else obj
 
-  return obj.message or obj if obj instanceof Error
+  return obj.message or obj if isError obj
 
   msg = ''
-  keys = Object.keys(obj)
+  keys = Object.keys obj
   length = keys.length
   i = 0
   while i < length
@@ -70,7 +74,7 @@ serialize = (obj, color, key) ->
           msg += ' '
         j++
       msg += ']'
-    else if value instanceof Date
+    else if isDate value
       msg += key + '=' + value
     else
       msg += serialize(value, color, colorize(key, color))
@@ -79,29 +83,30 @@ serialize = (obj, color, key) ->
     i++
   msg
 
-format = (fmt) ->
-  args = slice arguments, 1
-  color = args.pop()
+format = (opts) ->
+  (messages) ->
+    args = slice arguments, 1
+    color = args.pop()
 
-  if args.length
-    fmt = fmt.replace(TYPE_REGEX, (match, escaped, ptn, flag) ->
-      arg = args.shift()
-      switch flag
-        when 's'
-          arg = colorize(String(arg), color)
-        when 'd'
-          arg = colorize(Number(arg), color)
-        when 'j'
-          arg = serialize arg, color
-        when 'J'
-          arg = prettyObj arg, color
-      return arg if !escaped
-      args.unshift arg
-      match
-    )
-    fmt += ' ' + serialize arg, color for arg in args if args.length
+    unless isEmpty args
+      messages = messages.replace(TYPE_REGEX, (match, escaped, ptn, flag) ->
+        arg = args.shift()
+        switch flag
+          when 's'
+            arg = colorize(String(arg), color)
+          when 'd'
+            arg = colorize(Number(arg), color)
+          when 'j'
+            arg = serialize arg, color
+          when 'J'
+            arg = prettyObj arg, color, opts
+        return arg if !escaped
+        args.unshift arg
+        match
+      )
 
-  fmt = fmt.replace(ESCAPE_REGEX, '%') if fmt.replace?
-  serialize fmt, color
+    messages += ' ' + serialize arg, color for arg in args unless isEmpty args
+    messages = messages.replace(ESCAPE_REGEX, '%') if messages.replace?
+    serialize messages, color
 
 module.exports = format

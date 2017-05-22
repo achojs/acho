@@ -295,6 +295,22 @@ Default: `0`.
 
 Prints a counter timestamp associated with each log line. Useful for debug log traces.
 
+##### **{Number}** offset
+
+Default: `2`.
+
+The amount of left whitespace between the property key and all of it's sub-properties.
+
+This option is only applied under JSON pretty object in multiple lines (%J).
+
+##### **{Number}** depth
+
+Default: `Infinity`.
+
+Colapses all properties deeper than specified by depth.
+
+This option is only applied under JSON pretty object in multiple lines (%J).
+
 ##### **{String}** level
 
 Default: `all`

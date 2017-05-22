@@ -124,12 +124,17 @@ module.exports =
     @types[type].level <= @types[@level].level
 
   format: (messages, color) ->
+    opts = {@offset, @depth}
+    formatter = formatUtil(opts)
+
     messages.push color
-    formatUtil.apply null, messages
+    formatter messages...
 
   align: " "
   color: true
   timestamp: 0
+  offset: 2
+  depth: Infinity
 
   level: CONST.UNMUTED
 
