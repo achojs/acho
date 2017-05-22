@@ -40,7 +40,7 @@
     "nyc": "latest",
     "set-dateout": "latest",
     "should": "latest",
-    "standard": "latest",
+    "standard": "latest"
   },
   "engines": {
     "node": ">= 4"
