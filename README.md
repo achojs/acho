@@ -1,5 +1,7 @@
 # acho
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/achohq/acho.svg)](https://greenkeeper.io/)
+
 <p align="center">
   <br>
   <img src="https://i.imgur.com/qdpBpnw.gif" alt="acho">
