@@ -25,7 +25,7 @@
     "tiny"
   ],
   "dependencies": {
-    "chalk": "~1.1.1",
+    "chalk": "~2.0.0",
     "coffee-script": "~1.12.4",
     "fmt-obj": "~2.0.0",
     "pretty-ms": "~3.0.0",
