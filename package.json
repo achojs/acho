@@ -1,7 +1,7 @@
 {
   "name": "acho",
   "description": "Simple & hackable log system for NodeJS.",
-  "homepage": "https://github.com/achohq/acho",
+  "homepage": "http://osom.js.org",
   "version": "3.3.0",
   "main": "./index.js",
   "author": {
@@ -22,7 +22,9 @@
     "logger",
     "logging",
     "simple",
-    "tiny"
+    "tiny",
+    "debug",
+    "debugger"
   ],
   "dependencies": {
     "chalk": "~1.1.1",
