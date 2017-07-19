@@ -2,7 +2,7 @@
   "name": "acho",
   "description": "Simple & hackable log system for NodeJS.",
   "homepage": "http://osom.js.org",
-  "version": "3.3.0",
+  "version": "3.3.1",
   "main": "./index.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
@@ -17,14 +17,14 @@
     "url": "https://github.com/achohq/acho/issues"
   },
   "keywords": [
+    "debug",
+    "debugger",
     "hackable",
     "log",
     "logger",
     "logging",
     "simple",
-    "tiny",
-    "debug",
-    "debugger"
+    "tiny"
   ],
   "dependencies": {
     "chalk": "~1.1.1",

@@ -1,3 +1,11 @@
+<a name="3.3.1"></a>
+## 3.3.1 (2017-07-19)
+
+* Update package.json ([7280535](https://github.com/achohq/acho/commit/7280535))
+* fix(package): update pretty-ms to version 3.0.0 ([0653040](https://github.com/achohq/acho/commit/0653040))
+
+
+
 <a name="3.3.0"></a>
 # 3.3.0 (2017-05-22)
 
