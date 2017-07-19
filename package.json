@@ -1,7 +1,7 @@
 {
   "name": "acho",
   "description": "Simple & hackable log system for NodeJS.",
-  "homepage": "http://osom.js.org",
+  "homepage": "https://documentup.com/achohq/acho",
   "version": "3.3.1",
   "main": "./index.js",
   "author": {
