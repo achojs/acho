@@ -1,3 +1,10 @@
+<a name="3.3.2"></a>
+## 3.3.2 (2017-07-19)
+
+* Fix homepage ([92f7590](https://github.com/achohq/acho/commit/92f7590))
+
+
+
 <a name="3.3.1"></a>
 ## 3.3.1 (2017-07-19)
 
