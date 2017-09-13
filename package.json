@@ -26,10 +26,15 @@
     "simple",
     "tiny"
   ],
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "dependencies": {
     "chalk": "~2.1.0",
     "coffee-script": "~1.12.4",
     "fmt-obj": "~2.0.0",
+    "lodash.clonedeep": "~4.5.0",
     "pretty-ms": "~3.0.0",
     "sliced": "~1.0.1"
   },
@@ -47,10 +52,6 @@
   "engines": {
     "node": ">= 4"
   },
-  "files": [
-    "index.js",
-    "lib"
-  ],
   "scripts": {
     "clean": "rm -rf node_modules",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",

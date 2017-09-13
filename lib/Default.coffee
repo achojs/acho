@@ -6,7 +6,7 @@ ms = require 'pretty-ms'
 CONST = require './Constants'
 format = require './Format'
 
-module.exports =
+module.exports = () ->
   print: ->
     for type of @types
       @transport @generateMessage type, message for message in @messages[type]
@@ -115,9 +115,7 @@ module.exports =
   colorize: (colors, message) ->
     return message unless @color
     colors  = colors.split ' '
-    stylize = getColor
-    (stylize = stylize color) for color in colors
-
+    (stylize = getColor color) for color in colors
     stylize message
 
   isPrintable: (type) ->
@@ -160,7 +158,7 @@ module.exports =
 
     error:
       level  : 1
-      color  : '#ff6633'
+      color  : '#FF3333'
       symbol : CONST.FIGURE.error
 
     fatal:

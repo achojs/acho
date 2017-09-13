@@ -1,19 +1,22 @@
 'use strict'
 
+clone = require 'lodash.clonedeep'
+
 DEFAULT  = require './Default'
 CONST    = require './Constants'
 
-Acho = (params = {}) ->
-  return new Acho params unless this instanceof Acho
 
-  acho = Object.assign({}, DEFAULT, params)
+Acho = (opts = {}) ->
+  return new Acho opts unless this instanceof Acho
+
+  # TODO: Merge instead of clonee
+  acho = Object.assign({}, DEFAULT(), opts)
   acho.diff = [] if acho.diff
-  acho[key] = value for key, value of acho
 
   acho.messages = do ->
     messages = {}
     for type of acho.types
-      messages[type] = params.messages?[type] or []
+      messages[type] = opts.messages?[type] or []
       acho[type] = acho.generateTypeMessage type
     messages
 
@@ -30,10 +33,11 @@ Acho = (params = {}) ->
 
   acho
 
+# TODO: Remove it, unnecessary
 Acho.skin = (skinFn) ->
   skin = skinFn(CONST)
-  (params = {}) ->
-    Acho(Object.assign({}, params, skin))
+  (opts = {}) ->
+    Acho(Object.assign({}, opts, skin))
 
 Acho.defaults = DEFAULT
 
