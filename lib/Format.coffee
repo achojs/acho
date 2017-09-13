@@ -2,9 +2,9 @@
 
 {createFormatter} = require 'fmt-obj'
 slice = require 'sliced'
-chalk = require 'chalk'
 
 CONST = require './Constants'
+{getColor, colorize} = require './Util'
 
 ESCAPE_REGEX = /%{2,2}/g
 TYPE_REGEX = /(%?)(%([Jjds]))/g
@@ -20,10 +20,8 @@ isFalsy = (value) -> [null, undefined, false].indexOf(value) isnt -1
 isArray = (arr) -> Array.isArray(arr)
 hasWhiteSpace = (s) -> s.indexOf(' ') isnt -1
 
-colorize = (value, color) -> chalk[color](value)
-
 prettyObj = (obj, color, opts) ->
-  lineColor = chalk[CONST.LINE_COLOR]
+  lineColor = getColor(CONST.LINE_COLOR)
   {offset, depth} = opts
 
   fmtObj = createFormatter({
@@ -31,7 +29,7 @@ prettyObj = (obj, color, opts) ->
     formatter: {
       punctuation: lineColor
       annotation: lineColor
-      property: chalk[color]
+      property: getColor(color)
       literal: lineColor
       number: lineColor
       string: lineColor

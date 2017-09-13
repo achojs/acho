@@ -1,9 +1,10 @@
 'use strict'
 
-chalk      = require 'chalk'
+ms = require 'pretty-ms'
+
+{getColor} = require './Util'
+CONST = require './Constants'
 format = require './Format'
-ms         = require 'pretty-ms'
-CONST      = require './Constants'
 
 module.exports =
   print: ->
@@ -114,8 +115,9 @@ module.exports =
   colorize: (colors, message) ->
     return message unless @color
     colors  = colors.split ' '
-    stylize = chalk
-    stylize = stylize[color] for color in colors
+    stylize = getColor
+    (stylize = stylize color) for color in colors
+
     stylize message
 
   isPrintable: (type) ->
@@ -146,22 +148,22 @@ module.exports =
 
     info:
       level     : 3
-      color     : 'blue'
+      color     : '#33ccff'
       separator : ' '
       symbol    : CONST.FIGURE.info
 
     warn:
       level     : 2
-      color     : 'yellow'
+      color     : '#ffcc33'
       separator : ' '
       symbol    : CONST.FIGURE.warning
 
     error:
       level  : 1
-      color  : 'red'
+      color  : '#ff6633'
       symbol : CONST.FIGURE.error
 
     fatal:
       level  : 0
-      color  : 'red'
+      color  : '#ff3366'
       symbol : CONST.FIGURE.error
