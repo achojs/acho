@@ -2,7 +2,7 @@
 
 ms = require 'pretty-ms'
 
-{getColor} = require './Util'
+{getColor, colorize} = require './Util'
 CONST = require './Constants'
 format = require './Format'
 
@@ -72,20 +72,20 @@ module.exports = () ->
         diff = " +0ms"
 
     messageType = @outputType type
-    messageType = @colorize colorType, messageType
+    messageType = colorize colorType, messageType
 
     separator = @outputSeparator(type)
 
     messageCounter = @outputCounter()
-    messageCounter = @colorize CONST.LINE_COLOR, messageCounter
+    messageCounter = colorize CONST.LINE_COLOR, messageCounter
 
     messageContext = @outputContext()
-    messageContext = @colorize CONST.LINE_COLOR, messageContext
+    messageContext = colorize CONST.LINE_COLOR, messageContext
 
     align = @outputAlign()
 
     output = "#{separator}#{messageType}#{messageCounter}#{messageContext}#{align}#{message}"
-    output += @colorize colorType, diff if diff
+    output += colorize colorType, diff if diff
     output
 
   generateTypeMessage: (type) ->
@@ -99,23 +99,18 @@ module.exports = () ->
   colorizeMessage: (type, message) ->
     return message unless @color
     lineColor = CONST.LINE_COLOR
-    return @colorize lineColor, message if message.indexOf '=' is -1
+    return colorize lineColor, message if message.indexOf '=' is -1
     typeColor = @types[type].color
 
-    message.toString().split(' ').map((msg) =>
+    message.toString().split(' ').map(msg ->
       msg = msg.split '='
       if msg.length > 1
-        msg[0] = @colorize typeColor, msg[0]
-        msg[1] = @colorize lineColor, msg[1]
-        msg.join @colorize lineColor, '='
+        msg[0] = colorize typeColor, msg[0]
+        msg[1] = colorize lineColor, msg[1]
+        msg.join colorize lineColor, '='
       else
-        @colorize lineColor, msg
+        colorize lineColor, msg
     ).join(' ')
-
-  colorize: (colors, message) ->
-    return message unless @color
-    (stylize = getColor color) for color in colors
-    stylize message
 
   isPrintable: (type) ->
     return true if @level is CONST.UNMUTED

@@ -75,7 +75,7 @@ serialize = (obj, color, key) ->
     else if isDate value
       msg += key + '=' + value
     else
-      msg += serialize(value, color, colorize(key, color))
+      msg += serialize(value, color, colorize(color, key))
     if i < length - 1
       msg += ' '
     i++
