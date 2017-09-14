@@ -114,7 +114,6 @@ module.exports = () ->
 
   colorize: (colors, message) ->
     return message unless @color
-    colors  = colors.split ' '
     (stylize = getColor color) for color in colors
     stylize message
 
@@ -141,27 +140,27 @@ module.exports = () ->
   types:
     debug:
       level : 4
-      color : 'white'
+      color : ['white']
       symbol: CONST.FIGURE.info
 
     info:
       level     : 3
-      color     : '#33ccff'
+      color     : ['#33ccff']
       separator : ' '
       symbol    : CONST.FIGURE.info
 
     warn:
       level     : 2
-      color     : '#ffcc33'
+      color     : ['#ffcc33']
       separator : ' '
       symbol    : CONST.FIGURE.warning
 
     error:
       level  : 1
-      color  : '#FF3333'
+      color  : ['#FF3333']
       symbol : CONST.FIGURE.error
 
     fatal:
       level  : 0
-      color  : '#ff3366'
+      color  : ['#ff3366']
       symbol : CONST.FIGURE.error

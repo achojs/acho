@@ -4,12 +4,11 @@ Acho   = require '..'
 util = require './util'
 should = require 'should'
 
-createAcho = ->
-  Acho
-    color: true
-    outputType: (type) -> "[#{type}] » "
-    transport: util.createFakeTransport()
-
+createAcho = (opts) -> Acho(Object.assign({}, {
+  color: true
+  outputType: (type) -> "[#{type}] » "
+  transport: util.createFakeTransport()
+  }, opts))
 
 describe 'Acho ::', ->
 
@@ -61,15 +60,17 @@ describe 'Acho ::', ->
       @acho.transport.store[0].should.be.equal expected
 
     it 'change the color behavior',  ->
-      acho = createAcho()
-      acho.types.error.color = 'underline bgRed'
+      acho = createAcho(
+        types: error: color: ['underline', 'bgRed']
+      )
+
       acho.push 'error', 'hello world'
       acho.print()
 
       acho.transport.store.length.should.be.equal 1
       expected = '\u001b[41m[error] » \u001b[49m \u001b[90mhello world\u001b[39m'
       acho.transport.store[0].should.be.equal expected
-      Acho.defaults().types.error.color.should.be.equal('#FF3333')
+      Acho.defaults().types.error.color.should.be.eql(['#FF3333'])
 
     it 'no ouptut messages out of the level',  ->
       level = @acho.level

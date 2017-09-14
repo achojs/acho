@@ -16,7 +16,7 @@ figure =
 module.exports =
   DECORATE_COUNTER_ZERO_N : 4
   UNMUTED                 : 'all'
-  LINE_COLOR              : 'gray'
+  LINE_COLOR              : ['gray']
   SYMBOL_KEYWORD          : 'symbol'
   MUTED                   : 'muted'
   FIGURE                  : figure[process.platform is 'win32']
