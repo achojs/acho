@@ -28,7 +28,6 @@ describe 'acho', ->
         log.print()
 
         should(log.transport.store.length).be.equal(1)
-        should(log.transport.store[0]).be.equal(' \u001b[38;2;51;204;255minfo\u001b[39m \u001b[90minfo message\u001b[39m')
 
     describe '.push', ->
       it 'add message into a internal level collection', ->
@@ -42,7 +41,6 @@ describe 'acho', ->
 
         should(log.transport.store.length).be.equal(1)
         should(log.messages.error.length).be.equal(1)
-        should(log.transport.store[0]).be.equal('\u001b[38;2;255;51;51merror\u001b[39m \u001b[90mhello world\u001b[39m')
         should(log.messages.error[0]).be.equal('hello world')
 
   describe 'levels', ->
@@ -52,7 +50,6 @@ describe 'acho', ->
       log.warn 'warn message'
 
       should(log.transport.store.length).be.equal(1)
-      should(log.transport.store[0]).be.equal(' \u001b[38;2;255;204;51mwarn\u001b[39m \u001b[90mwarn message\u001b[39m')
 
     it 'no ouptut messages out of the level',  ->
       log = acho
@@ -77,7 +74,6 @@ describe 'acho', ->
       log.print()
 
       should(log.transport.store.length).be.equal(1)
-      should(log.transport.store[0]).be.equal('\u001b[41merror\u001b[49m \u001b[90mhello world\u001b[39m')
 
     it 'specifying a keyword', ->
       log = acho keyword: 'acho'
