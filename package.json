@@ -1,7 +1,7 @@
 {
   "name": "acho",
-  "description": "Simple & hackable log system for NodeJS.",
-  "homepage": "https://documentup.com/achohq/acho",
+  "description": "The Hackable Log",
+  "homepage": "https://acho.js.org",
   "version": "3.3.2",
   "main": "./index.js",
   "author": {
@@ -34,30 +34,34 @@
     "chalk": "~2.1.0",
     "coffee-script": "~1.12.4",
     "fmt-obj": "~2.0.0",
-    "lodash.clonedeep": "~4.5.0",
     "pretty-ms": "~3.0.0",
     "sliced": "~1.0.1"
   },
   "devDependencies": {
-    "acho-skin-cli": "latest",
     "coveralls": "latest",
-    "date-utils": "latest",
     "git-dirty": "latest",
+    "husky": "latest",
     "mocha": "latest",
     "nyc": "latest",
-    "set-dateout": "latest",
     "should": "latest",
-    "standard": "latest"
+    "standard": "latest",
+    "standard-markdown": "latest"
   },
   "engines": {
-    "node": ">= 4"
+    "node": ">= 8"
   },
   "scripts": {
     "clean": "rm -rf node_modules",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "standard lib",
+    "lint": "standard-markdown && standard",
+    "precommit": "lint-staged",
     "pretest": "npm run lint",
     "test": "nyc mocha"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
   },
   "license": "MIT"
 }
