@@ -198,7 +198,7 @@ You can completely customize the library to your requirements: changes colors, a
 
 By default the messages structure is brief: Just the message type followed by the message itself.
 
-But you can easily modify the output. For example, let's add a timestamp to each message:
+But you can easily modify the output. For example, let's add a trace to each message:
 
 <p align="center">
   <br>
@@ -260,7 +260,7 @@ You can provide your own separator or disable it providing a `false`.
 
 Default: `false`
 
-Prints timestamp between log from the same level. Specially useful to debug timings.
+Prints trace between log from the same level. Specially useful to debug timings.
 
 ##### **{Boolean}** color
 
@@ -274,11 +274,11 @@ Default: `false`.
 
 Enable or disable print log level in upper case.
 
-##### **{Boolean|Number}** timestamp
+##### **{Boolean|Number}** trace
 
 Default: `false`.
 
-Prints a numeric counter timestamp associated with each log line. 
+Prints a numeric counter trace associated with each log line. 
 
 The value provided is the minimum quantity of time in milliseconds to consider print a different counter.
 

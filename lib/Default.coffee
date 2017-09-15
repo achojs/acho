@@ -33,18 +33,18 @@ module.exports = () ->
     @align
 
   outputCounter: ->
-    return '' unless @timestamp
+    return '' unless @trace
 
-    @_counterTimestamp ||= 0
-    @_lastTimestamp ||= null
+    @_countertrace ||= 0
+    @_lasttrace ||= null
 
-    diff = Date.now() - @_lastTimestamp
+    diff = Date.now() - @_lasttrace
 
-    if diff >= @timestamp
-      ++@_counterTimestamp
-      @_lastTimestamp = Date.now()
+    if diff >= @trace
+      ++@_countertrace
+      @_lasttrace = Date.now()
 
-    " [#{@decorateCounter(@_counterTimestamp)}]"
+    " [#{@decorateCounter(@_countertrace)}]"
 
   outputSeparator: (type) ->
     return '' if @keyword
@@ -126,7 +126,7 @@ module.exports = () ->
 
   align: " "
   color: true
-  timestamp: 0
+  trace: 0
   offset: 2
   depth: Infinity
 

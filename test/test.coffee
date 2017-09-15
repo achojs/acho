@@ -92,7 +92,7 @@ describe 'acho', ->
     it 'enabling diff between logs', (done) ->
       log = acho
         diff: true
-        timestamp: true
+        trace: true
 
       printWarn = -> log.warn 'hello world'
       printErr = -> log.error 'oh noes!'

@@ -3,7 +3,7 @@
 const Acho = require('..')
 const acho = Acho({
   diff: true,
-  timestamp: 1000,
+  trace: 1000,
   // upperCase: true,
   context: 'generated'
   // keyword: 'symbol'
