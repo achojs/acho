@@ -37,7 +37,7 @@ const messageTimeout = (function () {
   return function (level, message, logger, time) {
     setDateout(function () {
       logger[level](message)
-    }, new Date().add({seconds: getStep(0.8)}))
+    }, new Date().add({ seconds: getStep(0.8) }))
   }
 })()
 
@@ -45,7 +45,7 @@ const lineBreakTimeout = (function () {
   return function (time) {
     setDateout(function () {
       console.log()
-    }, new Date().add({seconds: getStep(time || 0.2)}))
+    }, new Date().add({ seconds: getStep(time || 0.2) }))
   }
 })()
 
@@ -74,4 +74,8 @@ messageTimeout('info', { foo: 'bar', hello: 'world' }, log)
 
 lineBreakTimeout()
 
-messageTimeout('success', 'See more at https://github.com/Kikobeats/acho', visit)
+messageTimeout(
+  'success',
+  'See more at https://github.com/Kikobeats/acho',
+  visit
+)

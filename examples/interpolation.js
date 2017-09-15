@@ -10,7 +10,8 @@ log.info('format number interpolation %d', 123)
 log.info('format float interpolation %d', 3.14)
 log.info('format string interpolation %s', 'hello world')
 log.info('format object interpolation %j', {
-  hello: 'world', foo: 'bar'
+  hello: 'world',
+  foo: 'bar'
 })
 
 log.info('format beauty object interpolation %J', {

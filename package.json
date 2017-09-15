@@ -26,10 +26,6 @@
     "simple",
     "tiny"
   ],
-  "files": [
-    "index.js",
-    "lib"
-  ],
   "dependencies": {
     "chalk": "~2.1.0",
     "coffee-script": "~1.12.4",
@@ -41,8 +37,10 @@
     "coveralls": "latest",
     "git-dirty": "latest",
     "husky": "latest",
+    "lint-staged": "latest",
     "mocha": "latest",
     "nyc": "latest",
+    "prettier-standard": "latest",
     "should": "latest",
     "standard": "latest",
     "standard-markdown": "latest"
@@ -50,18 +48,29 @@
   "engines": {
     "node": ">= 4"
   },
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "clean": "rm -rf node_modules",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard-markdown && standard",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
+    "pretty": "prettier-standard index.js examples/**/*.js --single-quote",
     "test": "nyc mocha"
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "prettier-standard",
+      "git add"
+    ]
   },
   "standard": {
     "env": [
       "mocha"
     ]
-  },
-  "license": "MIT"
+  }
 }
