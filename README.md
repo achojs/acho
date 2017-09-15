@@ -31,37 +31,47 @@ npm install acho
 
 ## Usage
 
-The first thing you need to do is create a new log instance:
+### Logging levels
 
-```js
-const log = acho()
-```
-
-Then you can print one of the defaults logging levels:
-
-```
-const log = acho()
-const types = Object.keys(log.types)
-types.forEach(type => {
-  log[type]('hello world')
-})
-```
-
-All public methods are chainable:
+<p><details>
+  <summary>
+    <b>Examples</b>
+    </summary>
+  <ul><li><a href="./examples/levels.js">Defaults</a></li><li><a href="./examples/skin-cli.js">Skin CLI</a></li><li><a href="./examples/skin-syslog.js">Skin Syslog</a></li></ul>
+</details></p>
 
 <p align="center">
   <br>
-  <img src="docs/images/01.png" alt="acho">
+  <img src="docs/images/10.png" alt="acho">
   <br>
 </p>
 
+The first thing you need to do is create a new log instance:
+
 ```js
-acho
-.info('hello world')
-.error('something bad happens');
+const acho = require('acho')
+const log = acho()
 ```
 
-### Logging level
+Then you can print a log based on the level:
+
+```js
+const acho = require('acho')
+const log = acho()
+
+acho.info('hello world')
+```
+
+All methods are chainables:
+
+```js
+const acho = require('acho')
+const log = acho()
+
+acho
+.info('hello world')
+.error('something bad happens')
+```
 
 Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
 
@@ -79,21 +89,15 @@ Additionally exists two special levels:
 The default log level is `all`. You can define it in the constructor:
 
 ```js
+const acho = require('acho')
 const log = acho({level: 'debug'})
 ```
 
 or at runtime:
 
 ```js
-log.level = 'debug';
+log.level = 'debug'
 ```
-
-See more at [examples/levels](https://github.com/achohq/acho/blob/master/examples/levels.js).
-
-### Customize logging levels
-
-### skin-cli
-### skin-syslog
 
 ### Internal Store
 
@@ -108,21 +112,20 @@ We define `.push` as accumulator for store the log internally:
 </p>
 
 ```js
-acho.push('success', 'good job', 'well done', 'great!');
-console.log(acho.messages.success);
+const acho = require('acho')
+const log = acho()
+
+log.push('success', 'good job', 'well done', 'great!')
+console.log(log.messages.success)
 ```
 
-If you want to print previously stored messages, just call the method `print`:
+If you want to print previously stored messages, just call the method `.print`:
 
 <p align="center">
   <br>
   <img src="docs/images/03.png" alt="acho">
   <br>
 </p>
-
-```js
-acho.print()
-```
 
 or you can retrieve the logs programatically from the internal storage  at `acho.messages`
 
@@ -135,11 +138,18 @@ The method  `.add` combine `.push` and `.print` actions in one: It store the mes
 </p>
 
 ```js
-acho.add('info', 'this message is printed and stored');
+log.add('info', 'this message is printed and stored')
 console.log(acho.messages.info)
 ```
 
 ## Formatters
+
+<p><details>
+  <summary>
+    <b>Examples</b>
+    </summary>
+  <ul><li><a href="./examples/interpolation.js">Interpolation</a></li></ul>
+</details></p>
 
 <p align="center">
   <br>
@@ -161,14 +171,20 @@ We use [printf-style](https://wikipedia.org/wiki/Printf_format_string) formattin
 By default, the `%j` is applied when you pass an object to be logged:
 
 ```js
-acho.info({hello: 'world', foo: 'bar'})
+const acho = require('acho')
+const log = acho()
+
+log.info({hello: 'world', foo: 'bar'})
 // => 'info hello=world foo=bar'
 ```
 
 If you want to use a different formatter, use printf markup:
 
 ```js
-acho.info('formatting with object interpolation %J', {
+const acho = require('acho')
+const log = acho()
+
+log.info('formatting with object interpolation %J', {
   hello: 'world',
   foo: 'bar',
   deep: {
@@ -176,29 +192,20 @@ acho.info('formatting with object interpolation %J', {
     arr: [1, 2, 3, 4, 5]
   }
 })
-
-// info formatting with object interpolation
-//  hello: "world"
-//    foo: "bar"
-//   deep:
-//         foo: "bar"
-//         arr:
-//              0: 1
-//              1: 2
-//              2: 3
-//              3: 4
-//              4: 5
 ```
-
-See more at [examples/formatter](https://github.com/achohq/acho/blob/master/examples/formatter.js).
 
 ### Customization
 
-You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
+<p><details>
+  <summary>
+    <b>Examples</b>
+    </summary>
+  <ul><li><a href="./examples/trace.js">Trace & Diff</a></li><li><a href="./examples/uppercase.js">Uppercase</a></li></ul>
+</details></p>
 
-By default the messages structure is brief: Just the message type followed by the message itself.
+One of the **acho** compromise is be easy to adapt. You can completely customize all the library functionalities.
 
-But you can easily modify the output. For example, let's add a trace to each message:
+For example, suppose you want to add a timestamp before your logs:
 
 <p align="center">
   <br>
@@ -207,26 +214,21 @@ But you can easily modify the output. For example, let's add a trace to each mes
 </p>
 
 ```js
-var acho = Acho({
-  color: true,
-  level: 'debug',
+const acho = require('acho')
 
+const log = acho({
   // Customize how to print the 'type' of each message
-  outputType: function(type) {
-    return '[' + type + '] » ';
-  },
+  outputType: type => `[${type}]`,
 
   // Customize how to print the message.
   // Add things before and/or after.
-  outputMessage: function(message) {
-    return Date() + ' :: ' + message;
-  }
-});
+  outputMessage: message => `${Date.now()} :: ${message}`
+})
 
-acho.info('I am hungry');
+acho.info('I am hungry')
 ```
 
-If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
+That's all.
 
 ## API
 
@@ -262,19 +264,17 @@ Default: `false`
 
 Prints trace between log from the same level. Specially useful to debug timings.
 
-##### **{Boolean}** color
-
-Default: `true`.
-
-Enable or disable colorized output.
-
 ##### **{Boolean}** upperCase
+
+![](docs/images/12.png)
 
 Default: `false`.
 
 Enable or disable print log level in upper case.
 
 ##### **{Boolean|Number}** trace
+
+![](docs/images/11.png)
 
 Default: `false`.
 

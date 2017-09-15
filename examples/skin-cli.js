@@ -8,6 +8,8 @@ const log = acho({
   keyword: 'symbol'
 })
 
+console.log()
+
 const types = Object.keys(log.types)
 types.forEach(type => {
   log[type]('hello world')
