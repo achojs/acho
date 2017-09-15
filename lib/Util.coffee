@@ -4,11 +4,13 @@ chalk = require 'chalk'
 
 isHexColor = (str) -> str.charAt(0) is '#'
 
-getColor = (color) ->
+getChalkColor = (color) ->
   if isHexColor(color) then chalk.hex(color) else chalk[color]
 
-colorize = (colors, value) ->
-  (stylize = getColor color) for color in colors
-  stylize value
+getColor = (colors) ->
+  (stylize = getChalkColor color) for color in colors
+  stylize
+
+colorize = (colors, value) -> getColor(colors)(value)
 
 module.exports = {getColor, colorize}

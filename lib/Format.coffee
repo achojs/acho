@@ -91,9 +91,9 @@ format = (opts) ->
         arg = args.shift()
         switch flag
           when 's'
-            arg = colorize(String(arg), color)
+            arg = colorize(color, String(arg))
           when 'd'
-            arg = colorize(Number(arg), color)
+            arg = colorize(color, Number(arg))
           when 'j'
             arg = serialize arg, color
           when 'J'

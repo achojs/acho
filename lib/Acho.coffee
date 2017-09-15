@@ -1,7 +1,7 @@
 'use strict'
 
-DEFAULT  = require './Default'
 CONST    = require './Constants'
+DEFAULT  = require './Default'
 
 Acho = (opts = {}) ->
   return new Acho opts unless this instanceof Acho
