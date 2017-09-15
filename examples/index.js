@@ -1,31 +1,31 @@
 'use strict'
 
 require('date-utils')
-var Acho = require('..')
-var setDateout = require('set-dateout')
+const acho = require('..')
+const setDateout = require('set-dateout')
 
-var base = Acho({})
+const base = acho({})
 
-var diff = Acho({
+const diff = acho({
   diff: true
 })
 
-var label = Acho({
+const label = acho({
   align: false,
   keyword: 'worker#1'
 })
 
-var production = Acho({
-  color: false,
-  align: false
+const visit = acho({
+  types: require('acho-skin-cli'),
+  keyword: 'symbol'
 })
 
-var visit = Acho({
-  keyword: 'visit'
+const log = acho({
+  keyword: 'log'
 })
 
-var getStep = (function () {
-  var start = 0
+const getStep = (function () {
+  let start = 0
   return function (value) {
     if (value) start += value
     else ++start
@@ -33,7 +33,7 @@ var getStep = (function () {
   }
 })()
 
-var messageTimeout = (function () {
+const messageTimeout = (function () {
   return function (level, message, logger, time) {
     setDateout(function () {
       logger[level](message)
@@ -41,7 +41,7 @@ var messageTimeout = (function () {
   }
 })()
 
-var lineBreakTimeout = (function () {
+const lineBreakTimeout = (function () {
   return function (time) {
     setDateout(function () {
       console.log()
@@ -49,17 +49,14 @@ var lineBreakTimeout = (function () {
   }
 })()
 
-messageTimeout('info', 'Hackable', base)
-messageTimeout('debug', 'Logging', base)
-messageTimeout('warn', 'for NodeJS and Browser', base)
+console.log()
+messageTimeout('info', 'The', base)
+messageTimeout('debug', 'Hackable', base)
+messageTimeout('warn', 'Log', base)
 messageTimeout('error', 'in less than', base)
 messageTimeout('fatal', '10KB!.', base)
 
 lineBreakTimeout(1)
-
-messageTimeout('info', 'Do you wanna to know more?', base)
-
-lineBreakTimeout()
 
 messageTimeout('debug', 'support diff', diff)
 messageTimeout('debug', 'between messages', diff)
@@ -71,21 +68,10 @@ messageTimeout('warn', 'easily', label)
 
 lineBreakTimeout()
 
-messageTimeout('error', 'automatically color and align disabled', production)
-messageTimeout('error', 'under production scenario', production)
+messageTimeout('info', 'pretty serialization', log)
+
+messageTimeout('info', { foo: 'bar', hello: 'world' }, log)
 
 lineBreakTimeout()
 
-messageTimeout('debug', 'and more more more...', base)
-
-lineBreakTimeout()
-
-messageTimeout('debug', 'string interpolation', base)
-messageTimeout('debug', 'logs align', base)
-messageTimeout('info', 'custom levels and transports', base)
-messageTimeout('info', 'object serialization', base)
-messageTimeout('info', {foo: 'bar', hello: 'world'}, base)
-
-lineBreakTimeout()
-
-messageTimeout('debug', 'https://github.com/Kikobeats/acho', visit)
+messageTimeout('success', 'See more at https://github.com/Kikobeats/acho', visit)

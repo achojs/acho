@@ -1,15 +1,19 @@
 'use strict'
 
-var Acho = require('..')
-var acho = Acho()
+const acho = require('..')
+const log = acho()
 
-acho.info('formatting plain text: hello world')
-acho.info('formatting with number interpolation %d', 123)
-acho.info('formatting with float interpolation %d', 3.14)
-acho.info('formatting with string interpolation %s', 'hello world')
-acho.info('formatting with object interpolation %j', {hello: 'world', foo: 'bar'})
+console.log()
 
-acho.info('formatting with object interpolation %J', {
+log.info('format text', 'hello world')
+log.info('format number interpolation %d', 123)
+log.info('format float interpolation %d', 3.14)
+log.info('format string interpolation %s', 'hello world')
+log.info('format object interpolation %j', {
+  hello: 'world', foo: 'bar'
+})
+
+log.info('format beauty object interpolation %J', {
   hello: 'world',
   foo: 'bar',
   deep: {

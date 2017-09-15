@@ -1,22 +1,22 @@
 'use strict'
 
-var Acho = require('..')
-var acho = Acho({
+const Acho = require('..')
+const acho = Acho({
   diff: true,
   timestamp: 1000,
-  upperCase: true,
+  // upperCase: true,
   context: 'generated'
   // keyword: 'symbol'
 })
 
-var levels = Object.keys(acho.types)
+const levels = Object.keys(acho.types)
 
-var fixtureObj = {
+const fixtureObj = {
   foo: 'bar',
   hello: 'world'
 }
 
-var fixtureArr = [1, 2, 3, 4, 5]
+const fixtureArr = [1, 2, 3, 4, 5]
 
 acho.debug('%j', fixtureObj)
 acho.debug(fixtureObj)
