@@ -1017,11 +1017,14 @@ pre:after {
 .cover-main img {
   border: 1px solid #c79b50;
   border-radius: 4px;
+  display: block;
+  margin: 3rem auto;
+  width: 80vh;
 }
 
 div.cover-main h1 {
   padding: 0;
-  margin: 3rem 0;
+  margin: 3rem;
 }
 
 .cover-main span {
