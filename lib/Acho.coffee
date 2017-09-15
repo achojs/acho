@@ -1,7 +1,5 @@
 'use strict'
 
-clone = require 'lodash.clonedeep'
-
 DEFAULT  = require './Default'
 CONST    = require './Constants'
 

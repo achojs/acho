@@ -3,8 +3,8 @@
 {createFormatter} = require 'fmt-obj'
 slice = require 'sliced'
 
-CONST = require './Constants'
 {getColor, colorize} = require './Util'
+CONST = require './Constants'
 
 ESCAPE_REGEX = /%{2,2}/g
 TYPE_REGEX = /(%?)(%([Jjds]))/g
