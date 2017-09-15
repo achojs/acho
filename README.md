@@ -2,7 +2,7 @@
 
 <p align="center">
   <br>
-  <img src="https://i.imgur.com/qdpBpnw.gif" alt="acho">
+  <img src="docs/images/resume.png" alt="acho">
   <br>
 </p>
 
@@ -16,12 +16,12 @@
 
 > The Hackable Log
 
-# Why
+# Features
 
-* Easy to use, customize and extend.
-* Expressive API with chaineable methods.
-* Mininum dependencies, just focussing on one thing.
-* Compatible with AMD/CommonJS or just global object in the browser.
+* Different log levels skins.
+* Beauty object interpolation.
+* Diff & log trace support.
+* Easy to customize, easy to hack.
 
 ## Install
 
@@ -140,6 +140,13 @@ console.log(acho.messages.info)
 ```
 
 ## Formatters
+
+<p align="center">
+  <br>
+  <img src="docs/images/09.png" alt="acho">
+  <br>
+</p>
+
 
 We use [printf-style](https://wikipedia.org/wiki/Printf_format_string) formatting. Below are the officially supported formatters:
 
