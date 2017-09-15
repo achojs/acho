@@ -2,7 +2,7 @@
 
 <p align="center">
   <br>
-  <img src="https://i.imgur.com/qdpBpnw.gif" alt="acho">
+  <img src="docs/images/resume.png" alt="acho">
   <br>
 </p>
 
@@ -14,14 +14,14 @@
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> Simple & hackable log system for NodeJS.
+> The Hackable Log
 
-# Why
+# Features
 
-* Easy to use, customize and extend.
-* Expressive API with chaineable methods.
-* Mininum dependencies, just focussing on one thing.
-* Compatible with AMD/CommonJS or just global object in the browser.
+* Different log levels skins.
+* Beauty object interpolation.
+* Diff & log trace support.
+* Easy to customize, easy to hack.
 
 ## Install
 
@@ -29,110 +29,49 @@
 npm install acho
 ```
 
-If you want to use it in the browser (powered by [Browserify](http://browserify.org/)):
-
-```bash
-bower install acho --save
-```
-
-and later add it to your HTML:
-
-```html
-<script src="bower_components/acho/dist/acho.js"></script>
-```
-
 ## Usage
 
-### First steps
+### Logging levels
 
-Acho exports itself according to UMD best practices, which means that no matter where you are using the library, you get a version tailored for your environment.
-
-If you're using a module loader (or Node), simple require the library as you would any other module.
-
-If you're using a browser, the library falls back to attaching itself to window as the global `Acho`.
-
-#### CommonJS
-
-```js
-var Acho = require('acho');
-var acho = Acho();
-```
-
-#### Global/Browser
-
-```js
-var acho = Acho();
-```
-
-#### AMD
-
-I don't personally use AMD, so I can't conjure an example, but it should work fine as well.
-
-It's time to use it!
+<p><details>
+  <summary>
+    <b>Examples</b>
+    </summary>
+  <ul><li><a href="./examples/levels.js">Defaults</a></li><li><a href="./examples/skin-cli.js">Skin CLI</a></li><li><a href="./examples/skin-syslog.js">Skin Syslog</a></li></ul>
+</details></p>
 
 <p align="center">
   <br>
-  <img src="docs/images/00.png" alt="acho">
+  <img src="docs/images/10.png" alt="acho">
   <br>
 </p>
 
+The first thing you need to do is create a new log instance:
+
 ```js
-acho.info('hello world');
+const acho = require('acho')
+const log = acho()
 ```
 
-All public methods are chainable:
-
-<p align="center">
-  <br>
-  <img src="docs/images/01.png" alt="acho">
-  <br>
-</p>
+Then you can print a log based on the level:
 
 ```js
+const acho = require('acho')
+const log = acho()
+
+acho.info('hello world')
+```
+
+All methods are chainables:
+
+```js
+const acho = require('acho')
+const log = acho()
+
 acho
 .info('hello world')
-.error('something bad happens');
+.error('something bad happens')
 ```
-
-Maybe you don't want to output the message, but store it for later use:
-
-<p align="center">
-  <br>
-  <img src="docs/images/02.png" alt="acho">
-  <br>
-</p>
-
-```js
-acho.push('success', 'good job', 'well done', 'great!');
-console.log(acho.messages.success);
-```
-
-If you want to print previously stored messages, just call the method `print`:
-
-<p align="center">
-  <br>
-  <img src="docs/images/03.png" alt="acho">
-  <br>
-</p>
-
-```js
-acho.print()
-```
-
-You might be thinking: Can I combine both, to store and both print a message? Absolutely!
-
-<p align="center">
-  <br>
-  <img src="docs/images/04.png" alt="acho">
-  <br>
-</p>
-
-```js
-acho.add('info', 'this message is printed and stored');
-console.log(acho.messages.info)
-```
-
-### Defining the level
 
 Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
 
@@ -150,54 +89,74 @@ Additionally exists two special levels:
 The default log level is `all`. You can define it in the constructor:
 
 ```js
-var acho = Acho({level: 'debug'})
+const acho = require('acho')
+const log = acho({level: 'debug'})
 ```
 
 or at runtime:
 
 ```js
-acho.level = 'debug';
+log.level = 'debug'
 ```
 
-See more at [examples/levels](https://github.com/achohq/acho/blob/master/examples/levels.js).
+### Internal Store
 
-### Customization
+Sometimes, when you are interacting with a logger you need to store the logs to be used later instead of print all of them.
 
-You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
-
-By default the messages structure is brief: Just the message type followed by the message itself.
-
-But you can easily modify the output. For example, let's add a timestamp to each message:
+We define `.push` as accumulator for store the log internally:
 
 <p align="center">
   <br>
-  <img src="docs/images/05.png" alt="acho">
+  <img src="docs/images/02.png" alt="acho">
   <br>
 </p>
 
 ```js
-var acho = Acho({
-  color: true,
-  level: 'debug',
+const acho = require('acho')
+const log = acho()
 
-  // Customize how to print the 'type' of each message
-  outputType: function(type) {
-    return '[' + type + '] » ';
-  },
-
-  // Customize how to print the message.
-  // Add things before and/or after.
-  outputMessage: function(message) {
-    return Date() + ' :: ' + message;
-  }
-});
-
-acho.info('I am hungry');
+log.push('success', 'good job', 'well done', 'great!')
+console.log(log.messages.success)
 ```
 
-If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
+If you want to print previously stored messages, just call the method `.print`:
+
+<p align="center">
+  <br>
+  <img src="docs/images/03.png" alt="acho">
+  <br>
+</p>
+
+or you can retrieve the logs programatically from the internal storage  at `acho.messages`
+
+The method  `.add` combine `.push` and `.print` actions in one: It store the message internally but also print the log.
+
+<p align="center">
+  <br>
+  <img src="docs/images/04.png" alt="acho">
+  <br>
+</p>
+
+```js
+log.add('info', 'this message is printed and stored')
+console.log(acho.messages.info)
+```
 
 ## Formatters
+
+<p><details>
+  <summary>
+    <b>Examples</b>
+    </summary>
+  <ul><li><a href="./examples/interpolation.js">Interpolation</a></li></ul>
+</details></p>
+
+<p align="center">
+  <br>
+  <img src="docs/images/09.png" alt="acho">
+  <br>
+</p>
+
 
 We use [printf-style](https://wikipedia.org/wiki/Printf_format_string) formatting. Below are the officially supported formatters:
 
@@ -212,14 +171,20 @@ We use [printf-style](https://wikipedia.org/wiki/Printf_format_string) formattin
 By default, the `%j` is applied when you pass an object to be logged:
 
 ```js
-acho.info({hello: 'world', foo: 'bar'})
+const acho = require('acho')
+const log = acho()
+
+log.info({hello: 'world', foo: 'bar'})
 // => 'info hello=world foo=bar'
 ```
 
 If you want to use a different formatter, use printf markup:
 
 ```js
-acho.info('formatting with object interpolation %J', {
+const acho = require('acho')
+const log = acho()
+
+log.info('formatting with object interpolation %J', {
   hello: 'world',
   foo: 'bar',
   deep: {
@@ -227,31 +192,53 @@ acho.info('formatting with object interpolation %J', {
     arr: [1, 2, 3, 4, 5]
   }
 })
-
-// info formatting with object interpolation
-//  hello: "world"
-//    foo: "bar"
-//   deep:
-//         foo: "bar"
-//         arr:
-//              0: 1
-//              1: 2
-//              2: 3
-//              3: 4
-//              4: 5
 ```
 
-See more at [examples/formatter](https://github.com/achohq/acho/blob/master/examples/formatter.js).
+### Customization
+
+<p><details>
+  <summary>
+    <b>Examples</b>
+    </summary>
+  <ul><li><a href="./examples/trace.js">Trace & Diff</a></li><li><a href="./examples/uppercase.js">Uppercase</a></li></ul>
+</details></p>
+
+One of the **acho** compromise is be easy to adapt. You can completely customize all the library functionalities.
+
+For example, suppose you want to add a timestamp before your logs:
+
+<p align="center">
+  <br>
+  <img src="docs/images/05.png" alt="acho">
+  <br>
+</p>
+
+```js
+const acho = require('acho')
+
+const log = acho({
+  // Customize how to print the 'type' of each message
+  outputType: type => `[${type}]`,
+
+  // Customize how to print the message.
+  // Add things before and/or after.
+  outputMessage: message => `${Date.now()} :: ${message}`
+})
+
+acho.info('I am hungry')
+```
+
+That's all.
 
 ## API
 
-### Acho({Object} [options])
+### Acho([options])
 
-Create a logger. Available options:
-
-<img src="docs/images/07.png" align="right">
+It creates a logger instance. Available options:
 
 ##### **{String}** keyword
+
+![](docs/images/07.png)
 
 Default: `loglevel`
 
@@ -259,9 +246,9 @@ Instead of print the type log level, print the keyword. By default this behavior
 
 You can pass the special keyword `symbol` to show an unicode icon. This is special behavior for CLI programs.
 
-<img src="docs/images/08.png" align="right">
-
 ##### **{String}** align
+
+![](docs/images/08.png)
 
 Default: `' '`
 
@@ -269,31 +256,31 @@ It adds an alignment separator between the type of the message and the message.
 
 You can provide your own separator or disable it providing a `false`.
 
-<img src="docs/images/06.png" align="right">
-
 ##### **{Boolean}** diff
+
+![](docs/images/06.png)
 
 Default: `false`
 
-Prints timestamp between log from the same level. Specially useful to debug timmings.
-
-##### **{Boolean}** color
-
-Default: `false`.
-
-Enable or disable colorized output.
+Prints trace between log from the same level. Specially useful to debug timings.
 
 ##### **{Boolean}** upperCase
+
+![](docs/images/12.png)
 
 Default: `false`.
 
 Enable or disable print log level in upper case.
 
-##### **{Number}** timestamp
+##### **{Boolean|Number}** trace
 
-Default: `0`.
+![](docs/images/11.png)
 
-Prints a counter timestamp associated with each log line. Useful for debug log traces.
+Default: `false`.
+
+Prints a numeric counter trace associated with each log line. 
+
+The value provided is the minimum quantity of time in milliseconds to consider print a different counter.
 
 ##### **{Number}** offset
 

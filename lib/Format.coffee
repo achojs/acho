@@ -2,8 +2,8 @@
 
 {createFormatter} = require 'fmt-obj'
 slice = require 'sliced'
-chalk = require 'chalk'
 
+{getColor, colorize} = require './Util'
 CONST = require './Constants'
 
 ESCAPE_REGEX = /%{2,2}/g
@@ -20,10 +20,8 @@ isFalsy = (value) -> [null, undefined, false].indexOf(value) isnt -1
 isArray = (arr) -> Array.isArray(arr)
 hasWhiteSpace = (s) -> s.indexOf(' ') isnt -1
 
-colorize = (value, color) -> chalk[color](value)
-
 prettyObj = (obj, color, opts) ->
-  lineColor = chalk[CONST.LINE_COLOR]
+  lineColor = getColor(CONST.LINE_COLOR)
   {offset, depth} = opts
 
   fmtObj = createFormatter({
@@ -31,7 +29,7 @@ prettyObj = (obj, color, opts) ->
     formatter: {
       punctuation: lineColor
       annotation: lineColor
-      property: chalk[color]
+      property: getColor(color)
       literal: lineColor
       number: lineColor
       string: lineColor
@@ -77,7 +75,7 @@ serialize = (obj, color, key) ->
     else if isDate value
       msg += key + '=' + value
     else
-      msg += serialize(value, color, colorize(key, color))
+      msg += serialize(value, color, colorize(color, key))
     if i < length - 1
       msg += ' '
     i++
@@ -93,9 +91,9 @@ format = (opts) ->
         arg = args.shift()
         switch flag
           when 's'
-            arg = colorize(String(arg), color)
+            arg = colorize(color, String(arg))
           when 'd'
-            arg = colorize(Number(arg), color)
+            arg = colorize(color, Number(arg))
           when 'j'
             arg = serialize arg, color
           when 'J'

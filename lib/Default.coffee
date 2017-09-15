@@ -1,11 +1,12 @@
 'use strict'
 
-chalk      = require 'chalk'
-format = require './Format'
-ms         = require 'pretty-ms'
-CONST      = require './Constants'
+ms = require 'pretty-ms'
 
-module.exports =
+{getColor, colorize} = require './Util'
+CONST = require './Constants'
+format = require './Format'
+
+module.exports = () ->
   print: ->
     for type of @types
       @transport @generateMessage type, message for message in @messages[type]
@@ -32,18 +33,18 @@ module.exports =
     @align
 
   outputCounter: ->
-    return '' unless @timestamp
+    return '' unless @trace
 
-    @_counterTimestamp ||= 0
-    @_lastTimestamp ||= null
+    @_countertrace ||= 0
+    @_lasttrace ||= null
 
-    diff = Date.now() - @_lastTimestamp
+    diff = Date.now() - @_lasttrace
 
-    if diff >= @timestamp
-      ++@_counterTimestamp
-      @_lastTimestamp = Date.now()
+    if diff >= @trace
+      ++@_countertrace
+      @_lasttrace = Date.now()
 
-    " [#{@decorateCounter(@_counterTimestamp)}]"
+    " [#{@decorateCounter(@_countertrace)}]"
 
   outputSeparator: (type) ->
     return '' if @keyword
@@ -71,20 +72,20 @@ module.exports =
         diff = " +0ms"
 
     messageType = @outputType type
-    messageType = @colorize colorType, messageType
+    messageType = colorize colorType, messageType
 
     separator = @outputSeparator(type)
 
     messageCounter = @outputCounter()
-    messageCounter = @colorize CONST.LINE_COLOR, messageCounter
+    messageCounter = colorize CONST.LINE_COLOR, messageCounter
 
     messageContext = @outputContext()
-    messageContext = @colorize CONST.LINE_COLOR, messageContext
+    messageContext = colorize CONST.LINE_COLOR, messageContext
 
     align = @outputAlign()
 
     output = "#{separator}#{messageType}#{messageCounter}#{messageContext}#{align}#{message}"
-    output += @colorize colorType, diff if diff
+    output += colorize colorType, diff if diff
     output
 
   generateTypeMessage: (type) ->
@@ -98,25 +99,18 @@ module.exports =
   colorizeMessage: (type, message) ->
     return message unless @color
     lineColor = CONST.LINE_COLOR
-    return @colorize lineColor, message if message.indexOf '=' is -1
+    return colorize lineColor, message if message.indexOf '=' is -1
     typeColor = @types[type].color
 
-    message.toString().split(' ').map((msg) =>
+    message.toString().split(' ').map(msg ->
       msg = msg.split '='
       if msg.length > 1
-        msg[0] = @colorize typeColor, msg[0]
-        msg[1] = @colorize lineColor, msg[1]
-        msg.join @colorize lineColor, '='
+        msg[0] = colorize typeColor, msg[0]
+        msg[1] = colorize lineColor, msg[1]
+        msg.join colorize lineColor, '='
       else
-        @colorize lineColor, msg
+        colorize lineColor, msg
     ).join(' ')
-
-  colorize: (colors, message) ->
-    return message unless @color
-    colors  = colors.split ' '
-    stylize = chalk
-    stylize = stylize[color] for color in colors
-    stylize message
 
   isPrintable: (type) ->
     return true if @level is CONST.UNMUTED
@@ -132,7 +126,7 @@ module.exports =
 
   align: " "
   color: true
-  timestamp: 0
+  trace: 0
   offset: 2
   depth: Infinity
 
@@ -141,27 +135,27 @@ module.exports =
   types:
     debug:
       level : 4
-      color : 'white'
+      color : ['white']
       symbol: CONST.FIGURE.info
 
     info:
       level     : 3
-      color     : 'blue'
+      color     : ['#33ccff']
       separator : ' '
       symbol    : CONST.FIGURE.info
 
     warn:
       level     : 2
-      color     : 'yellow'
+      color     : ['#ffcc33']
       separator : ' '
       symbol    : CONST.FIGURE.warning
 
     error:
       level  : 1
-      color  : 'red'
+      color  : ['#FF3333']
       symbol : CONST.FIGURE.error
 
     fatal:
       level  : 0
-      color  : 'red'
+      color  : ['#ff3366']
       symbol : CONST.FIGURE.error

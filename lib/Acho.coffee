@@ -1,19 +1,18 @@
 'use strict'
 
-DEFAULT  = require './Default'
 CONST    = require './Constants'
+DEFAULT  = require './Default'
 
-Acho = (params = {}) ->
-  return new Acho params unless this instanceof Acho
+Acho = (opts = {}) ->
+  return new Acho opts unless this instanceof Acho
 
-  acho = Object.assign({}, DEFAULT, params)
+  acho = Object.assign({}, DEFAULT(), opts)
   acho.diff = [] if acho.diff
-  acho[key] = value for key, value of acho
 
   acho.messages = do ->
     messages = {}
     for type of acho.types
-      messages[type] = params.messages?[type] or []
+      messages[type] = opts.messages?[type] or []
       acho[type] = acho.generateTypeMessage type
     messages
 
@@ -30,11 +29,5 @@ Acho = (params = {}) ->
 
   acho
 
-Acho.skin = (skinFn) ->
-  skin = skinFn(CONST)
-  (params = {}) ->
-    Acho(Object.assign({}, params, skin))
-
-Acho.defaults = DEFAULT
-
 module.exports = Acho
+module.exports.constants = CONST
