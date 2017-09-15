@@ -1,11 +1,5 @@
 # acho
 
-<p align="center">
-  <br>
-  <img src="docs/images/resume.png" alt="acho">
-  <br>
-</p>
-
 ![Last version](https://img.shields.io/github/tag/achohq/acho.svg?style=flat-square)
 [![Build Status](http://img.shields.io/travis/achohq/acho/master.svg?style=flat-square)](https://travis-ci.org/achohq/acho)
 [![Coverage Status](https://img.shields.io/coveralls/achohq/acho.svg?style=flat-square)](https://coveralls.io/github/achohq/acho)
@@ -14,7 +8,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> The Hackable Log
+> The &#x3C;hackeable /&#x3E; Log
 
 # Features
 
@@ -42,7 +36,7 @@ npm install acho
 
 <p align="center">
   <br>
-  <img src="docs/images/10.png" alt="acho">
+  <img src="images/10.png" alt="acho">
   <br>
 </p>
 
@@ -107,7 +101,7 @@ We define `.push` as accumulator for store the log internally:
 
 <p align="center">
   <br>
-  <img src="docs/images/02.png" alt="acho">
+  <img src="images/02.png" alt="acho">
   <br>
 </p>
 
@@ -123,7 +117,7 @@ If you want to print previously stored messages, just call the method `.print`:
 
 <p align="center">
   <br>
-  <img src="docs/images/03.png" alt="acho">
+  <img src="images/03.png" alt="acho">
   <br>
 </p>
 
@@ -133,7 +127,7 @@ The method  `.add` combine `.push` and `.print` actions in one: It store the mes
 
 <p align="center">
   <br>
-  <img src="docs/images/04.png" alt="acho">
+  <img src="images/04.png" alt="acho">
   <br>
 </p>
 
@@ -142,7 +136,7 @@ log.add('info', 'this message is printed and stored')
 console.log(acho.messages.info)
 ```
 
-## Formatters
+### Formatters
 
 <p><details>
   <summary>
@@ -153,7 +147,7 @@ console.log(acho.messages.info)
 
 <p align="center">
   <br>
-  <img src="docs/images/09.png" alt="acho">
+  <img src="images/09.png" alt="acho">
   <br>
 </p>
 
@@ -209,7 +203,7 @@ For example, suppose you want to add a timestamp before your logs:
 
 <p align="center">
   <br>
-  <img src="docs/images/05.png" alt="acho">
+  <img src="images/05.png" alt="acho">
   <br>
 </p>
 
@@ -232,121 +226,162 @@ That's all.
 
 ## API
 
-### Acho([options])
+### acho([options])
 
-It creates a logger instance. Available options:
+It creates a logger instance.
 
-##### **{String}** keyword
+#### options
 
-![](docs/images/07.png)
+##### keyword
 
+![](images/07.png)
+
+Type: `string`</br>
 Default: `loglevel`
 
 Instead of print the type log level, print the keyword. By default this behavior is not activated.
 
 You can pass the special keyword `symbol` to show an unicode icon. This is special behavior for CLI programs.
 
-##### **{String}** align
+##### align
 
-![](docs/images/08.png)
+![](images/08.png)
 
+Type: `string`</br>
 Default: `' '`
 
 It adds an alignment separator between the type of the message and the message.
 
 You can provide your own separator or disable it providing a `false`.
 
-##### **{Boolean}** diff
+##### diff
 
-![](docs/images/06.png)
+![](images/06.png)
 
+Type: `boolean`</br>
 Default: `false`
 
 Prints trace between log from the same level. Specially useful to debug timings.
 
-##### **{Boolean}** upperCase
+##### upperCase
 
-![](docs/images/12.png)
+![](images/12.png)
 
+Type: `boolean`</br>
 Default: `false`.
 
 Enable or disable print log level in upper case.
 
-##### **{Boolean|Number}** trace
+##### trace
 
-![](docs/images/11.png)
+![](images/11.png)
 
+Type: `boolean`|`number`</br>
 Default: `false`.
 
 Prints a numeric counter trace associated with each log line. 
 
 The value provided is the minimum quantity of time in milliseconds to consider print a different counter.
 
-##### **{Number}** offset
+##### offset
 
+Type: `number`</br>
 Default: `2`.
 
 The amount of left whitespace between the property key and all of it's sub-properties.
 
 This option is only applied under JSON pretty object in multiple lines (%J).
 
-##### **{Number}** depth
+##### depth
 
+Type: `number`</br>
 Default: `Infinity`.
 
 Colapses all properties deeper than specified by depth.
 
 This option is only applied under JSON pretty object in multiple lines (%J).
 
-##### **{String}** level
+##### level
 
+Type: `string`</br>
 Default: `all`
 
 Provides the logging level. This sets from what level print logs using tranport.
 
 Additionally you can provide `muted` to express don't print logs.
 
-##### **{Function}** transport
+##### transport
 
+Type: `function`</br>
 Default: `console.log`
 
 Defines where write the log message.
 
-##### **{Object}** types
+##### types
+
+Type: `object`
 
 You can provide the types and priorities.
 
-##### **{Object}** messages
+##### messages
+
+Type: `object`
 
 It provides a initial internal store state per each log level. This option is useful when you want to integrate the logger with the ouptut of a delayed function.
 
-##### **{Function}** print
+##### print
+
+Type: `function`
 
 Provides a function that determines how to print the messages. By default uses `.generateMessage` for generate the mesage that will be outputted.
 
-##### **{Function}** outputType
+##### outputType
+
+Type: `function`
 
 Provides a function to customize the type in the output.
 
-##### **{Function}** outputMessage
+##### outputMessage
+
+Type: `function`
 
 Provides a function to customize the message in the output.
 
-##### **{Function}** generateMessage
+##### generateMessage
+
+Type: `function`
 
 Provides a function that generate the message to be outputted. It combines other internal methods for generate the output (as `.isPrintable` or `.colorize`) and normally you are not interested in the definition of it, but you can provide it as option as well.
 
-##### **{Function}** generateTypeMessage
+##### generateTypeMessage
+
+Type: `function`
 
 Provides a function used to generate the type message.
 
-### .push({String} &lt;type&gt;, {String} &lt;message&gt;)
+### .push(&lt;type&gt;, &lt;message&gt;)
 
 Store a message of given `type` internally.
 
-### .add({String} &lt;type&gt;, {String} &lt;message&gt;)
+#### type
+
+Type: `string`
+
+#### message
+
+Type: `string`
+
+### .add(&lt;type&gt;, &lt;message&gt;)
 
 Store a message of given `type` internally and also output it.
+
+#### type
+
+Type: `string`
+
+#### message
+
+Type: `string`
 
 For each level you have a function following the pattern:
 
@@ -354,10 +389,17 @@ For each level you have a function following the pattern:
 
 Prints all messages internally stored.
 
-### .\[loglevel\]({String} &lt;message&gt;)
+### .\[loglevel\](&lt;message&gt;)
 
 For each log level that you declared in the constructor (or the default log levels provides by the library if you don't declare nothing) will be created a function with the same name to output a message with these log level.
 
+#### message
+
+Type: `string`
+
 ## License
 
-MIT © [Kiko Beats](http://www.kikobeats.com)
+**acho** © [Kiko Beats](https://kikobeats.com), Released under the [MIT](https://github.com/achohq/acho/pulls/blob/master/LICENSE.md) License.<br>
+Authored and maintained by Kiko Beats with help from [contributors](https://github.com/achohq/acho/pulls/contributors).
+
+> [kikobeats.com](https://kikobeats.com) · GitHub [Kiko Beats](https://github.com/kikobeats) · Twitter [@kikobeats](https://twitter.com/kikobeats)
