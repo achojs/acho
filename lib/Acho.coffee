@@ -5,11 +5,9 @@ clone = require 'lodash.clonedeep'
 DEFAULT  = require './Default'
 CONST    = require './Constants'
 
-
 Acho = (opts = {}) ->
   return new Acho opts unless this instanceof Acho
 
-  # TODO: Merge instead of clonee
   acho = Object.assign({}, DEFAULT(), opts)
   acho.diff = [] if acho.diff
 
@@ -33,12 +31,5 @@ Acho = (opts = {}) ->
 
   acho
 
-# TODO: Remove it, unnecessary
-Acho.skin = (skinFn) ->
-  skin = skinFn(CONST)
-  (opts = {}) ->
-    Acho(Object.assign({}, opts, skin))
-
-Acho.defaults = DEFAULT
-
 module.exports = Acho
+module.exports.constants = CONST
