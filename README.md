@@ -14,7 +14,7 @@
 [![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
-> Simple & hackable log system for NodeJS.
+> The Hackable Log
 
 # Why
 
@@ -29,55 +29,22 @@
 npm install acho
 ```
 
-If you want to use it in the browser (powered by [Browserify](http://browserify.org/)):
-
-```bash
-bower install acho --save
-```
-
-and later add it to your HTML:
-
-```html
-<script src="bower_components/acho/dist/acho.js"></script>
-```
-
 ## Usage
 
-### First steps
-
-Acho exports itself according to UMD best practices, which means that no matter where you are using the library, you get a version tailored for your environment.
-
-If you're using a module loader (or Node), simple require the library as you would any other module.
-
-If you're using a browser, the library falls back to attaching itself to window as the global `Acho`.
-
-#### CommonJS
+The first thing you need to do is create a new log instance:
 
 ```js
-var Acho = require('acho');
-var acho = Acho();
+const log = acho()
 ```
 
-#### Global/Browser
+Then you can print one of the defaults logging levels:
 
-```js
-var acho = Acho();
 ```
-
-#### AMD
-
-I don't personally use AMD, so I can't conjure an example, but it should work fine as well.
-
-It's time to use it!
-
-<p align="center">
-  <br>
-  <img src="docs/images/00.png" alt="acho">
-  <br>
-</p>
-
-```js
-acho.info('hello world');
+const log = acho()
+const types = Object.keys(log.types)
+types.forEach(type => {
+  log[type]('hello world')
+})
 ```
 
 All public methods are chainable:
@@ -94,7 +61,45 @@ acho
 .error('something bad happens');
 ```
 
-Maybe you don't want to output the message, but store it for later use:
+### Logging level
+
+Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
+
+- `fatal` : Display calls to `.fatal()` messages.
+- `error` : Display calls to `.fatal()`, `.error()` messages.
+- `warn`  : Display calls from `.fatal()`, `.error()`, `.warn()` messages.
+- `info`  : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()` messages.
+- `debug` : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()`, `debug()` messages.
+
+Additionally exists two special levels:
+
+- `muted` :  Avoid all output.
+- `all`   : Allow print all message types.
+
+The default log level is `all`. You can define it in the constructor:
+
+```js
+const log = acho({level: 'debug'})
+```
+
+or at runtime:
+
+```js
+log.level = 'debug';
+```
+
+See more at [examples/levels](https://github.com/achohq/acho/blob/master/examples/levels.js).
+
+### Customize logging levels
+
+### skin-cli
+### skin-syslog
+
+### Internal Store
+
+Sometimes, when you are interacting with a logger you need to store the logs to be used later instead of print all of them.
+
+We define `.push` as accumulator for store the log internally:
 
 <p align="center">
   <br>
@@ -119,7 +124,9 @@ If you want to print previously stored messages, just call the method `print`:
 acho.print()
 ```
 
-You might be thinking: Can I combine both, to store and both print a message? Absolutely!
+or you can retrieve the logs programatically from the internal storage  at `acho.messages`
+
+The method  `.add` combine `.push` and `.print` actions in one: It store the message internally but also print the log.
 
 <p align="center">
   <br>
@@ -131,71 +138,6 @@ You might be thinking: Can I combine both, to store and both print a message? Ab
 acho.add('info', 'this message is printed and stored');
 console.log(acho.messages.info)
 ```
-
-### Defining the level
-
-Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
-
-- `fatal` : Display calls to `.fatal()` messages.
-- `error` : Display calls to `.fatal()`, `.error()` messages.
-- `warn`  : Display calls from `.fatal()`, `.error()`, `.warn()` messages.
-- `info`  : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()` messages.
-- `debug` : Display calls from `.fatal()`, `.error()`, `.warn()`, `info()`, `debug()` messages.
-
-Additionally exists two special levels:
-
-- `muted` :  Avoid all output.
-- `all`   : Allow print all message types.
-
-The default log level is `all`. You can define it in the constructor:
-
-```js
-var acho = Acho({level: 'debug'})
-```
-
-or at runtime:
-
-```js
-acho.level = 'debug';
-```
-
-See more at [examples/levels](https://github.com/achohq/acho/blob/master/examples/levels.js).
-
-### Customization
-
-You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
-
-By default the messages structure is brief: Just the message type followed by the message itself.
-
-But you can easily modify the output. For example, let's add a timestamp to each message:
-
-<p align="center">
-  <br>
-  <img src="docs/images/05.png" alt="acho">
-  <br>
-</p>
-
-```js
-var acho = Acho({
-  color: true,
-  level: 'debug',
-
-  // Customize how to print the 'type' of each message
-  outputType: function(type) {
-    return '[' + type + '] » ';
-  },
-
-  // Customize how to print the message.
-  // Add things before and/or after.
-  outputMessage: function(message) {
-    return Date() + ' :: ' + message;
-  }
-});
-
-acho.info('I am hungry');
-```
-
-If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
 
 ## Formatters
 
@@ -243,15 +185,51 @@ acho.info('formatting with object interpolation %J', {
 
 See more at [examples/formatter](https://github.com/achohq/acho/blob/master/examples/formatter.js).
 
+### Customization
+
+You can completely customize the library to your requirements: changes colors, add more types, sort the priorities... the internal structure of the object is public and you can edit it dynamically. **You have the power**.
+
+By default the messages structure is brief: Just the message type followed by the message itself.
+
+But you can easily modify the output. For example, let's add a timestamp to each message:
+
+<p align="center">
+  <br>
+  <img src="docs/images/05.png" alt="acho">
+  <br>
+</p>
+
+```js
+var acho = Acho({
+  color: true,
+  level: 'debug',
+
+  // Customize how to print the 'type' of each message
+  outputType: function(type) {
+    return '[' + type + '] » ';
+  },
+
+  // Customize how to print the message.
+  // Add things before and/or after.
+  outputMessage: function(message) {
+    return Date() + ' :: ' + message;
+  }
+});
+
+acho.info('I am hungry');
+```
+
+If you need customize more the output you can setup `.print` `.generateMessage` (see below) that are a more low level methods for generate and print the output message.
+
 ## API
 
-### Acho({Object} [options])
+### Acho([options])
 
-Create a logger. Available options:
-
-<img src="docs/images/07.png" align="right">
+It creates a logger instance. Available options:
 
 ##### **{String}** keyword
+
+![](docs/images/07.png)
 
 Default: `loglevel`
 
@@ -259,9 +237,9 @@ Instead of print the type log level, print the keyword. By default this behavior
 
 You can pass the special keyword `symbol` to show an unicode icon. This is special behavior for CLI programs.
 
-<img src="docs/images/08.png" align="right">
-
 ##### **{String}** align
+
+![](docs/images/08.png)
 
 Default: `' '`
 
@@ -269,17 +247,17 @@ It adds an alignment separator between the type of the message and the message.
 
 You can provide your own separator or disable it providing a `false`.
 
-<img src="docs/images/06.png" align="right">
-
 ##### **{Boolean}** diff
+
+![](docs/images/06.png)
 
 Default: `false`
 
-Prints timestamp between log from the same level. Specially useful to debug timmings.
+Prints timestamp between log from the same level. Specially useful to debug timings.
 
 ##### **{Boolean}** color
 
-Default: `false`.
+Default: `true`.
 
 Enable or disable colorized output.
 
@@ -289,11 +267,13 @@ Default: `false`.
 
 Enable or disable print log level in upper case.
 
-##### **{Number}** timestamp
+##### **{Boolean|Number}** timestamp
 
-Default: `0`.
+Default: `false`.
 
-Prints a counter timestamp associated with each log line. Useful for debug log traces.
+Prints a numeric counter timestamp associated with each log line. 
+
+The value provided is the minimum quantity of time in milliseconds to consider print a different counter.
 
 ##### **{Number}** offset
 
