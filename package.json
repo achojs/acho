@@ -48,7 +48,7 @@
     "standard-markdown": "latest"
   },
   "engines": {
-    "node": ">= 8"
+    "node": ">= 4"
   },
   "scripts": {
     "clean": "rm -rf node_modules",
