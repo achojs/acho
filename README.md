@@ -36,7 +36,7 @@ npm install acho
 
 <p align="center">
   <br>
-  <img src="docs/images/10.png" alt="acho">
+  <img src="https://raw.githubusercontent.com/achohq/acho/master/docs/images/10.png" alt="acho">
   <br>
 </p>
 
@@ -101,7 +101,7 @@ We define `.push` as accumulator for store the log internally:
 
 <p align="center">
   <br>
-  <img src="docs/images/02.png" alt="acho">
+  <img src="https://raw.githubusercontent.com/achohq/acho/master/docs/images/02.png" alt="acho">
   <br>
 </p>
 
@@ -117,7 +117,7 @@ If you want to print previously stored messages, just call the method `.print`:
 
 <p align="center">
   <br>
-  <img src="docs/images/03.png" alt="acho">
+  <img src="https://raw.githubusercontent.com/achohq/acho/master/docs/images/03.png" alt="acho">
   <br>
 </p>
 
@@ -127,7 +127,7 @@ The method  `.add` combine `.push` and `.print` actions in one: It store the mes
 
 <p align="center">
   <br>
-  <img src="docs/images/04.png" alt="acho">
+  <img src="https://raw.githubusercontent.com/achohq/acho/master/docs/images/04.png" alt="acho">
   <br>
 </p>
 
@@ -147,7 +147,7 @@ console.log(acho.messages.info)
 
 <p align="center">
   <br>
-  <img src="docs/images/09.png" alt="acho">
+  <img src="https://raw.githubusercontent.com/achohq/acho/master/docs/images/09.png" alt="acho">
   <br>
 </p>
 
@@ -203,7 +203,7 @@ For example, suppose you want to add a timestamp before your logs:
 
 <p align="center">
   <br>
-  <img src="docs/images/05.png" alt="acho">
+  <img src="https://raw.githubusercontent.com/achohq/acho/master/docs/images/05.png" alt="acho">
   <br>
 </p>
 
@@ -234,7 +234,7 @@ It creates a logger instance.
 
 ##### keyword
 
-![](docs/images/07.png)
+![](https://raw.githubusercontent.com/achohq/acho/master/docs/images/07.png)
 
 Type: `string`</br>
 Default: `loglevel`
@@ -245,7 +245,7 @@ You can pass the special keyword `symbol` to show an unicode icon. This is speci
 
 ##### align
 
-![](docs/images/08.png)
+![](https://raw.githubusercontent.com/achohq/acho/master/docs/images/08.png)
 
 Type: `string`</br>
 Default: `' '`
@@ -256,7 +256,7 @@ You can provide your own separator or disable it providing a `false`.
 
 ##### diff
 
-![](docs/images/06.png)
+![](https://raw.githubusercontent.com/achohq/acho/master/docs/images/06.png)
 
 Type: `boolean`</br>
 Default: `false`
@@ -265,7 +265,7 @@ Prints trace between log from the same level. Specially useful to debug timings.
 
 ##### upper
 
-![](docs/images/12.png)
+![](https://raw.githubusercontent.com/achohq/acho/master/docs/images/12.png)
 
 Type: `boolean`</br>
 Default: `false`.
@@ -274,7 +274,7 @@ Enable or disable print log level in upper case.
 
 ##### trace
 
-![](docs/images/11.png)
+![](https://raw.githubusercontent.com/achohq/acho/master/docs/images/11.png)
 
 Type: `boolean`|`number`</br>
 Default: `false`.
