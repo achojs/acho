@@ -263,7 +263,7 @@ Default: `false`
 
 Prints trace between log from the same level. Specially useful to debug timings.
 
-##### upperCase
+##### upper
 
 ![](docs/images/12.png)
 

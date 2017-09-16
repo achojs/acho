@@ -25,7 +25,7 @@ module.exports = () ->
         type = then @types[type].symbol
       else
         type = @keyword
-    type = type.toUpperCase() if @upperCase
+    type = type.toUpperCase() if @upper
     type
 
   outputAlign: ->

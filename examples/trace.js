@@ -4,7 +4,7 @@ const Acho = require('..')
 const acho = Acho({
   diff: true,
   trace: 1000
-  // upperCase: true,
+  // upper: true,
   // keyword: 'symbol'
 })
 
