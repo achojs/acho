@@ -1,3 +1,36 @@
+<a name="4.0.0"></a>
+# 4.0.0 (2017-09-16)
+
+* Add CNAME ([24b0839](https://github.com/achohq/acho/commit/24b0839))
+* Add docs ([5f7bae2](https://github.com/achohq/acho/commit/5f7bae2))
+* Add favicon ([3d186a9](https://github.com/achohq/acho/commit/3d186a9))
+* Add more examples ([84dfb20](https://github.com/achohq/acho/commit/84dfb20))
+* Add new colors ([8cd0a97](https://github.com/achohq/acho/commit/8cd0a97))
+* Add skin cli example ([9efff8d](https://github.com/achohq/acho/commit/9efff8d))
+* Adjust node version ([7aad823](https://github.com/achohq/acho/commit/7aad823))
+* Expose constant ([63227d2](https://github.com/achohq/acho/commit/63227d2))
+* Improve responsive ([00e3e77](https://github.com/achohq/acho/commit/00e3e77))
+* Meta tweaks ([8e97b25](https://github.com/achohq/acho/commit/8e97b25))
+* Move test inside package ([deefa92](https://github.com/achohq/acho/commit/deefa92))
+* Prevent modify defaults ([3aa9e8e](https://github.com/achohq/acho/commit/3aa9e8e))
+* Refactor docs ([a6b6ec8](https://github.com/achohq/acho/commit/a6b6ec8))
+* Refactor examples ([0de11aa](https://github.com/achohq/acho/commit/0de11aa))
+* Refactor tests ([9b7b540](https://github.com/achohq/acho/commit/9b7b540))
+* Remove specific color comparison ([76ca470](https://github.com/achohq/acho/commit/76ca470))
+* Remove unnecessary code ([68d49ea](https://github.com/achohq/acho/commit/68d49ea))
+* Rename example ([3dff986](https://github.com/achohq/acho/commit/3dff986))
+* timestamp → trace ([9163710](https://github.com/achohq/acho/commit/9163710))
+* Tweaks ([55ee8da](https://github.com/achohq/acho/commit/55ee8da))
+* Tweaks ([44041fc](https://github.com/achohq/acho/commit/44041fc))
+* Tweaks ([bebf082](https://github.com/achohq/acho/commit/bebf082))
+* Unify colorize methods ([2006c84](https://github.com/achohq/acho/commit/2006c84))
+* Update cli example ([e8b2c7f](https://github.com/achohq/acho/commit/e8b2c7f))
+* Update docs ([9296cab](https://github.com/achohq/acho/commit/9296cab))
+* Use an collection of colors ([bffbc8e](https://github.com/achohq/acho/commit/bffbc8e))
+* fix(package): update chalk to version 2.1.0 ([16b352e](https://github.com/achohq/acho/commit/16b352e))
+
+
+
 <a name="3.3.2"></a>
 ## 3.3.2 (2017-07-19)
 
