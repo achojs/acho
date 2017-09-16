@@ -194,7 +194,7 @@ kbd {
   right: 0;
   text-decoration: none;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
 .github-corner svg {
