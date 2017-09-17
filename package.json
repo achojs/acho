@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/achohq/acho.git"
+    "url": "git+https://github.com/achojs/acho.git"
   },
   "bugs": {
-    "url": "https://github.com/achohq/acho/issues"
+    "url": "https://github.com/achojs/acho/issues"
   },
   "keywords": [
     "debug",

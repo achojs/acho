@@ -44,8 +44,8 @@ div#app:empty:before {
   right: 0;
   top: 0;
   -webkit-transition: width .2s, opacity .4s;
-  -o-transition: width .2s, opacity .4s;
-  transition: width .2s, opacity .4s;
+       -o-transition: width .2s, opacity .4s;
+          transition: width .2s, opacity .4s;
   width: 0;
   z-index: 5;
 }
@@ -119,8 +119,8 @@ kbd {
   font-size: 16px;
   text-decoration: none;
   -webkit-transition: color .3s;
-  -o-transition: color .3s;
-  transition: color .3s;
+       -o-transition: color .3s;
+          transition: color .3s;
 }
 
 .app-nav a.active, .app-nav a:hover {
@@ -221,8 +221,8 @@ main {
   display: inline-block;
   text-decoration: none;
   -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  transition: all .3s;
+       -o-transition: all .3s;
+          transition: all .3s;
 }
 
 .anchor span {
@@ -241,11 +241,11 @@ main {
   bottom: 0;
   left: 0;
   position: absolute;
-  transition: -webkit-transform .25s ease-out;
+          transition: -webkit-transform .25s ease-out;
   -webkit-transition: -webkit-transform .25s ease-out;
-  -o-transition: transform .25s ease-out;
-  transition: transform .25s ease-out;
-  transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+       -o-transition: transform .25s ease-out;
+          transition: transform .25s ease-out;
+          transition: transform .25s ease-out, -webkit-transform .25s ease-out;
   width: 300px;
   z-index: 3;
 }
@@ -324,8 +324,8 @@ main {
   position: absolute;
   text-align: center;
   -webkit-transition: opacity .3s;
-  -o-transition: opacity .3s;
-  transition: opacity .3s;
+       -o-transition: opacity .3s;
+          transition: opacity .3s;
   width: 30px;
   width: 284px;
   z-index: 4;
@@ -356,8 +356,8 @@ body.sticky .sidebar, body.sticky .sidebar-toggle {
   left: 300px;
   position: absolute;
   -webkit-transition: left .25s ease;
-  -o-transition: left .25s ease;
-  transition: left .25s ease;
+       -o-transition: left .25s ease;
+          transition: left .25s ease;
 }
 
 .markdown-section {
@@ -453,8 +453,8 @@ body.sticky .sidebar, body.sticky .sidebar-toggle {
 
 body.close .sidebar {
   -webkit-transform: translateX(-300px);
-          -ms-transform: translateX(-300px);
-      transform: translateX(-300px);
+      -ms-transform: translateX(-300px);
+          transform: translateX(-300px);
 }
 
 body.close .sidebar-toggle {
@@ -491,30 +491,30 @@ body.close .content {
 
   .sidebar {
     left: -300px;
-    transition: -webkit-transform .25s ease-out;
+            transition: -webkit-transform .25s ease-out;
     -webkit-transition: -webkit-transform .25s ease-out;
-    -o-transition: transform .25s ease-out;
-    transition: transform .25s ease-out;
-    transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+         -o-transition: transform .25s ease-out;
+            transition: transform .25s ease-out;
+            transition: transform .25s ease-out, -webkit-transform .25s ease-out;
   }
 
   .content {
     left: 0;
     max-width: 100vw;
     position: static;
-    transition: -webkit-transform .25s ease;
+            transition: -webkit-transform .25s ease;
     -webkit-transition: -webkit-transform .25s ease;
-    -o-transition: transform .25s ease;
-    transition: transform .25s ease;
-    transition: transform .25s ease, -webkit-transform .25s ease;
+         -o-transition: transform .25s ease;
+            transition: transform .25s ease;
+            transition: transform .25s ease, -webkit-transform .25s ease;
   }
 
   .app-nav, .github-corner {
-    transition: -webkit-transform .25s ease-out;
+            transition: -webkit-transform .25s ease-out;
     -webkit-transition: -webkit-transform .25s ease-out;
-    -o-transition: transform .25s ease-out;
-    transition: transform .25s ease-out;
-    transition: transform .25s ease-out, -webkit-transform .25s ease-out;
+         -o-transition: transform .25s ease-out;
+            transition: transform .25s ease-out;
+            transition: transform .25s ease-out, -webkit-transform .25s ease-out;
   }
 
   .sidebar-toggle {
@@ -524,22 +524,22 @@ body.close .content {
 
   body.close .sidebar {
     -webkit-transform: translateX(300px);
-            -ms-transform: translateX(300px);
-        transform: translateX(300px);
+        -ms-transform: translateX(300px);
+            transform: translateX(300px);
   }
 
   body.close .sidebar-toggle {
     background-color: hsla(0, 0%, 100%, .8);
     -webkit-transition: background-color 1s;
-    -o-transition: background-color 1s;
-    transition: background-color 1s;
+         -o-transition: background-color 1s;
+            transition: background-color 1s;
     width: 284px;
   }
 
   body.close .content {
     -webkit-transform: translateX(300px);
-            -ms-transform: translateX(300px);
-        transform: translateX(300px);
+        -ms-transform: translateX(300px);
+            transform: translateX(300px);
   }
 
   body.close .app-nav, body.close .github-corner {
@@ -681,8 +681,8 @@ section.cover .cover-main>p:last-child a {
   padding: .75em 2rem;
   text-decoration: none;
   -webkit-transition: all .15s ease;
-  -o-transition: all .15s ease;
-  transition: all .15s ease;
+       -o-transition: all .15s ease;
+          transition: all .15s ease;
 }
 
 section.cover .cover-main>p:last-child a:last-child {
@@ -705,8 +705,8 @@ section.cover blockquote>p>a {
   border-bottom: 2px solid #c79b50;
   border-bottom: 2px solid var(--primary-color, #c79b50);
   -webkit-transition: color .3s;
-  -o-transition: color .3s;
-  transition: color .3s;
+       -o-transition: color .3s;
+          transition: color .3s;
 }
 
 section.cover blockquote>p>a:hover {
@@ -1014,21 +1014,46 @@ pre:after {
 
 /* Custom */
 
-.cover-main img {
+#video {
+  padding: 0 1rem;
+}
+
+video {
   border: 1px solid #c79b50;
   box-shadow: 0 0px 40px 0px #c79b50;
   border-radius: 4px;
   display: block;
   margin: 3rem auto;
-  width: 80vh;
+  width: 100%;
+  max-width: 100vh
 }
 
 div.cover-main h1 {
   padding: 0;
-  margin: 3rem;
+  margin: 3rem 1rem;
 }
 
-.cover-main span {
+div.cover-main span {
   color: white;
   font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+  #video {
+    background: no-repeat center url(images/demo.gif);
+    background-size: 100%;
+    height: 36vh;
+    border: 1px solid #c79b50;
+    box-shadow: 0 0px 40px 0px #c79b50;
+    border-radius: 4px;
+    margin: 3rem auto;
+  }
+
+  #video video {
+    display: none;
+  }
+
+  div.cover-main h1 {
+    font-size: 1.5rem;
+  }
 }
