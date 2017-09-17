@@ -46,12 +46,9 @@
     "standard-markdown": "latest"
   },
   "engines": {
-    "node": ">= 4"
+    "node": ">= 7.6"
   },
-  "files": [
-    "index.js",
-    "lib"
-  ],
+  "files": ["index.js", "lib"],
   "scripts": {
     "clean": "rm -rf node_modules",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
@@ -63,14 +60,9 @@
   },
   "license": "MIT",
   "lint-staged": {
-    "*.js": [
-      "prettier-standard",
-      "git add"
-    ]
+    "*.js": ["prettier-standard", "git add"]
   },
   "standard": {
-    "env": [
-      "mocha"
-    ]
+    "env": ["mocha"]
   }
 }
