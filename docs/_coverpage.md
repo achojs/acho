@@ -1,6 +1,6 @@
 <!-- _coverpage.md -->
 
-![logo](images/resume.png)
+![logo](https://thumbs.gfycat.com/UnfoldedDigitalGemsbok-size_restricted.gif)
 
 <h1>acho, the <span>&#x3C;hackeable /&#x3E;</span> log</h1>
 

@@ -1016,6 +1016,7 @@ pre:after {
 
 .cover-main img {
   border: 1px solid #c79b50;
+  box-shadow: 0 0px 40px 0px #c79b50;
   border-radius: 4px;
   display: block;
   margin: 3rem auto;
