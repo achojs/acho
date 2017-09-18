@@ -59,7 +59,7 @@
     "lint": "standard-markdown && standard",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
-    "pretty": "prettier-standard index.js lib/**/*.js examples/**/*.js --single-quote",
+    "pretty": "prettier-standard index.js lib/**/*.js test/**/*.js examples/**/*.js --single-quote",
     "test": "nyc mocha"
   },
   "license": "MIT",

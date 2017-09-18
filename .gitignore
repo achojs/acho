@@ -24,7 +24,6 @@ nbproject
 ############################
 # Tests
 ############################
-test.js
 testApp
 coverage
 .nyc_output
