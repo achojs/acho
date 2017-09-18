@@ -28,7 +28,6 @@
   ],
   "dependencies": {
     "chalk": "~2.1.0",
-    "coffee-script": "~1.12.4",
     "fmt-obj": "~2.0.0",
     "pretty-ms": "~3.0.0",
     "sliced": "~1.0.1"
@@ -70,6 +69,8 @@
     ]
   },
   "standard": {
-    "env": ["mocha"]
+    "env": [
+      "mocha"
+    ]
   }
 }
