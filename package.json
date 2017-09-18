@@ -46,21 +46,28 @@
     "standard-markdown": "latest"
   },
   "engines": {
-    "node": ">= 7.6"
+    "node": ">= 8"
   },
-  "files": ["index.js", "lib"],
+  "files": [
+    "index.js",
+    "lib"
+  ],
   "scripts": {
     "clean": "rm -rf node_modules",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "prelint": "npm run pretty",
     "lint": "standard-markdown && standard",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
-    "pretty": "prettier-standard index.js examples/**/*.js --single-quote",
+    "pretty": "prettier-standard index.js lib/**/*.js examples/**/*.js --single-quote",
     "test": "nyc mocha"
   },
   "license": "MIT",
   "lint-staged": {
-    "*.js": ["prettier-standard", "git add"]
+    "*.js": [
+      "prettier-standard",
+      "git add"
+    ]
   },
   "standard": {
     "env": ["mocha"]
