@@ -4,7 +4,7 @@
 
 <h1>acho, the <span>&#x3C;hackeable /&#x3E;</span> log</h1>
 
-[GitHub](https://github.com/QingWei-Li/docsify/)
+[GitHub](https://github.com/achojs/acho)
 [Get Started](#docsify)
 
 <!-- background color -->
