@@ -1,11 +1,11 @@
 # acho
 
 ![Last version](https://img.shields.io/github/tag/achojs/acho.svg?style=flat-square)
-[![Build Status](http://img.shields.io/travis/achojs/acho/master.svg?style=flat-square)](https://travis-ci.org/achojs/acho)
+[![Build Status](https://img.shields.io/travis/achojs/acho/master.svg?style=flat-square)](https://travis-ci.org/achojs/acho)
 [![Coverage Status](https://img.shields.io/coveralls/achojs/acho.svg?style=flat-square)](https://coveralls.io/github/achojs/acho)
-[![Dependency status](http://img.shields.io/david/achojs/acho.svg?style=flat-square)](https://david-dm.org/achojs/acho)
-[![Dev Dependencies Status](http://img.shields.io/david/dev/achojs/acho.svg?style=flat-square)](https://david-dm.org/achojs/acho#info=devDependencies)
-[![NPM Status](http://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
+[![Dependency status](https://img.shields.io/david/achojs/acho.svg?style=flat-square)](https://david-dm.org/achojs/acho)
+[![Dev Dependencies Status](https://img.shields.io/david/dev/achojs/acho.svg?style=flat-square)](https://david-dm.org/achojs/acho#info=devDependencies)
+[![NPM Status](https://img.shields.io/npm/dm/acho.svg?style=flat-square)](https://www.npmjs.org/package/acho)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/kikobeats)
 
 > The &#x3C;hackeable /&#x3E; Log
