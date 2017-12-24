@@ -3,7 +3,7 @@
   "description": "The Hackable Log",
   "homepage": "https://acho.js.org",
   "version": "4.0.0",
-  "main": "./index.js",
+  "main": "./lib/Acho.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
@@ -28,7 +28,6 @@
   ],
   "dependencies": {
     "chalk": "~2.3.0",
-    "coffee-script": "~1.12.4",
     "fmt-obj": "~2.0.0",
     "pretty-ms": "~3.1.0",
     "sliced": "~1.0.1"
