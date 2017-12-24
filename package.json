@@ -27,9 +27,9 @@
     "tiny"
   ],
   "dependencies": {
-    "chalk": "~2.1.0",
+    "chalk": "~2.3.0",
     "fmt-obj": "~2.0.0",
-    "pretty-ms": "~3.0.0",
+    "pretty-ms": "~3.1.0",
     "sliced": "~1.0.1"
   },
   "devDependencies": {
