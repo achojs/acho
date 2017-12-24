@@ -1,3 +1,23 @@
+<a name="4.0.1"></a>
+## 4.0.1 (2017-12-24)
+
+* Add absolute image url ([4c939d4](https://github.com/achojs/acho/commit/4c939d4))
+* Add video ([f3fda69](https://github.com/achojs/acho/commit/f3fda69))
+* Drop node 4 support ([366ff8b](https://github.com/achojs/acho/commit/366ff8b))
+* Fix link (#42) ([4ba44fc](https://github.com/achojs/acho/commit/4ba44fc)), closes [#42](https://github.com/achojs/acho/issues/42)
+* Prefer HTTPS connections ([26596f2](https://github.com/achojs/acho/commit/26596f2))
+* Remove coffeecript hook ([e69b73f](https://github.com/achojs/acho/commit/e69b73f))
+* Remove coffeescript dependency ([071f664](https://github.com/achojs/acho/commit/071f664))
+* Tweaks ([f131dfa](https://github.com/achojs/acho/commit/f131dfa))
+* Tweaks ([2f10a40](https://github.com/achojs/acho/commit/2f10a40))
+* Update _coverpage.md ([e2da41a](https://github.com/achojs/acho/commit/e2da41a))
+* upperCase → upper ([9a0a9d3](https://github.com/achojs/acho/commit/9a0a9d3))
+* fix(package): update chalk to version 2.2.0 ([75bd815](https://github.com/achojs/acho/commit/75bd815))
+* fix(package): update chalk to version 2.3.0 ([84ed02f](https://github.com/achojs/acho/commit/84ed02f))
+* fix(package): update pretty-ms to version 3.1.0 ([d19b814](https://github.com/achojs/acho/commit/d19b814))
+
+
+
 <a name="4.0.0"></a>
 # 4.0.0 (2017-09-16)
 
