@@ -10,7 +10,7 @@
 
 > The &#x3C;hackeable /&#x3E; Log
 
-# Features
+## Features
 
 * Different log levels skins.
 * Beauty object interpolation.
