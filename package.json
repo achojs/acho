@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "coveralls": "latest",
+    "docsify-cli": "latest",
     "git-dirty": "latest",
     "husky": "latest",
     "lint-staged": "latest",

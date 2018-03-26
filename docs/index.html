@@ -6,6 +6,7 @@
   <meta name="description" content="The Hackable Log">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codecopy/umd/codecopy.min.css">
 </head>
 <body>
   <div id="app"></div>
@@ -15,8 +16,16 @@
     name: 'acho',
     repo: 'https://github.com/achohq/acho',
     coverpage: true,
-    homepage: 'https://raw.githubusercontent.com/achohq/acho/master/README.md'
+    homepage: 'https://raw.githubusercontent.com/achohq/acho/master/README.md',
+    plugins: [
+      function (hook, vm) {
+        hook.ready(function () {
+          codecopy('pre')
+        })
+      }
+    ]
   }
 </script>
 <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/codecopy/umd/codecopy.min.js"></script>
 </html>
