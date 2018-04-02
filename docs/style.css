@@ -1025,7 +1025,7 @@ video {
   display: block;
   margin: 3rem auto;
   width: 100%;
-  max-width: 90;
+  max-width: 90vh;
 }
 
 div.cover-main h1 {
