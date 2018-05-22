@@ -1,3 +1,15 @@
+<a name="4.0.2"></a>
+## 4.0.2 (2018-05-22)
+
+* Add copy clipboard button ([adff40f](https://github.com/achojs/acho/commit/adff40f))
+* Update package.json ([6fe0c0f](https://github.com/achojs/acho/commit/6fe0c0f))
+* Update README.md ([81f63fe](https://github.com/achojs/acho/commit/81f63fe))
+* Update style.css ([8bc613e](https://github.com/achojs/acho/commit/8bc613e))
+* Update style.css ([d54abd4](https://github.com/achojs/acho/commit/d54abd4))
+* fix(package): update chalk to version 2.4.0 ([4f1a7b0](https://github.com/achojs/acho/commit/4f1a7b0))
+
+
+
 <a name="4.0.1"></a>
 ## 4.0.1 (2017-12-24)
 
