@@ -63,8 +63,8 @@ const acho = require('acho')
 const log = acho()
 
 acho
-.info('hello world')
-.error('something bad happens')
+  .info('hello world')
+  .error('something bad happens')
 ```
 
 Establishing the loglevel is a good way to filter out undesired information from output. The available levels by default are:
@@ -84,7 +84,7 @@ The default log level is `all`. You can define it in the constructor:
 
 ```js
 const acho = require('acho')
-const log = acho({level: 'debug'})
+const log = acho({ level: 'debug' })
 ```
 
 or at runtime:
@@ -168,7 +168,7 @@ By default, the `%j` is applied when you pass an object to be logged:
 const acho = require('acho')
 const log = acho()
 
-log.info({hello: 'world', foo: 'bar'})
+log.info({ hello: 'world', foo: 'bar' })
 // => 'info hello=world foo=bar'
 ```
 
@@ -279,7 +279,7 @@ Enable or disable print log level in upper case.
 Type: `boolean`|`number`</br>
 Default: `false`.
 
-Prints a numeric counter trace associated with each log line. 
+Prints a numeric counter trace associated with each log line.
 
 The value provided is the minimum quantity of time in milliseconds to consider print a different counter.
 
