@@ -56,7 +56,6 @@
     "clean": "rm -rf node_modules",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "standard-markdown && standard",
-    "precommit": "lint-staged",
     "pretest": "npm run lint",
     "pretty": "prettier-standard index.js examples/**/*.js --single-quote",
     "test": "nyc mocha"
@@ -72,5 +71,10 @@
     "env": [
       "mocha"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
