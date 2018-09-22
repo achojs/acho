@@ -1,3 +1,15 @@
+<a name="4.0.3"></a>
+## 4.0.3 (2018-09-22)
+
+* Fix lint ([d2ca4e9](https://github.com/achojs/acho/commit/d2ca4e9))
+* Improve meta ([b94bda8](https://github.com/achojs/acho/commit/b94bda8))
+* Migrate husky ([1137ff3](https://github.com/achojs/acho/commit/1137ff3))
+* Update package.json ([8789d17](https://github.com/achojs/acho/commit/8789d17))
+* fix(package): update pretty-ms to version 3.2.0 ([f40bbe7](https://github.com/achojs/acho/commit/f40bbe7))
+* fix(package): update pretty-ms to version 4.0.0 ([9c05e2c](https://github.com/achojs/acho/commit/9c05e2c))
+
+
+
 <a name="4.0.2"></a>
 ## 4.0.2 (2018-05-22)
 
