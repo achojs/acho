@@ -1,3 +1,10 @@
+<a name="4.0.4"></a>
+## 4.0.4 (2018-11-06)
+
+* Ensure indexOf is a function ([eeb3b80](https://github.com/achojs/acho/commit/eeb3b80))
+
+
+
 <a name="4.0.3"></a>
 ## 4.0.3 (2018-09-22)
 
