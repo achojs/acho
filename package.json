@@ -42,7 +42,7 @@
     "nyc": "latest",
     "prettier-standard": "latest",
     "should": "latest",
-    "standard": "11",
+    "standard": "latest",
     "standard-markdown": "latest"
   },
   "engines": {
