@@ -1,3 +1,15 @@
+## <small>4.0.5 (2020-02-13)</small>
+
+* ci: update node builds ([2ce6154](https://github.com/achojs/acho/commit/2ce6154))
+* fix: linter ([a22b344](https://github.com/achojs/acho/commit/a22b344))
+* fix(package): update chalk to version 3.0.0 ([26c01df](https://github.com/achojs/acho/commit/26c01df))
+* fix(package): update pretty-ms to version 5.0.0 ([69e7824](https://github.com/achojs/acho/commit/69e7824))
+* fix(package): update pretty-ms to version 5.1.0 ([a0f3449](https://github.com/achojs/acho/commit/a0f3449))
+* build: update dependencies ([70e0ef2](https://github.com/achojs/acho/commit/70e0ef2))
+* Update package.json ([72d45eb](https://github.com/achojs/acho/commit/72d45eb))
+
+
+
 <a name="4.0.4"></a>
 ## 4.0.4 (2018-11-06)
 

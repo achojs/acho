@@ -2,7 +2,7 @@
   "name": "acho",
   "description": "The Hackable Log",
   "homepage": "https://acho.js.org",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "main": "./lib/Acho.js",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
