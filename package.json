@@ -29,7 +29,7 @@
   "dependencies": {
     "chalk": "~4.0.0",
     "fmt-obj": "~2.0.0",
-    "pretty-ms": "~6.0.0",
+    "pretty-ms": "~6.0.1",
     "sliced": "~1.0.1"
   },
   "devDependencies": {
