@@ -1,3 +1,11 @@
+## <small>4.0.6 (2020-04-02)</small>
+
+* build: remove git add from git pre hooks ([0573269](https://github.com/achojs/acho/commit/0573269))
+* build: update dependencies ([375aeb7](https://github.com/achojs/acho/commit/375aeb7))
+* fix(package): update chalk to version 4.0.0 ([a1a0009](https://github.com/achojs/acho/commit/a1a0009))
+
+
+
 ## <small>4.0.5 (2020-02-13)</small>
 
 * ci: update node builds ([2ce6154](https://github.com/achojs/acho/commit/2ce6154))
